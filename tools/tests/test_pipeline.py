@@ -12,6 +12,7 @@ import copy
 import hashlib
 import json
 import os
+import re
 import shutil
 import sys
 import tempfile
@@ -19,9 +20,9 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from ap2d import (attribution, catalog as catalog_mod, compose,  # noqa: E402
-                  contactsheet, generate, integrity, licensing,
-                  palette as palette_mod, paths, rules)
+from ap2d import (attribution, capability, catalog as catalog_mod,  # noqa: E402
+                  compose, contactsheet, generate, integrity, licensing,
+                  order as order_mod, palette as palette_mod, paths, rules)
 
 RULE = "04_RULES/cc0_test_population.json"
 PACK = "rgsdev_free-cc0-modular-vector-characters_v1"
@@ -2341,6 +2342,265 @@ class TestCanonicalSourceFingerprint(unittest.TestCase):
         first = integrity.tree_fingerprint(paths.SOURCE)
         self.assertEqual(64, len(first))
         self.assertEqual(first, integrity.tree_fingerprint(paths.SOURCE))
+
+
+class TestCapabilitySheet(unittest.TestCase):
+    """가용 능력 한 장 — 발주 전에 읽는 메뉴판.
+
+    새로 계산하지 않는다는 것이 요점이다. 카탈로그가 이미 아는 값만 모은다.
+    """
+
+    def test_every_catalog_appears(self):
+        data = capability.build()
+        names = {p["pack"] for p in data["packs"]}
+        for path in capability.catalog_paths():
+            with open(path, encoding="utf-8") as fh:
+                self.assertIn(json.load(fh)["pack"]["name"], names)
+        self.assertTrue(names, "팩이 하나도 없다")
+
+    def test_slot_counts_match_catalog(self):
+        for entry in capability.build()["packs"]:
+            cat = catalog_mod.load_catalog(entry["catalog"])
+            for slot, count in entry["slots"].items():
+                self.assertEqual(len(cat["parts"][slot]), count,
+                                 "%s/%s 후보 수가 카탈로그와 다르다" % (entry["pack"], slot))
+
+    def test_license_state_is_not_invented(self):
+        for entry in capability.build()["packs"]:
+            lic = entry["license"]
+            self.assertIn(lic["commercial_use"], ("yes", "no", "unknown"))
+            # unknown 은 eligible 이 아니다 — 모르면 안 되는 쪽으로 판단한다.
+            if lic["commercial_use"] != "yes":
+                self.assertFalse(lic["commercial_release_eligible"])
+
+    def test_sheet_makes_no_judgement(self):
+        """판정 어휘가 들어가면 안 된다. 이 문서는 사실만 적는다."""
+        md = capability.render_markdown(capability.build())
+        for banned in ("FAIL", "부족", "권장", "점수", "등급", "품질"):
+            self.assertNotIn(banned, md, "판정 어휘가 들어갔다: %s" % banned)
+
+    def test_render_is_deterministic(self):
+        self.assertEqual(capability.render_markdown(capability.build()),
+                         capability.render_markdown(capability.build()))
+
+
+class TestDistributionObservation(unittest.TestCase):
+    """분포는 **관측**이지 검사가 아니다.
+
+    PASS 표만으로는 열 명이 사실상 한 명인 population 을 구분할 수 없다.
+    그래서 세지만, 세는 것까지가 이 저장소의 일이다 — 합격선을 만들지 않는다.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        path = os.path.join(paths.GEN_REPORTS, "lpc_phase1_population_validation.json")
+        if not os.path.isfile(path):
+            raise unittest.SkipTest("검증 리포트가 없다")
+        with open(path, encoding="utf-8") as fh:
+            cls.report = json.load(fh)
+
+    def test_distribution_is_present_and_counts_agree(self):
+        dist = self.report["distribution"]
+        self.assertEqual(self.report["characters"], dist["population"])
+        self.assertTrue(dist["slots"])
+        for row in dist["slots"]:
+            self.assertLessEqual(row["used"], row["allowed_candidates"],
+                                 "%s: 허용보다 많이 썼다" % row["slot"])
+            self.assertLessEqual(row["allowed_candidates"], row["catalog_candidates"],
+                                 "%s: 카탈로그보다 많이 허용했다" % row["slot"])
+            self.assertEqual(sum(row["counts"].values()),
+                             dist["population"] - row["empty"])
+            if row["counts"]:
+                self.assertAlmostEqual(
+                    row["most_common_share"],
+                    max(row["counts"].values()) / (dist["population"] - row["empty"]),
+                    places=3)
+
+    def test_distribution_does_not_affect_status(self):
+        """분포가 status 에 관여하면 그건 임계값이 생겼다는 뜻이다."""
+        checks = {c["check"] for c in self.report["checks"]}
+        for banned in ("distribution", "diversity", "variety"):
+            self.assertNotIn(banned, checks,
+                             "분포가 검사로 승격됐다 — 사실 보고여야 한다")
+        # 최빈 비율이 높은 슬롯이 있어도 전체는 PASS 여야 한다.
+        worst = max(r["most_common_share"] for r in self.report["distribution"]["slots"])
+        self.assertGreater(worst, 0.0)
+        self.assertEqual("pass", self.report["status"],
+                         "분포 때문에 상태가 바뀌었다")
+
+
+class TestOrderBrief(unittest.TestCase):
+    """회신 한 장 — 재현 좌표 · 출시 신호 · 못 한 것."""
+
+    RULE = "04_RULES/lpc_phase1_population.json"
+
+    def setUp(self):
+        if not os.path.isfile(os.path.join(
+                paths.GEN_REPORTS, "lpc_phase1_population_validation.json")):
+            self.skipTest("검증 리포트가 없다")
+        self.brief = order_mod.build(self.RULE)
+
+    def test_reproduction_coordinates_are_complete(self):
+        coord = self.brief["coordinates"]
+        for field in ("rule", "rule_sha256", "catalog", "catalog_sha256", "seeds"):
+            self.assertTrue(coord.get(field), "재현 좌표에 %s 가 없다" % field)
+        self.assertEqual(64, len(coord["rule_sha256"]))
+        self.assertEqual(64, len(coord["catalog_sha256"]))
+
+    def test_release_signal_is_at_top(self):
+        md = order_mod.render_markdown(self.brief)
+        head = md.split("## ①")[0]
+        self.assertTrue("상업 출시" in head,
+                        "출시 신호가 최상단에 없다 — 깊은 곳에 있으면 놓친다")
+
+    def test_not_done_says_none_explicitly(self):
+        """빈 것과 누락은 다르다. 비었으면 비었다고 써야 한다."""
+        md = order_mod.render_markdown(self.brief)
+        section = md.split("## ⑥")[1]
+        if self.brief["not_done"]:
+            self.assertIn("|", section)
+        else:
+            self.assertIn("없음", section)
+
+    def test_consumer_identifier_is_never_invented(self):
+        """소비자 식별자는 art-studio 가 발급한다. 여기서 지어내지 않는다."""
+        for name in ("cc0_test_population", "lpc_phase1_population",
+                     "lpc_phase2_showcase"):
+            with open(paths.abspath("04_RULES/%s.json" % name), encoding="utf-8") as fh:
+                block = order_mod.order_block(json.load(fh))
+            self.assertEqual("unknown", block["consumer"],
+                             "%s: 발주가 없는데 소비자 이름이 붙었다" % name)
+
+    def test_purpose_label_travels_to_exports(self):
+        """산출물 파일만 봐도 자체 검증인지 발주 대응인지 알 수 있어야 한다."""
+        checked = 0
+        for rel in ("06_UNITY_EXPORT/runtime/lpc_phase2_showcase/runtime_manifest.json",
+                    "06_UNITY_EXPORT/characters/cc0_test_population/manifest.json"):
+            path = paths.abspath(rel)
+            if not os.path.isfile(path):
+                continue
+            with open(path, encoding="utf-8") as fh:
+                manifest = json.load(fh)
+            self.assertIn("order", manifest, "%s 에 라벨이 없다" % rel)
+            self.assertIn(manifest["order"]["purpose"], order_mod.PURPOSES)
+            checked += 1
+        if not checked:
+            self.skipTest("export 산출물이 없다")
+
+    def test_brief_adds_no_new_computation(self):
+        """회신은 검증 리포트의 값을 옮기기만 한다 — 다시 판정하지 않는다."""
+        with open(os.path.join(paths.GEN_REPORTS,
+                               "lpc_phase1_population_validation.json"),
+                  encoding="utf-8") as fh:
+            report = json.load(fh)
+        self.assertEqual(report["status"], self.brief["verification"]["status"])
+        self.assertEqual(report["commercial_release_eligible"],
+                         self.brief["release"]["commercial_release_eligible"])
+        self.assertEqual(report["distribution"], self.brief["distribution"])
+
+
+class TestRefusalIsANormalResponse(unittest.TestCase):
+    """거절과 부분 수행이 예외로만 터지지 않고 **회신에 사람이 읽는 줄로** 올라오는가.
+
+    스크립트를 돌린 사람만 이유를 보면, 발주한 쪽은 다음 지시를 고칠 수 없다.
+    """
+
+    RULE = "04_RULES/lpc_phase1_population.json"
+
+    def _report(self, **overrides):
+        base = {
+            "status": "pass",
+            "pack": "lpc_ulpc-generator_phase1",
+            "characters": 10,
+            "expected_characters": 10,
+            "commercial_release_eligible": True,
+            "license": {"license": "CC0-1.0", "commercial_use": "yes"},
+            "attribution": {"attribution_required": False, "share_alike_present": False,
+                            "authors": []},
+            "checks": [{"check": "population", "title": "생성 개수 일치",
+                        "status": "pass", "items_checked": 10,
+                        "failures": [], "warnings": []}],
+            "distribution": {"population": 10, "slots": [], "palette_groups": []},
+        }
+        base.update(overrides)
+        return base
+
+    def test_noncommercial_pack_puts_the_signal_at_the_top(self):
+        brief = order_mod.build(self.RULE, report=self._report(
+            commercial_release_eligible=False,
+            license={"license": "LimeZu Free Version License (proprietary)",
+                     "commercial_use": "no"}))
+        md = order_mod.render_markdown(brief)
+        head = md.split("## ①")[0]
+        self.assertIn("⛔", head, "출시 불가 신호가 최상단에 없다")
+        self.assertIn("상업 출시 불가", head)
+        # 생성 자체를 막지는 않는다 — 신호만 올라온다.
+        self.assertEqual("pass", brief["verification"]["status"])
+        # ⑥ 에도 근거가 남는다.
+        reasons = " ".join(i["근거"] for i in brief["not_done"])
+        self.assertIn("commercial_use", reasons)
+
+    def test_failed_check_becomes_a_human_readable_line(self):
+        brief = order_mod.build(self.RULE, report=self._report(
+            status="fail",
+            checks=[{"check": "asset_presence", "title": "파츠 파일 존재",
+                     "status": "fail", "items_checked": 10,
+                     "failures": [{"subject": "hair_braid",
+                                   "message": "카탈로그에 없는 파츠다"}],
+                     "warnings": []}]))
+        md = order_mod.render_markdown(brief)
+        section = md.split("## ⑥")[1]
+        self.assertIn("hair_braid", section, "무엇이 안 됐는지가 회신에 없다")
+        self.assertIn("카탈로그에 없는 파츠다", section, "근거가 회신에 없다")
+        self.assertEqual(1, brief["verification"]["failed"])
+
+    def test_partial_fulfilment_reports_both_sides(self):
+        """다섯을 시켜 셋만 됐으면 셋을 하고 둘을 이유와 함께 돌려준다."""
+        brief = order_mod.build(self.RULE, report=self._report())
+        brief["not_done"] = [
+            {"요구": "무기 슬롯", "근거": "이 팩의 카탈로그에 weapon 슬롯이 없다"},
+            {"요구": "8방향", "근거": "direction_axis 가 4개만 선언한다"},
+        ]
+        md = order_mod.render_markdown(brief)
+        self.assertIn("무기 슬롯", md)
+        self.assertIn("8방향", md)
+        # 수행한 쪽도 같은 문서에 있다.
+        self.assertIn("③ 기술 검증", md)
+        self.assertIn("PASS", md)
+
+
+class TestDocsMatchCode(unittest.TestCase):
+    """진입 문서가 코드와 어긋나면 그 위에 쌓이는 작업이 전부 틀어진다.
+
+    문서 전체를 검사하는 체계를 만들지 않는다. 실제로 어긋났던 자리만 못 박는다.
+    """
+
+    def _read(self, rel):
+        with open(paths.abspath(rel), encoding="utf-8") as fh:
+            return fh.read()
+
+    def test_claude_md_does_not_claim_factory_writes_meta(self):
+        text = self._read("CLAUDE.md")
+        self.assertIn(".meta` 는 만들지 않는다", text,
+                      "CLAUDE.md 가 .meta 소유권을 명시하지 않는다")
+        self.assertNotIn("prefab/spritelib/meta 포함", text,
+                         "Factory 가 .meta 를 만든다는 옛 서술이 남아 있다")
+
+    def test_claude_md_report_paths_exist_or_are_generated(self):
+        text = self._read("CLAUDE.md")
+        self.assertNotIn("<pack>.report.md", text,
+                         "존재하지 않는 리포트 경로가 문서에 남아 있다")
+        self.assertIn("<profile>_validation", text)
+
+    def test_no_stale_test_count_in_docs(self):
+        """개수는 계속 바뀐다. 고정 숫자를 문서에 박지 않는다."""
+        for rel in ("tools/README.md", "00_DOCS/export-contract-v1.md"):
+            text = self._read(rel)
+            for line in text.splitlines():
+                if "test_pipeline.py" in line:
+                    self.assertFalse(
+                        re.search(r"\b\d{3}\b", line),
+                        "%s 에 고정 테스트 개수가 박혀 있다: %s" % (rel, line.strip()))
 
 
 if __name__ == "__main__":

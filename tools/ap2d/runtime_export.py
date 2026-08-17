@@ -31,7 +31,7 @@ Animator 는 (animation, direction, frame) 을 정하고, Resolver 는 그 라�
 import json
 import os
 
-from . import TOOL_VERSION, attribution, compose, licensing, paths
+from . import TOOL_VERSION, attribution, compose, licensing, order, paths
 
 SCHEMA = "ap2d.unity_runtime/1"
 
@@ -215,6 +215,9 @@ def export(rule, cat, characters, out_root=None, cell_size=256,
         "profile": rule["profile"],
         "pack": rule["pack"],
         "rule": rule["_path"],
+        # 이 산출물이 자체 기술 검증인지 발주 대응인지. 파일만 봐서는 성격을 알 수 없어서
+        # 라벨 하나를 싣는다. **막는 값이 아니다** — 생성도 export 도 그대로 자유롭다.
+        "order": order.order_block(rule),
         "runtime_mode": "modular_runtime",
         "label_format": "<animation>%s[<direction>%s]<frame:02d>" % (LABEL_SEP, LABEL_SEP),
         "categories": sorted(set(category_for(s, li) for s, _c, _p, li, _z in parts)),

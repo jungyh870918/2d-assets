@@ -18,9 +18,11 @@ import time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+import capability_sheet  # noqa: E402
 import export_unity  # noqa: E402
 import generate_characters  # noqa: E402
 import make_contact_sheet  # noqa: E402
+import order_brief  # noqa: E402
 import scan_pack  # noqa: E402
 import validate_generated  # noqa: E402
 from ap2d import catalog as catalog_mod, generate as generate_mod, paths  # noqa: E402
@@ -47,7 +49,7 @@ def main(argv=None):
     profile = rule_raw["profile"]
     catalog_path = rule_raw["catalog"]
     pack_name = rule_raw["pack"]
-    total = 5
+    total = 6
 
     step(1, total, "Scan — 01_SOURCE -> 02_CATALOG")
     if args.rescan or not os.path.isfile(paths.abspath(catalog_path)):
@@ -85,6 +87,13 @@ def main(argv=None):
 
     step(5, total, "Validate — 05_GENERATED/reports/<profile>_validation.*")
     validate_rc = validate_generated.main([args.rule])
+
+    # 검증이 실패해도 회신은 쓴다 — 무엇이 왜 안 됐는지가 회신의 ⑥ 이다.
+    step(6, total, "회신 한 장 — 05_GENERATED/reports/<profile>_brief.md")
+    order_brief.main([args.rule])
+
+    # 카탈로그가 바뀌었을 수 있으니 가용 능력 한 장도 다시 만든다.
+    capability_sheet.main([])
 
     print("\n%s (%.1fs)" % ("완료" if validate_rc == 0 else "완료 — 단 검증 실패가 있다",
                             time.time() - started))

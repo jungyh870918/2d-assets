@@ -14,6 +14,8 @@
 - 구매 에셋 이미지를 외부 이미지 생성 AI에 학습/입력 소스로 보내지 않는다.
   (Unity Asset Store 및 대부분 itch.io 에셋 라이선스가 금지)
 - 라이선스가 불확실한 에셋은 `00_DOCS/licenses/` 에 확인 전까지 생성 파이프라인에 넣지 않는다.
+- 구현이 바뀌어 `CLAUDE.md` · `README.md` · `00_DOCS/` 의 **사실 설명이 달라지면 같은 변경 안에서 함께 고친다.**
+  이 문서들은 다음 세션이 처음 읽는 것이라, 틀린 설명은 그 위에 쌓이는 작업을 전부 틀리게 만든다.
 
 ## 작업 순서
 
@@ -24,7 +26,11 @@
 3. **Rule** — `04_RULES/` 에 조합 규칙을 JSON으로 정의한다 (제약 · 확률 · 금지 조합).
 4. **Generate** — 규칙 + 팔레트 + seed → `05_GENERATED/` 에 variant 정의(JSON) 및 합성 PNG.
 5. **Validate** — 중복 조합, 규격 이탈, 누락 파츠 검사.
-6. **Export** — `06_UNITY_EXPORT/` 로 prefab/spritelib/meta 포함 패키지 구성.
+6. **Export** — `06_UNITY_EXPORT/` 로 manifest · 파츠 시트 · 런타임 C# 을 묶는다.
+   **`.meta` 는 만들지 않는다.** GUID 는 소비자 Unity 프로젝트의 것이고, Factory 가
+   생성하거나 덮어쓰면 그 프로젝트의 기존 참조가 전부 끊긴다
+   (`00_DOCS/export-contract-v1.md` 참조). prefab · SpriteLibrary · clip · controller 는
+   소비자 쪽 에디터 빌더가 만든다.
 
 ## 두 종류의 variation을 섞지 않는다
 
@@ -54,5 +60,10 @@ Main Sprite Library 하나 + 캐릭터 타입별 Variant Library.
 ## 리포트 형식
 
 스캔/검증 결과는 항상 파일로 남긴다. 터미널 출력만으로 끝내지 않는다.
-- 스캔 결과 → `02_CATALOG/<pack>.json`
-- 검증 리포트 → `02_CATALOG/<pack>.report.md`
+리포트는 축이 둘이다 — **팩 축**(무엇을 가졌나)과 **프로파일 축**(무엇을 만들었나).
+
+- 스캔 결과 → `02_CATALOG/<pack>.json` · `02_CATALOG/<pack>.summary.md`
+- 가용 능력 한 장 → `02_CATALOG/CAPABILITIES.md` (모든 팩을 모은 것)
+- 검증 리포트 → `05_GENERATED/reports/<profile>_validation.{json,md}`
+- 출처 표기 → `05_GENERATED/reports/<profile>_attribution.md`
+- 발주 회신 한 장 → `05_GENERATED/reports/<profile>_brief.md`

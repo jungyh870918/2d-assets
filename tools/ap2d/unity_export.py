@@ -11,7 +11,7 @@ import json
 import os
 import shutil
 
-from . import TOOL_VERSION, licensing, paths
+from . import TOOL_VERSION, licensing, order, paths
 
 SCHEMA = "ap2d.unity_manifest/1"
 
@@ -159,6 +159,9 @@ def export(rule, characters, out_root=None, import_settings=None,
         "profile": rule["profile"],
         "pack": rule["pack"],
         "rule": rule["_path"],
+        # 이 산출물이 자체 기술 검증인지 발주 대응인지. 파일만 봐서는 성격을 알 수 없어서
+        # 라벨 하나를 싣는다. **막는 값이 아니다** — 생성도 export 도 그대로 자유롭다.
+        "order": order.order_block(rule),
         "character_count": len(manifest_characters),
         # Unity 소비 경로가 갈리는 축. 아직 Sprite Library 는 만들지 않고 정보만 남긴다.
         "generation_mode": capabilities.get("generation_mode", "unknown"),

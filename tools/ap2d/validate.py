@@ -319,6 +319,64 @@ def check_determinism(rule_path, characters):
 
 # ── 실행 ───────────────────────────────────────────────────────────────────
 
+def observe_distribution(characters, rule, cat):
+    """슬롯마다 후보 중 몇 개가 실제로 나왔는지 **센다.**
+
+    이건 검사가 아니라 관측이다. 임계값도 등급도 없고 status 에 영향을 주지 않는다.
+    "후보 5개 중 2개를 썼다" 는 셀 수 있는 사실이고, 그게 좋은지 나쁜지는 사람이 정한다.
+    (`00_DOCS/DIRECTOR_CONTEXT.md` §1 — validator 는 사실만 본다.)
+
+    PASS 표만으로는 열 명이 사실상 한 명인 population 을 구분할 수 없어서 넣었다.
+    """
+    total = len(characters)
+    catalog_parts = cat.get("parts") or {}
+    slots = []
+    for slot_name in rule["layer_order"]:
+        slot = rule["slots"][slot_name]
+        allowed = rules.candidates_for(slot, cat)
+        counts = {}
+        empty = 0
+        for _dir, defn in characters:
+            value = (defn.get("parts") or {}).get(slot_name)
+            if not value:
+                empty += 1
+                continue
+            counts[value] = counts.get(value, 0) + 1
+        filled = total - empty
+        top = max(counts.values()) if counts else 0
+        slots.append({
+            "slot": slot_name,
+            "catalog_candidates": len(catalog_parts.get(slot_name) or {}),
+            "allowed_candidates": len(allowed),
+            "used": len(counts),
+            "empty": empty,
+            "most_common": max(counts, key=counts.get) if counts else None,
+            "most_common_share": round(top / filled, 3) if filled else 0.0,
+            "counts": dict(sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))),
+        })
+
+    # 팔레트는 슬롯과 축이 달라서 따로 센다. 팔레트를 안 쓰는 규칙에서는 빈 목록이다.
+    # 세는 단위는 `palette.groups` 의 group -> ramp 다 (슬롯별 적용 결과가 아니라
+    # 그룹마다 어떤 램프를 골랐는가). 팔레트를 안 쓰면 이 키 자체가 없다.
+    palette_groups = {}
+    for _dir, defn in characters:
+        groups = (defn.get("palette") or {}).get("groups") or {}
+        for group, ramp in groups.items():
+            palette_groups.setdefault(group, {})
+            palette_groups[group][ramp] = palette_groups[group].get(ramp, 0) + 1
+    palettes = []
+    for group, counts in sorted(palette_groups.items()):
+        top = max(counts.values())
+        palettes.append({
+            "group": group,
+            "used": len(counts),
+            "most_common_share": round(top / sum(counts.values()), 3),
+            "counts": dict(sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))),
+        })
+
+    return {"population": total, "slots": slots, "palette_groups": palettes}
+
+
 def run(rule_path):
     rule_raw = generate_mod._peek_rule(rule_path)
     cat = catalog_mod.load_catalog(rule_raw["catalog"])
@@ -375,6 +433,8 @@ def run(rule_path):
             if os.path.isfile(os.path.join(d, "generation.json"))
         ]),
         "checks": [c.to_dict() for c in checks],
+        # 검사가 아니라 관측이다. status 에 영향을 주지 않는다.
+        "distribution": observe_distribution(characters, rule, cat),
     }
     return report, characters
 
@@ -413,6 +473,33 @@ def render_markdown(report):
             "✅ PASS" if c["status"] == "pass" else "❌ FAIL",
             c["items_checked"], len(c["failures"]), len(c["warnings"])))
     L.append("")
+
+    dist = report.get("distribution")
+    if dist and dist["slots"]:
+        L.append("## 관측된 분포")
+        L.append("")
+        L.append("**검사가 아니다.** 합격선도 임계값도 없다 — 후보 중 몇 개가 실제로")
+        L.append("나왔는지를 셀 뿐이고, 그 숫자가 좋은지 나쁜지는 사람이 정한다.")
+        L.append("")
+        L.append("| 슬롯 | 팩 후보 | 규칙 허용 | 사용됨 | 최빈값 | 최빈 비율 | 미사용 |")
+        L.append("|---|---:|---:|---:|---|---:|---:|")
+        for row in dist["slots"]:
+            L.append("| `%s` | %d | %d | **%d** | `%s` | %.0f%% | %d |" % (
+                row["slot"], row["catalog_candidates"], row["allowed_candidates"],
+                row["used"], row["most_common"] or "—",
+                row["most_common_share"] * 100, row["empty"]))
+        L.append("")
+        L.append("`팩 후보` 는 카탈로그가 가진 수, `규칙 허용` 은 allow/deny 를 적용한 수, "
+                 "`사용됨` 은 이 population 에 실제로 나온 수다. "
+                 "`미사용` 은 그 슬롯이 비어 있던 캐릭터 수다.")
+        L.append("")
+        if dist["palette_groups"]:
+            L.append("| 팔레트 그룹 | 사용됨 | 최빈 비율 |")
+            L.append("|---|---:|---:|")
+            for row in dist["palette_groups"]:
+                L.append("| `%s` | %d | %.0f%% |" % (
+                    row["group"], row["used"], row["most_common_share"] * 100))
+            L.append("")
 
     problems = [c for c in report["checks"] if c["failures"] or c["warnings"]]
     if not problems:

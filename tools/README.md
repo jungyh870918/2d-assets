@@ -21,12 +21,20 @@ python3 tools/run_pipeline.py 04_RULES/cc0_test_population.json --rescan
 | 명령 | 하는 일 | 출력 |
 |---|---|---|
 | `python3 tools/scan_pack.py <팩 폴더>` | 소스 스캔 + 추론 | `02_CATALOG/<pack>.json`, `.summary.md` |
+| `python3 tools/capability_sheet.py` | 팩·팔레트·규칙의 가용 능력을 한 장으로 | `02_CATALOG/CAPABILITIES.md` |
 | `python3 tools/generate_characters.py <규칙>` | seed 기반 조합 + 합성 | `05_GENERATED/characters/<profile>/<seed>/` |
 | `python3 tools/make_contact_sheet.py <profile>` | 결과 한 장에 모으기 | `05_GENERATED/reports/<profile>.png` |
-| `python3 tools/validate_generated.py <규칙>` | 10종 검사 | `05_GENERATED/reports/<profile>_validation.{json,md}` + `_attribution.md` |
+| `python3 tools/validate_generated.py <규칙>` | 10종 검사 + 분포 관측 | `05_GENERATED/reports/<profile>_validation.{json,md}` + `_attribution.md` |
+| `python3 tools/order_brief.py <규칙>` | 회신 한 장 (재현 좌표·출시 신호·못 한 것) | `05_GENERATED/reports/<profile>_brief.{json,md}` |
 | `python3 tools/export_unity.py <규칙>` | Unity 용 패키지 | `06_UNITY_EXPORT/characters/<profile>/` |
 | `python3 tools/ingest_lpc_subset.py <LPC repo>` | LPC subset 결정적 선택 + ingest | `01_SOURCE/characters/lpc_...`, `00_DOCS/lpc-phase1-subset.md` |
-| `python3 tools/tests/test_pipeline.py` | 자동 테스트 178개 | — |
+| `python3 tools/tests/test_pipeline.py` | 자동 테스트 전량 (개수는 실행이 출력) | — |
+
+발주를 받기 전에 읽는 것은 `02_CATALOG/CAPABILITIES.md` 하나다 — 팩마다 흩어진
+슬롯 후보 수 · 애니메이션 · 방향 축 · 라이선스 3상태를 모아 둔다. 자동 생성이라
+손으로 고치지 않는다.
+
+`run_pipeline.py` 는 이 둘을 마지막 두 단계로 자동 실행한다.
 
 environment 팩처럼 조합 가능한 `character_part` 가 없는 팩은 scan 까지만 돌린다.
 generation 단계는 규칙을 쓸 소재가 없어서 애초에 성립하지 않는다:
@@ -254,6 +262,10 @@ catalog summary → generation.json → Unity manifest → validation report
   상대경로 + 바이트, 명시적 정렬, mtime/절대경로 없음, `.DS_Store` 등 제외.
   `python3 tools/source_fingerprint.py` 로 확인한다.
   현재 `01_SOURCE` baseline: `7efe94e67e9ec190c08bf5f026ca07c5f2e89b0aed17cbbee95b71db50c314eb`
+- **분포는 세되 판정하지 않는다.** 리포트의 「관측된 분포」는 후보 중 몇 개가 실제로
+  나왔는지를 셀 뿐이다. 임계값도 등급도 자동 보정도 없다 — 좋은지 나쁜지는 사람이 정한다.
+- **소비자 식별자를 지어내지 않는다.** `order.consumer` 는 발주한 쪽이 발급한다.
+  못 받았으면 `unknown` 이 정당한 값이다.
 - **게임 정책은 게임이 소유한다.** Factory 가 20개 외형을 줘도 게임이 2개만 허용할 수 있다.
   그 판단은 `Assets/Game/**` 의 GameArtProfile 에 있고 exporter 는 그 존재를 모른다.
   집단 결정(`NpcPopulationFactory` → `NpcDefinition[]`)과 씬 생성(`CharacterSpawner`)도

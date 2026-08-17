@@ -3,6 +3,11 @@
   "schema": "ap2d.rule/1",
   "id": "cc0_test_population",
   "profile": "cc0_test_population",
+  "$order_comment": "이 산출물이 자체 기술 검증인지 발주 대응인지. 막는 라벨이 아니라 표시하는 라벨이다. consumer 식별자는 art-studio 가 발급하며, 없으면 unknown 이 정당한 값이다.",
+  "order": {
+    "purpose": "self_verification",
+    "request": "Tier 0 — CC0 modular 팩 하나로 스캔→규칙→생성→검증→Unity export 까지 파이프라인 전체가 도는지 확인한다. 발주가 아니라 자체 기술 검증이다."
+  },
   "pack": "rgsdev_free-cc0-modular-vector-characters_v1",
   "catalog": "02_CATALOG/rgsdev_free-cc0-modular-vector-characters_v1.json",
 

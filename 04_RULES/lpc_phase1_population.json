@@ -3,6 +3,11 @@
   "schema": "ap2d.rule/1",
   "id": "lpc_phase1_population",
   "profile": "lpc_phase1_population",
+  "$order_comment": "이 산출물이 자체 기술 검증인지 발주 대응인지. 막는 라벨이 아니라 표시하는 라벨이다. consumer 식별자는 art-studio 가 발급하며, 없으면 unknown 이 정당한 값이다.",
+  "order": {
+    "purpose": "self_verification",
+    "request": "두 번째 modular 생태계(LPC)로 compose 추상화가 n=2 에서도 성립하는지 확인한다. Minimal Green Path subset 만 쓴다. 자체 기술 검증이다."
+  },
   "pack": "lpc_ulpc-generator_phase1",
   "catalog": "02_CATALOG/lpc_ulpc-generator_phase1.json",
 

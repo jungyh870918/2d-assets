@@ -109,21 +109,22 @@ profile.HasAnimation("run");
 3. **지우지 않는다. 다른 외형으로 대체하지 않는다.**
 
 소비자는 `profile.Contains(myAppearance)` 로 자기 참조가 아직 유효한지 확인한다.
-`game-sandbox` 의 `GameCharacterSet.IsIntact` 가 이 검사를 포함한다 —
+`game-sandbox` 의 `GameArtProfile.Validate()` 가 이 검사를 포함한다 —
 참조가 null 이 아닌 것만으로는 부족하기 때문이다.
 
 ## 6. 실측 — update/reference stability
 
-`GameCharacterSet.asset` 이 profile · prefab · hero appearance 를 **진짜 오브젝트
-참조**(GUID + fileID)로 들고 있는 상태에서, 재-export 후 GUID 를 덤프해 비교했다.
+게임 소유 에셋이 profile · prefab · 허용 외형을 **진짜 오브젝트 참조**(GUID + fileID)로
+들고 있는 상태에서, 재-export 후 GUID 를 덤프해 비교했다. (당시 이름은
+`GameCharacterSet` 이었고, Step 4 에서 `GameArtProfile` 이 그 역할을 흡수했다.)
 
 | 시나리오 | 입력 | 결과 |
 |---|---|---|
 | A 최초 export | seeds `4101` | 기준선 (자산 9개 GUID 기록) |
-| B 동일 입력 재-export | seeds `4101` | GUID 9/9 유지 · path 유지 · `IsIntact=true` |
-| C 정당한 내용 변경 | seeds `4101 4102` | 기존 GUID 9/9 유지 · appearance 1→2 · `IsIntact=true` |
-| D 참조 중인 외형 제거 | seeds `4102` | `IsIntact=false` · `hero_still_in_profile=false` · `stale=1` · 경고 로그 · **자동 대체 없음** · hero GUID 자체는 유지 |
-| E 복구 | seeds `4101 4102` | `IsIntact=true` · `stale=0` · A 대비 GUID 변화 없음 |
+| B 동일 입력 재-export | seeds `4101` | GUID 9/9 유지 · path 유지 · 정책 유효 |
+| C 정당한 내용 변경 | seeds `4101 4102` | 기존 GUID 9/9 유지 · appearance 1→2 · 정책 유효 |
+| D 참조 중인 외형 제거 | seeds `4102` | 정책 무효 · `hero_still_in_profile=false` · `stale=1` · 경고 로그 · **자동 대체 없음** · hero GUID 자체는 유지 |
+| E 복구 | seeds `4101 4102` | 정책 유효 · `stale=0` · A 대비 GUID 변화 없음 |
 
 D 에서 hero GUID 가 유지된다는 것이 중요하다. 게임의 참조는 끊기지 않고,
 "이 외형은 더 이상 제공되지 않는다" 는 사실이 **발견 가능한 형태로** 드러난다.
@@ -132,7 +133,7 @@ D 에서 hero GUID 가 유지된다는 것이 중요하다. 게임의 참조는 
 
 ```bash
 # Factory
-python3 tools/tests/test_pipeline.py            # 172
+python3 tools/tests/test_pipeline.py            # 전량 (개수는 실행이 출력한다)
 python3 tools/run_unity_tests.py                # EditMode + PlayMode
 
 # 소비자 패키지
