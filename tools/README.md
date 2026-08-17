@@ -48,23 +48,37 @@ python3 tools/scan_pack.py 01_SOURCE/environments/limezu_modern-interiors-free_v
 ```
 ap2d/
   paths.py         저장소 경로. 01_SOURCE 쓰기 시도를 PermissionError 로 차단
+  integrity.py     트리 지문 — 산출법을 한 곳으로 고정 (상대경로+바이트, 정렬, mtime 제외)
   licensing.py     라이선스 게이트. 00_DOCS/licenses/<pack>.md frontmatter 검사
   catalog.py       스캐너. 경로/파일명에서 category·part·animation·frame 추론
   summary.py       02_CATALOG/<pack>.summary.md 작성
+  capability.py    팩·팔레트·규칙의 가용 능력을 한 장으로 (02_CATALOG/CAPABILITIES.md)
   rules.py         04_RULES/*.json 로딩 + 참조 무결성 검증
   palette.py       03_PALETTES/*.json 로딩 + multiply tint recolor
-  compose.py       레이어 alpha-over 합성, crop 캐시
+  compose.py       레이어 alpha-over 합성, crop 캐시. 물리 배치 차이를 흡수하는 유일한 지점
   generate.py      결정적 생성기 (sha256 기반 슬롯별 난수 스트림)
   contactsheet.py  contact sheet + 방향 정렬 확인 시트
-  validate.py      검증 + 리포트
+  validate.py      검증 10종 + 관측된 분포 (분포는 검사가 아니다 — status 에 관여하지 않는다)
   attribution.py   파일 단위 provenance 집계 + attribution 리포트
-  unity_export.py  06_UNITY_EXPORT 패키징
+  order.py         발주 회신 한 장 + 규칙의 order 블록 (purpose/consumer/request/not_done)
+  unity_export.py  06_UNITY_EXPORT/characters — baked 경로
+  runtime_export.py 06_UNITY_EXPORT/runtime — Sprite Library 경로 (기본값)
   packs/           팩별 adapter (pack-specific 지식은 여기에만)
     lpc.py         Universal LPC — sheet_definitions / CREDITS.csv 파서
-unity/
-  GeneratedCharacter.cs          ScriptableObject (런타임)
-  GeneratedCharacterImporter.cs  Editor 임포터
+unity/                              소비자 프로젝트로 복사되는 C#
+  CharacterView.cs                Animator 상태 -> 라벨 -> SpriteResolver (런타임)
+  CharacterAppearance.cs          외형 정의 (frame 미포함)
+  CharacterAnimationState.cs      state -> 애니메이션 이름
+  CharacterProfile.cs             소비자가 아는 유일한 진입점 (SetMotion / appearances)
+  SpriteLibraryBuilder.cs         manifest -> 라이브러리·프리팹·프로파일 (Editor)
+  AnimationClipBuilder.cs         manifest -> clip·controller (Editor)
+  SpriteRuntimeTests.cs           EditMode 테스트
+  PlayMode/                       PlayMode 테스트
+  GeneratedCharacter.cs           baked 경로용 ScriptableObject + 임포터
 ```
+
+`ap2d` 안에는 팩 이름이 없다. LPC 를 아는 코드는 `packs/lpc.py` 하나뿐이고,
+AST 테스트가 그 격리를 강제한다.
 
 ## 두 개의 분류 축 (섞지 않는다)
 

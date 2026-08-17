@@ -2592,6 +2592,34 @@ class TestDocsMatchCode(unittest.TestCase):
                          "존재하지 않는 리포트 경로가 문서에 남아 있다")
         self.assertIn("<profile>_validation", text)
 
+    def test_every_markdown_link_resolves(self):
+        """진입 문서의 링크가 실재하는가. 죽은 링크는 틀린 설명의 가장 흔한 형태다."""
+        for rel in ("README.md", "tools/README.md", "CLAUDE.md",
+                    "00_DOCS/DIRECTOR_CONTEXT.md"):
+            text = self._read(rel)
+            base = os.path.dirname(paths.abspath(rel))
+            for target in re.findall(r"\]\(([^)#:]+)\)", text):
+                if target.startswith(("http", "mailto")):
+                    continue
+                self.assertTrue(os.path.exists(os.path.join(base, target)),
+                                "%s 의 링크가 죽었다: %s" % (rel, target))
+
+    def test_module_list_matches_package(self):
+        """`tools/README.md` 의 모듈 목록이 실제 패키지와 같은가."""
+        block = self._read("tools/README.md").split("## 모듈")[1].split("```")[1]
+        listed = set(re.findall(r"^\s{2}([a-z_]+\.py)", block, re.M))
+        actual = {f for f in os.listdir(paths.abspath("tools/ap2d"))
+                  if f.endswith(".py") and f != "__init__.py"}
+        self.assertEqual(actual - listed, set(), "문서에 없는 모듈이 있다")
+        self.assertEqual(listed - actual, set(), "없는 모듈이 문서에 있다")
+
+    def test_documented_commands_exist(self):
+        """문서가 안내하는 명령이 실재하는가."""
+        for rel in ("README.md", "tools/README.md"):
+            for cmd in re.findall(r"python3 (tools/[\w/]+\.py)", self._read(rel)):
+                self.assertTrue(os.path.isfile(paths.abspath(cmd)),
+                                "%s 가 없는 명령을 안내한다: %s" % (rel, cmd))
+
     def test_no_stale_test_count_in_docs(self):
         """개수는 계속 바뀐다. 고정 숫자를 문서에 박지 않는다."""
         for rel in ("tools/README.md", "00_DOCS/export-contract-v1.md"):
