@@ -1,0 +1,93 @@
+{
+  "$comment": "Tier 0 CC0 팩(RGS_Dev)으로 파이프라인 end-to-end 를 검증하기 위한 규칙. _example_character_rule.json 의 구조(slots / palettes / archetypes / global)를 그대로 따르고, 이 팩에 실제로 존재하는 파츠 이름만 쓴다. 파츠 이름은 02_CATALOG 스캔 결과에서 왔다.",
+  "schema": "ap2d.rule/1",
+  "id": "cc0_test_population",
+  "profile": "cc0_test_population",
+  "pack": "rgsdev_free-cc0-modular-vector-characters_v1",
+  "catalog": "02_CATALOG/rgsdev_free-cc0-modular-vector-characters_v1.json",
+
+  "animations": ["idle", "walk", "roll", "fall", "hit", "jumpStart", "jumpEnd", "death"],
+  "preview": { "animation": "idle", "frame": 0 },
+  "sheets": ["idle", "walk"],
+
+  "slots": {
+    "wing_l": { "required": false, "from": "wing",   "side": "left",  "none_weight": 0.6 },
+    "wing_r": { "required": false, "from": "wing",   "side": "right", "follows": "wing_l" },
+    "horn":   { "required": false, "from": "horn",   "none_weight": 0.35 },
+    "hand_l": { "required": true,  "from": "hand",   "side": "left" },
+    "body":   { "required": true,  "from": "body" },
+    "foot_l": { "required": true,  "from": "foot",   "side": "left" },
+    "foot_r": { "required": true,  "from": "foot",   "side": "right" },
+    "weapon": { "required": false, "from": "weapon", "side": "right", "none_weight": 0.6 },
+    "head":   { "required": true,  "from": "head" },
+    "eyes":   { "required": true,  "from": "eyes" },
+    "mouth":  { "required": true,  "from": "mouth" },
+    "hair":   { "required": false, "from": "hair",   "none_weight": 0.15 },
+    "hand_r": { "required": true,  "from": "hand",   "side": "right" }
+  },
+
+  "$layer_order_comment": "뒤 -> 앞. 실측으로 정한 순서다. 무기는 머리보다 뒤에 와야 입이 가려지지 않고, 뿔은 머리카락보다 뒤에 와야 머리카락을 뚫고 나오지 않는다.",
+  "layer_order": [
+    "wing_l", "wing_r", "horn",
+    "hand_l", "body", "foot_l", "foot_r", "weapon",
+    "head", "eyes", "mouth", "hair",
+    "hand_r"
+  ],
+
+  "palettes": {
+    "source": "03_PALETTES/cc0_creature.json",
+    "tint_index": 1,
+    "groups": {
+      "skin":   { "slots": ["body", "head", "hand_l", "hand_r", "foot_l", "foot_r"],
+                  "ramps": ["skin_pale", "skin_tan", "skin_olive", "skin_ash", "skin_moss", "skin_rose"] },
+      "hair":   { "slots": ["hair", "horn"],
+                  "ramps": ["hair_black", "hair_brown", "hair_blond", "hair_crimson", "hair_indigo", "hair_teal"] },
+      "wing":   { "slots": ["wing_l", "wing_r"],
+                  "ramps": ["wing_bone", "wing_dusk", "wing_ember"] },
+      "weapon": { "slots": ["weapon"],
+                  "ramps": ["metal_steel", "metal_brass", "metal_gunmetal"] }
+    },
+    "$untinted_comment": "eyes 는 흰자/동공 대비가 tint 로 무너지고, mouth 는 원본이 순수 검정이라 곱해도 변하지 않는다.",
+    "untinted": ["eyes", "mouth"]
+  },
+
+  "archetypes": [
+    {
+      "name": "wanderer",
+      "seeds": { "from": 1001, "to": 1010 },
+      "constraints": {
+        "weapon": { "none_weight": 0.8 },
+        "horn":   { "none_weight": 0.5 },
+        "wing_l": { "none_weight": 0.7 }
+      }
+    },
+    {
+      "name": "raider",
+      "seeds": { "from": 1011, "to": 1020 },
+      "constraints": {
+        "weapon": { "required": true, "none_weight": 0.0 },
+        "horn":   { "none_weight": 0.15 },
+        "wing_l": { "none_weight": 0.45 }
+      },
+      "palette_constraints": {
+        "weapon": { "only": ["metal_gunmetal", "metal_steel"] },
+        "skin":   { "only": ["skin_ash", "skin_olive", "skin_moss", "skin_tan"] }
+      }
+    }
+  ],
+
+  "$unity_comment": "CLAUDE.md 의 Unity 기본값은 '별도 지정이 없으면' 적용된다. 이 팩은 픽셀아트가 아니라 2048px 벡터 렌더라 Point 필터를 쓰면 축소 시 계단이 심하게 생긴다. 그래서 filter_mode 만 Bilinear 로 지정한다. PPU 도 타일 크기 개념이 없어서 시트 셀 높이(약 256px)가 캐릭터 2 world unit 이 되도록 128 로 둔다. pivot/compression/mesh_type 은 기본값 그대로.",
+  "unity": {
+    "pixels_per_unit": 128,
+    "filter_mode": "Bilinear",
+    "compression": "None",
+    "mesh_type": "FullRect",
+    "pivot": "BottomCenter",
+    "frame_rate": 12
+  },
+
+  "global": {
+    "no_duplicate_combinations": true,
+    "deterministic": true
+  }
+}

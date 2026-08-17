@@ -1,0 +1,29 @@
+{
+  "$comment": "RGS_Dev CC0 팩용. 원본 파츠가 흰색/회색 기반(하이라이트 239, 그림자 167, 외곽선 0)이라 multiply tint 로 색을 입힌다. 검은 외곽선은 곱셈에서 0을 유지하므로 그대로 보존된다. 구조는 _example_korean_90s.json 과 동일: keys 5단계 + ramps.",
+  "name": "cc0_creature",
+  "description": "CC0 modular creature 검증용 팔레트 — 피부/머리·뿔/날개/무기 4개 계열",
+  "keys": ["#FFFFFF", "#CCCCCC", "#999999", "#666666", "#333333"],
+  "ramps": [
+    { "id": "skin_pale",    "group": "skin",   "colors": ["#F2DCC8", "#E0BFA2", "#B8916F", "#7E5F44", "#4A3626"] },
+    { "id": "skin_tan",     "group": "skin",   "colors": ["#E8C59B", "#CBA173", "#9E7548", "#6B4C2C", "#3F2C19"] },
+    { "id": "skin_olive",   "group": "skin",   "colors": ["#D6C79A", "#B3A272", "#87784C", "#5B4F2F", "#352D1B"] },
+    { "id": "skin_ash",     "group": "skin",   "colors": ["#C9CBD1", "#A3A6AF", "#7A7D87", "#53555D", "#303237"] },
+    { "id": "skin_moss",    "group": "skin",   "colors": ["#B9CDA4", "#94AC7C", "#6C8155", "#495837", "#2B3421"] },
+    { "id": "skin_rose",    "group": "skin",   "colors": ["#EFC3BE", "#D29A95", "#A56E69", "#734844", "#432927"] },
+
+    { "id": "hair_black",   "group": "hair",   "colors": ["#6E6E77", "#4A4A52", "#31313A", "#1E1E24", "#111114"] },
+    { "id": "hair_brown",   "group": "hair",   "colors": ["#B98C5A", "#8F6840", "#67492C", "#43301C", "#271C10"] },
+    { "id": "hair_blond",   "group": "hair",   "colors": ["#F0D89A", "#D6B96F", "#AC9049", "#77632F", "#463A1B"] },
+    { "id": "hair_crimson", "group": "hair",   "colors": ["#D5726B", "#B04B47", "#85332F", "#5A211F", "#341312"] },
+    { "id": "hair_indigo",  "group": "hair",   "colors": ["#8A8DD4", "#6265B0", "#464885", "#2F3159", "#1B1C34"] },
+    { "id": "hair_teal",    "group": "hair",   "colors": ["#79C6C0", "#529E98", "#3A7671", "#26504C", "#152E2C"] },
+
+    { "id": "wing_bone",    "group": "wing",   "colors": ["#EDE6D8", "#CFC5B2", "#A39784", "#6F6555", "#413B31"] },
+    { "id": "wing_dusk",    "group": "wing",   "colors": ["#9C8FB5", "#7A6C93", "#5A4E6E", "#3C334A", "#221D2B"] },
+    { "id": "wing_ember",   "group": "wing",   "colors": ["#E09A63", "#BC7642", "#8E552C", "#5F381C", "#372010"] },
+
+    { "id": "metal_steel",  "group": "weapon", "colors": ["#D2D7DD", "#ADB3BB", "#848A93", "#585D65", "#33363B"] },
+    { "id": "metal_brass",  "group": "weapon", "colors": ["#DFC078", "#BC9C55", "#8F753C", "#614F27", "#392E16"] },
+    { "id": "metal_gunmetal","group": "weapon","colors": ["#9AA0A6", "#767C83", "#565C63", "#3A3E44", "#212427"] }
+  ]
+}

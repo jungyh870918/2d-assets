@@ -1,0 +1,7 @@
+{
+    "name": "ArtFactory.Editor",
+    "rootNamespace": "ArtFactory.EditorTools",
+    "references": ["ArtFactory.Runtime", "Unity.2D.Animation.Runtime", "Unity.2D.Animation.Editor"],
+    "includePlatforms": ["Editor"],
+    "autoReferenced": true
+}

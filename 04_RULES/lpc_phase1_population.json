@@ -1,0 +1,53 @@
+{
+  "$comment": "LPC Phase 1 — compose.py 의 modular composition abstraction 을 n=2 로 검증하기 위한 규칙. CC0 규칙을 복사한 것이 아니라 실측 subset(00_DOCS/lpc-phase1-subset.md)의 슬롯으로 작성했다.",
+  "schema": "ap2d.rule/1",
+  "id": "lpc_phase1_population",
+  "profile": "lpc_phase1_population",
+  "pack": "lpc_ulpc-generator_phase1",
+  "catalog": "02_CATALOG/lpc_ulpc-generator_phase1.json",
+
+  "animations": ["idle", "walk", "run"],
+  "$directions_comment": "LPC 는 방향을 시트의 행에 담는다. Phase 1 은 4방향 전부 굽는다. 방향 수는 애니메이션별 topology 이므로 규칙이 전역 상수로 가정하지 않는다 — 카탈로그에 없는 방향은 자동으로 빠진다.",
+  "directions": ["south", "west", "east", "north"],
+  "preview": { "animation": "walk", "frame": 0, "direction": "south" },
+  "sheets": ["idle", "walk", "run"],
+
+  "$slots_comment": "슬롯 이름은 LPC 의 type_name 을 이 저장소 슬롯으로 매핑한 값이다 (adapter 가 담당). head 가 필수인 이유: LPC 의 body 스프라이트는 **목까지만 그려져 있고 머리가 없다**. CC0 팩(body 에 머리가 붙어 있음)과 달라서, head 를 선택 슬롯으로 두면 얼굴 없는 캐릭터가 나온다. 실측으로 확인한 팩별 슬롯 의존성이다. hair 만 선택 슬롯으로 남긴다 (대머리는 정상 결과).",
+  "$deny_comment": "Phase 2 에서 팩에 추가된 예외 자산(multi-layer hair_braid / animation-subset legs_armour)은 이 규칙에서 제외한다. Phase 1 population 은 baseline 이라 바이트 단위로 유지되어야 하고, 예외 자산은 04_RULES/lpc_phase2_showcase.json 이 따로 검증한다.",
+  "slots": {
+    "body":  { "required": true,  "from": "body" },
+    "legs":  { "required": true,  "from": "legs",  "deny": ["legs_armour"] },
+    "feet":  { "required": true,  "from": "feet" },
+    "torso": { "required": true,  "from": "torso" },
+    "head":  { "required": true,  "from": "head" },
+    "hair":  { "required": false, "from": "hair", "none_weight": 0.2,
+               "deny": ["hair_braid"] }
+  },
+
+  "$layer_order_comment": "CC0 규칙과 달리 레이어 순서를 손으로 적지 않는다. LPC 는 sheet_definitions 에 zPos 를 선언하고 있고(body 10 / legs 20 / feet 25 / torso 35 / head 100 / hair 120), 카탈로그가 그것을 보존한다. 소스가 선언한 값을 사람이 베껴 적으면 어긋날 수 있다.",
+  "layer_order": "by_z_pos",
+
+  "$palette_comment": "LPC 의 recolor 는 CC0 의 multiply tint 와 메커니즘이 다르다 (material/ramp 색인 교체). Phase 1 에서는 ramp recolor 엔진을 만들지 않고 소스 색 그대로 합성한다. material/recolors/palette 이름은 카탈로그가 보존한다.",
+
+  "$unity_comment": "LPC 는 64px 픽셀아트라 PPU 는 셀 크기와 일치시키고 Point 필터를 쓴다 (CLAUDE.md 기본값 그대로).",
+  "unity": {
+    "pixels_per_unit": 64,
+    "filter_mode": "Point",
+    "compression": "None",
+    "mesh_type": "FullRect",
+    "pivot": "BottomCenter",
+    "frame_rate": 8
+  },
+
+  "archetypes": [
+    {
+      "name": "villager",
+      "seeds": { "from": 4001, "to": 4010 }
+    }
+  ],
+
+  "global": {
+    "no_duplicate_combinations": true,
+    "deterministic": true
+  }
+}

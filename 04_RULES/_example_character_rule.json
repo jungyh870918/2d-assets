@@ -1,0 +1,56 @@
+{
+  "$comment": "예시 규칙. 실제 파츠 이름은 02_CATALOG 스캔 후 채운다.",
+  "id": "modern_korean_school",
+  "profile": "modern_korean_school",
+  "catalog": "02_CATALOG/smallscaleint_cc2d-modern.json",
+  "seed": 20260816,
+
+  "slots": {
+    "body":    { "required": true,  "from": "Body" },
+    "head":    { "required": true,  "from": "Head" },
+    "hair":    { "required": false, "from": "Hair",    "none_weight": 0.05 },
+    "chest":   { "required": true,  "from": "Chest" },
+    "legs":    { "required": true,  "from": "Legs" },
+    "shoes":   { "required": true,  "from": "Shoes" },
+    "backpack":{ "required": false, "from": "Backpack", "none_weight": 0.3 },
+    "weapon":  { "required": false, "from": "Weapon",   "none_weight": 1.0 }
+  },
+
+  "palettes": {
+    "skin": { "from": "03_PALETTES/skin_tones.json", "count": 4 },
+    "hair": { "from": "03_PALETTES/hair_natural.json" },
+    "cloth": { "from": "03_PALETTES/korean_90s.json" }
+  },
+
+  "archetypes": [
+    {
+      "name": "student",
+      "count": 50,
+      "constraints": {
+        "weapon": { "allow": [] },
+        "chest":  { "prefer": ["Hoodie", "Shirt", "Uniform"] },
+        "backpack": { "none_weight": 0.1 }
+      }
+    },
+    {
+      "name": "police",
+      "count": 15,
+      "constraints": {
+        "cloth_palette": { "only": ["police_navy"] },
+        "weapon": { "allow": ["Baton", "Pistol"], "none_weight": 0.0 }
+      }
+    },
+    {
+      "name": "gangster",
+      "count": 20,
+      "constraints": {
+        "weapon": { "allow": ["Bat", "Pipe", "Knife"], "none_weight": 0.8 }
+      }
+    }
+  ],
+
+  "global": {
+    "no_duplicate_combinations": true,
+    "deterministic": true
+  }
+}

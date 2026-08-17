@@ -1,0 +1,20 @@
+# 구매 원본 — 저장소에 커밋하지 않는다 (라이선스 위반 / 용량)
+01_SOURCE/**
+# 받은 zip 이 저장소 루트에 떨어지는 경우도 같은 이유로 제외한다
+/*.zip
+!01_SOURCE/**/.gitkeep
+!01_SOURCE/**/SOURCE.md
+
+# 생성물 — 언제든 재생성 가능
+05_GENERATED/**
+!05_GENERATED/**/.gitkeep
+06_UNITY_EXPORT/**
+!06_UNITY_EXPORT/.gitkeep
+
+# 카탈로그는 커밋한다 (파일명 목록이라 원본 아트가 아님)
+# 02_CATALOG/ 는 추적
+
+.DS_Store
+__pycache__/
+*.pyc
+.venv/

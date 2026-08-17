@@ -1,0 +1,147 @@
+# 이 저장소 위에 무엇이 있는가
+
+작성일: 2026-08-17
+
+이 저장소는 혼자 만들어졌지만 혼자 쓰이지 않는다. 위에 **아트 디렉팅 계층**이 있다.
+
+```
+~/Desktop/Projects/art-studio/          결정과 기억 — 아트 방향 · 승인 · 기록
+~/Desktop/Projects/2d-assets/           증폭 — 조합 · 팔레트 · 검증 · 엔진 배선   ← 여기
+```
+
+전체 전략은 `art-studio/CAPABILITY_2D_ASSET_FACTORY.md`에 있다. 요약만 여기 남긴다.
+
+---
+
+## 1. 이 저장소가 하지 않는 판단
+
+**「어느 것이 더 좋은가」를 정하지 않는다.** validator가 10종 PASS를 내도 그것은
+Technical Pass이지 채택이 아니다. 채택은 사람이 하고, 기록은 `art-studio` 쪽에 남는다.
+
+`make_contact_sheet.py`는 **고르기 쉽게 만드는 도구**이지 고르는 도구가 아니다.
+그래서 이 저장소에는 `picks` / `approved` 같은 폴더가 없다 — 일부러 없는 것이다.
+
+**검증에 미적 기준을 추가하지 마라.** 톤 거리·색 분포 같은 것으로 합격선을 만들면
+좋은 결과가 숫자 때문에 버려진다. validator는 사실만 본다 — 치수 · 알파 · 중복 ·
+소스 불변 · 재현성 · 라이선스.
+
+---
+
+## 2. 승인은 PNG가 아니라 seed에 건다
+
+생성이 결정적이라서 가능한 성질이다.
+
+```
+APPROVED SOURCE  =  팩 해시 + 규칙 파일 + seed      ← 이것이 승인 대상
+EXPORT           =  PNG · 시트 · 프리팹             ← 언제든 재생성
+```
+
+`05_GENERATED/`를 「버려도 되는 것」으로 유지하는 규칙이 이 성질을 지킨다.
+**validator의 소스 해시 검사와 재현성 검사를 끄지 마라** — 끄는 순간 승인 기록이 의미를 잃는다.
+
+손으로 후처리한 파츠가 생기면 그 파일이 승인 원본이 되고, 이 저장소가 아니라
+프로젝트의 `approved/`로 올라간다. 어느 쪽인지 헷갈리는 상태를 만들지 않는다.
+
+---
+
+## 3. 팩은 스타일을 함께 들고 온다
+
+`05_GENERATED/reports/lpc_phase1_population.png`를 보면 villager 10명의 머리색과 옷이
+거의 같다. subset이 작은 탓도 있지만, 더 근본적으로 **LPC는 LPC처럼 보인다.**
+
+> 구매·CC0 팩의 파츠를 그대로 게임에 실으면, 그 게임의 아트 방향을 팩 제작자가 정한 것이 된다.
+
+그래서 분업은 이렇게 갈린다.
+
+| | 수단 |
+|---|---|
+| **모집단** — 주민 · 잡몹 · 병사 · 소품 · 색 변형 | **이 저장소** |
+| **정체성** — 주인공 · 보스 · 랜드마크 · UI 언어 | 디렉팅 루프 (생성기 + 손) |
+
+구매 팩 파츠를 게임에 그대로 싣는 것은 프로토타입·플레이스홀더·기계 검증까지다.
+
+---
+
+## 4. 그래서 앞으로 무엇이 들어오는가
+
+이 저장소의 기계는 **화풍을 모른다.** 카탈로그가 계산하는 조건만 본다.
+
+```
+composable = parts_separable ∧ pre_aligned ∧ animation_compatible
+```
+
+이 계약만 만족하면 파츠의 출처가 LPC든 내가 만든 것이든 같은 코드가 돈다.
+실제로 CC0(벡터 만화풍)와 LPC(64px 도트)가 이미 같은 파이프라인을 탄다.
+
+→ **다음 단계는 `01_SOURCE`가 아닌 별도 계층에 «내가 만든 파츠»를 받는 것이다**
+(`CLAUDE.md`의 「직접 만든 master asset」 조항이 그 자리다).
+
+내 파츠를 발주할 때 요구할 것:
+
+- 슬롯마다 **별도 PNG** (합쳐진 완성 시트가 오면 `composed_sheet`로 떨어져 조합 불가)
+- 모든 파츠가 **같은 논리 셀 · 같은 원점**
+- 애니메이션·프레임 수가 슬롯 간 일치 (아니면 `allow_subset`을 선언)
+- **z 순서를 선언**할 것 (사람이 베껴 적으면 어긋난다)
+- 색이 **램프 구조**를 따를 것
+
+---
+
+## 5. 그때 이 저장소에 필요해지는 것 — 미리 만들지 않는다
+
+| 언제 | 무엇 | 어디에 이미 있는가 |
+|---|---|---|
+| 내 파츠를 넣기 시작할 때 | **정확한 램프 스왑** — 지금 `palette.py`는 multiply tint뿐이다 | `dice_board`의 `src/art/dot.ts` — `swapPalette` · `rampMapping` |
+| 생성기를 붙이는 순간 | **「진짜 도트인가」 검사** — 업스케일 · 반투명 알파 · 팔레트 폭증 · 타일 정합 | `dice_board`의 `src/art/pixel.ts` · `npm run art:pixel` |
+
+지금은 필요 없다. LPC는 이미 진짜 도트이고 파츠도 라이선스 원본이다.
+**필요해지기 전에 옮기면 검증되지 않은 방식이 기본값처럼 굳는다.**
+
+---
+
+## 6. 소비자 쪽 경계 — 여기서 일반화를 멈춘다 (2026-08-17 고정)
+
+Step 5 까지로 Factory 자체의 일반화 작업은 **끝났다.** 다음은 「Step 6 범용 시스템」이
+아니라 **첫 실제 게임의 vertical slice** 다.
+
+```
+Asset Factory
+  → CharacterProfile        Factory 가 제공하는 실행 가능한 캐릭터 능력
+      ↓
+GameArtProfile              이 게임이 허용하는 아트 정책
+      ↓
+NpcPopulationFactory        누가 어떤 외형/동작/방향을 갖는지 결정
+      ↓
+NpcDefinition[]             그 결정 결과
+      ↓
+NpcPlacement                씬에서 어디에 어떻게 놓일지
+      ↓
+Spawner                     결정된 값을 실제 GameObject 로 구현
+      ↓
+CharacterView / Animator / SpriteResolver
+```
+
+이 경계가 버티는 이유는 숫자가 아니라 **순수성**이다. `Generate()` 가 Instantiate ·
+Transform · Animator · Resolver 를 전혀 건드리지 않으므로 population 을 씬 없이
+field 단위로 검증할 수 있고, 그래서 population 을 게임 규칙 데이터로 취급할 수 있다.
+
+### 다음에 무엇을 하는가
+
+실제 게임 하나를 정하고, **그 게임의 첫 장면이 요구하는 최소 차이만** 넣는다.
+
+학교 배경이라면: student / teacher 라는 이름을 먼저 만들지 않는다. role 이 실제로
+`allowedAppearances` · motion · equipment · palette 중 **무엇을 바꾸는지 관찰한 뒤**
+그 축만 추가한다. 이름만 먼저 만들면 쓰이지 않는 ontology 가 남는다.
+
+새 추상화를 먼저 만들지 말고, 장면 하나가 `GameArtProfile` 과 `NpcDefinition` 에
+**정말 부족한 데이터가 무엇인지 드러내게** 한다.
+
+(seed 도 지금 더 늘리지 않는다. `Spawn(definitions, placementSeed, ...)` 가 이미 인자를
+나눠 받고 있어서, population seed 와 placement seed 를 갈라야 할 때 구조 변경이 작다.)
+
+---
+
+## 7. 바뀌지 않는 것
+
+`CLAUDE.md`와 `README.md`의 절대 규칙은 그대로다 — `01_SOURCE` 읽기 전용 ·
+결정적 생성 · 라이선스 게이트 · 구매 에셋을 생성 AI에 넣지 않기.
+이 문서는 그 위에 **누가 결정하는가**만 덧붙인다.

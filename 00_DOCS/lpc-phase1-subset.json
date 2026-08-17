@@ -1,0 +1,1373 @@
+{
+  "adapter": "lpc",
+  "tool_version": "0.1.0",
+  "cell": 64,
+  "direction_rows": [
+    "north",
+    "west",
+    "south",
+    "east"
+  ],
+  "animations": {
+    "idle": {
+      "frames": 2,
+      "directions": 4
+    },
+    "run": {
+      "frames": 8,
+      "directions": 4
+    },
+    "walk": {
+      "frames": 9,
+      "directions": 4
+    }
+  },
+  "body_type": "male",
+  "criteria": [
+    "type_name 이 이 저장소의 슬롯(body/head/hair/torso/legs/feet)에 대응한다",
+    "layer_ 키가 정확히 1개다 (다중 zPos 아이템은 Phase 1 에서 제외)",
+    "layer_1 에 male 경로가 있다 (body type 은 male 하나만 사용)",
+    "custom_animation 이 없다",
+    "animations 가 idle/walk/run 을 모두 포함한다",
+    "idle/walk/run 시트가 <base><animation>.png 형태로 실재한다",
+    "세 시트 모두 표준 64px 격자 규격이다 (idle 2x4 / walk 9x4 / run 8x4)",
+    "실제 사용 경로의 credits 가 전부 CC0 / OGA-BY / CC-BY 중 하나를 제공한다",
+    "위를 만족하는 후보를 정의 파일 경로순으로 정렬해 슬롯별 목표 수만큼 앞에서 취한다",
+    "multi_layer: layer_ 키가 2개 이상이고 각 레이어가 제 zPos 를 갖는다",
+    "multi_layer: Phase 1 슬롯에 매핑되고 idle/walk/run 을 모두 지원한다",
+    "animation_subset: layer_ 가 1개이고 idle/walk/run 중 일부만 지원한다",
+    "animation_subset: 최소 1개는 지원하고 최소 1개는 미지원이어야 한다",
+    "animation_subset: body 슬롯은 제외한다 — 몸통이 숨겨지면 '해당 레이어만 사라지고 나머지는 계속 재생' 을 검증할 수 없다",
+    "공통: male 경로 · custom_animation 없음 · 표준 64px 격자 · 허용 라이선스",
+    "공통: 조건을 만족하는 후보를 정의 파일 경로순으로 정렬해 앞에서 취한다"
+  ],
+  "targets": {
+    "body": 1,
+    "head": 2,
+    "hair": 4,
+    "torso": 4,
+    "legs": 3,
+    "feet": 3
+  },
+  "extra_targets": {
+    "multi_layer": 1,
+    "animation_subset": 1
+  },
+  "extras": {
+    "animation_subset": [
+      "legs_armour"
+    ],
+    "multi_layer": [
+      "hair_braid"
+    ]
+  },
+  "candidate_counts": {
+    "body": 1,
+    "feet": 9,
+    "hair": 37,
+    "head": 25,
+    "legs": 12,
+    "torso": 21
+  },
+  "rejected_counts": {
+    "animation_subset": 11,
+    "license_not_permissive": 35,
+    "multi_layer": 26,
+    "no_male_body_type": 28,
+    "nonstandard_topology": 1,
+    "sheet_missing": 1
+  },
+  "shortfall": {},
+  "selected": {
+    "body": [
+      {
+        "id": "body",
+        "name": "Body Color",
+        "slot": "body",
+        "type_name": "body",
+        "definition": "sheet_definitions/body/body.json",
+        "base": "body/bodies/male/",
+        "z_pos": 10,
+        "body_type": "male",
+        "animations": {
+          "idle": {
+            "width": 64,
+            "height": 64,
+            "columns": 2,
+            "rows": 4
+          },
+          "run": {
+            "width": 64,
+            "height": 64,
+            "columns": 8,
+            "rows": 4
+          },
+          "walk": {
+            "width": 64,
+            "height": 64,
+            "columns": 9,
+            "rows": 4
+          }
+        },
+        "recolors": {
+          "material": "body",
+          "palettes": [
+            "ulpc",
+            "lpcr",
+            "all.lpcr"
+          ]
+        },
+        "credits": [
+          {
+            "source_file": "body/bodies/male",
+            "authors": [
+              "bluecarrot16",
+              "JaidynReiman",
+              "Benjamin K. Smith (BenCreating)",
+              "Evert",
+              "Eliza Wyatt (ElizaWy)",
+              "TheraHedwig",
+              "MuffinElZangano",
+              "Durrani",
+              "Johannes Sjölund (wulax)",
+              "Stephen Challener (Redshrike)"
+            ],
+            "selected_license": "OGA-BY 3.0",
+            "alternative_licenses": [
+              "CC-BY-SA 3.0",
+              "GPL 3.0"
+            ],
+            "source_urls": [
+              "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+              "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+              "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
+              "https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle",
+              "https://opengameart.org/content/lpc-revised-character-basics",
+              "https://opengameart.org/content/lpc-be-seated",
+              "https://opengameart.org/content/lpc-runcycle-for-male-muscular-and-pregnant-character-bases-with-modular-heads",
+              "https://opengameart.org/content/lpc-jump-expanded",
+              "https://opengameart.org/content/lpc-character-bases"
+            ],
+            "attribution_required": true,
+            "share_alike_required": false,
+            "notes": "see details at https://opengameart.org/content/lpc-character-bases; 'Thick' Male Revised Run/Climb by JaidynReiman (based on ElizaWy's LPC Revised)"
+          }
+        ]
+      }
+    ],
+    "feet": [
+      {
+        "id": "feet_boots_basic",
+        "name": "Basic Boots",
+        "slot": "feet",
+        "type_name": "shoes",
+        "definition": "sheet_definitions/feet/boots/feet_boots_basic.json",
+        "base": "feet/boots/basic/male/",
+        "z_pos": 25,
+        "body_type": "male",
+        "animations": {
+          "idle": {
+            "width": 64,
+            "height": 64,
+            "columns": 2,
+            "rows": 4
+          },
+          "run": {
+            "width": 64,
+            "height": 64,
+            "columns": 8,
+            "rows": 4
+          },
+          "walk": {
+            "width": 64,
+            "height": 64,
+            "columns": 9,
+            "rows": 4
+          }
+        },
+        "recolors": {
+          "material": "cloth",
+          "palettes": [
+            "ulpc",
+            "metal.ulpc",
+            "all.lpcr"
+          ]
+        },
+        "credits": [
+          {
+            "source_file": "feet/boots/basic",
+            "authors": [
+              "JaidynReiman",
+              "bluecarrot16",
+              "Nila122"
+            ],
+            "selected_license": "OGA-BY 3.0",
+            "alternative_licenses": [
+              "CC-BY-SA 3.0",
+              "GPL 2.0",
+              "GPL 3.0"
+            ],
+            "source_urls": [
+              "https://opengameart.org/content/lpc-clothes-and-hair",
+              "https://opengameart.org/content/lpc-expanded-socks-shoes"
+            ],
+            "attribution_required": true,
+            "share_alike_required": false,
+            "notes": "original by Nila122, edited for male and v3 bases by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman"
+          }
+        ]
+      },
+      {
+        "id": "feet_boots_fold",
+        "name": "Folded Rim Boots",
+        "slot": "feet",
+        "type_name": "shoes",
+        "definition": "sheet_definitions/feet/boots/feet_boots_fold.json",
+        "base": "feet/boots/fold/male/",
+        "z_pos": 25,
+        "body_type": "male",
+        "animations": {
+          "idle": {
+            "width": 64,
+            "height": 64,
+            "columns": 2,
+            "rows": 4
+          },
+          "run": {
+            "width": 64,
+            "height": 64,
+            "columns": 8,
+            "rows": 4
+          },
+          "walk": {
+            "width": 64,
+            "height": 64,
+            "columns": 9,
+            "rows": 4
+          }
+        },
+        "recolors": {
+          "material": "cloth",
+          "palettes": [
+            "ulpc",
+            "metal.ulpc",
+            "all.lpcr"
+          ]
+        },
+        "credits": [
+          {
+            "source_file": "feet/boots/fold",
+            "authors": [
+              "JaidynReiman"
+            ],
+            "selected_license": "OGA-BY 3.0+",
+            "alternative_licenses": [
+              "CC-BY 3.0+",
+              "GPL 3.0"
+            ],
+            "source_urls": [
+              "https://opengameart.org/content/lpc-kimono-relm",
+              "https://opengameart.org/content/lpc-expanded-socks-shoes"
+            ],
+            "attribution_required": true,
+            "share_alike_required": false,
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "id": "feet_boots_revised",
+        "name": "Revised Boots",
+        "slot": "feet",
+        "type_name": "shoes",
+        "definition": "sheet_definitions/feet/boots/feet_boots_revised.json",
+        "base": "feet/boots/revised/male/",
+        "z_pos": 25,
+        "body_type": "male",
+        "animations": {
+          "idle": {
+            "width": 64,
+            "height": 64,
+            "columns": 2,
+            "rows": 4
+          },
+          "run": {
+            "width": 64,
+            "height": 64,
+            "columns": 8,
+            "rows": 4
+          },
+          "walk": {
+            "width": 64,
+            "height": 64,
+            "columns": 9,
+            "rows": 4
+          }
+        },
+        "recolors": {
+          "material": "cloth",
+          "palettes": [
+            "ulpc",
+            "metal.ulpc",
+            "all.lpcr"
+          ]
+        },
+        "credits": [
+          {
+            "source_file": "feet/boots/revised/male",
+            "authors": [
+              "JaidynReiman",
+              "ElizaWy",
+              "Bluecarrot16",
+              "Stephen Challener (Redshrike)",
+              "Johannes Sjölund (wulax)"
+            ],
+            "selected_license": "OGA-BY 3.0",
+            "alternative_licenses": [
+              "GPL 3.0"
+            ],
+            "source_urls": [
+              "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+              "https://opengameart.org/content/lpc-expanded-socks-shoes"
+            ],
+            "attribution_required": true,
+            "share_alike_required": false,
+            "notes": "original overalls and boots by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, boots by JaidynReiman"
+          },
+          {
+            "source_file": "feet/boots/revised",
+            "authors": [
+              "ElizaWy",
+              "JaidynReiman",
+              "Stephen Challener (Redshrike)",
+              "Johannes Sjölund (wulax)"
+            ],
+            "selected_license": "OGA-BY 3.0",
+            "alternative_licenses": [],
+            "source_urls": [
+              "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+              "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+              "https://opengameart.org/content/lpc-expanded-socks-shoes"
+            ],
+            "attribution_required": true,
+            "share_alike_required": false,
+            "notes": "original by ElizaWy, remaining frames by JaidynReiman"
+          }
+        ]
+      }
+    ],
+    "hair": [
+      {
+        "id": "hair_afro",
+        "name": "Afro",
+        "slot": "hair",
+        "type_name": "hair",
+        "definition": "sheet_definitions/hair/afro/hair_afro.json",
+        "base": "hair/afro/adult/",
+        "z_pos": 120,
+        "body_type": "male",
+        "animations": {
+          "idle": {
+            "width": 64,
+            "height": 64,
+            "columns": 2,
+            "rows": 4
+          },
+          "run": {
+            "width": 64,
+            "height": 64,
+            "columns": 8,
+            "rows": 4
+          },
+          "walk": {
+            "width": 64,
+            "height": 64,
+            "columns": 9,
+            "rows": 4
+          }
+        },
+        "recolors": {
+          "material": "hair",
+          "palettes": [
+            "ulpc",
+            "lpcr",
+            "all.lpcr"
+          ]
+        },
+        "credits": [
+          {
+            "source_file": "hair/afro",
+            "authors": [
+              "bluecarrot16"
+            ],
+            "selected_license": "CC0",
+            "alternative_licenses": [],
+            "source_urls": [
+              "https://opengameart.org/content/lpc-hair"
+            ],
+            "attribution_required": false,
+            "share_alike_required": false,
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "id": "hair_cornrows",
+        "name": "Cornrows",
+        "slot": "hair",
+        "type_name": "hair",
+        "definition": "sheet_definitions/hair/afro/hair_cornrows.json",
+        "base": "hair/cornrows/adult/",
+        "z_pos": 120,
+        "body_type": "male",
+        "animations": {
+          "idle": {
+            "width": 64,
+            "height": 64,
+            "columns": 2,
+            "rows": 4
+          },
+          "run": {
+            "width": 64,
+            "height": 64,
+            "columns": 8,
+            "rows": 4
+          },
+          "walk": {
+            "width": 64,
+            "height": 64,
+            "columns": 9,
+            "rows": 4
+          }
+        },
+        "recolors": {
+          "material": "hair",
+          "palettes": [
+            "ulpc",
+            "lpcr",
+            "all.lpcr"
+          ]
+        },
+        "credits": [
+          {
+            "source_file": "hair/cornrows",
+            "authors": [
+              "ElizaWy",
+              "bluecarrot16"
+            ],
+            "selected_license": "CC0",
+            "alternative_licenses": [],
+            "source_urls": [
+              "https://opengameart.org/content/lpc-hair",
+              "https://github.com/ElizaWy/LPC/blob/main/Characters/Hair",
+              "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
+            ],
+            "attribution_required": false,
+            "share_alike_required": false,
+            "notes": "Original by bluecarrot16, animated by ElizaWy."
+          }
+        ]
+      },
+      {
+        "id": "hair_dreadlocks_long",
+        "name": "Dreadlocks long",
+        "slot": "hair",
+        "type_name": "hair",
+        "definition": "sheet_definitions/hair/afro/hair_dreadlocks_long.json",
+        "base": "hair/dreadlocks_long/adult/",
+        "z_pos": 120,
+        "body_type": "male",
+        "animations": {
+          "idle": {
+            "width": 64,
+            "height": 64,
+            "columns": 2,
+            "rows": 4
+          },
+          "run": {
+            "width": 64,
+            "height": 64,
+            "columns": 8,
+            "rows": 4
+          },
+          "walk": {
+            "width": 64,
+            "height": 64,
+            "columns": 9,
+            "rows": 4
+          }
+        },
+        "recolors": {
+          "material": "hair",
+          "palettes": [
+            "ulpc",
+            "lpcr",
+            "all.lpcr"
+          ]
+        },
+        "credits": [
+          {
+            "source_file": "hair/dreadlocks_long",
+            "authors": [
+              "bluecarrot16"
+            ],
+            "selected_license": "CC0",
+            "alternative_licenses": [],
+            "source_urls": [
+              "https://opengameart.org/content/lpc-hair"
+            ],
+            "attribution_required": false,
+            "share_alike_required": false,
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "id": "hair_dreadlocks_short",
+        "name": "Dreadlocks short",
+        "slot": "hair",
+        "type_name": "hair",
+        "definition": "sheet_definitions/hair/afro/hair_dreadlocks_short.json",
+        "base": "hair/dreadlocks_short/adult/",
+        "z_pos": 120,
+        "body_type": "male",
+        "animations": {
+          "idle": {
+            "width": 64,
+            "height": 64,
+            "columns": 2,
+            "rows": 4
+          },
+          "run": {
+            "width": 64,
+            "height": 64,
+            "columns": 8,
+            "rows": 4
+          },
+          "walk": {
+            "width": 64,
+            "height": 64,
+            "columns": 9,
+            "rows": 4
+          }
+        },
+        "recolors": {
+          "material": "hair",
+          "palettes": [
+            "ulpc",
+            "lpcr",
+            "all.lpcr"
+          ]
+        },
+        "credits": [
+          {
+            "source_file": "hair/dreadlocks_short",
+            "authors": [
+              "ElizaWy",
+              "bluecarrot16"
+            ],
+            "selected_license": "CC0",
+            "alternative_licenses": [],
+            "source_urls": [
+              "https://opengameart.org/content/lpc-hair",
+              "https://github.com/ElizaWy/LPC/blob/main/Characters/Hair",
+              "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
+            ],
+            "attribution_required": false,
+            "share_alike_required": false,
+            "notes": "Original by bluecarrot16. Animated by ElizaWy."
+          }
+        ]
+      },
+      {
+        "id": "hair_braid",
+        "name": "Braid",
+        "slot": "hair",
+        "type_name": "hair",
+        "definition": "sheet_definitions/hair/braids/hair_braid.json",
+        "base": "hair/braid/adult/fg/",
+        "z_pos": 120,
+        "body_type": "male",
+        "animations": {
+          "idle": {
+            "width": 64,
+            "height": 64,
+            "columns": 2,
+            "rows": 4
+          },
+          "run": {
+            "width": 64,
+            "height": 64,
+            "columns": 8,
+            "rows": 4
+          },
+          "walk": {
+            "width": 64,
+            "height": 64,
+            "columns": 9,
+            "rows": 4
+          }
+        },
+        "visual_layers": [
+          {
+            "index": 0,
+            "base": "hair/braid/adult/fg/",
+            "z_pos": 120,
+            "animations": {
+              "idle": {
+                "width": 64,
+                "height": 64,
+                "columns": 2,
+                "rows": 4
+              },
+              "run": {
+                "width": 64,
+                "height": 64,
+                "columns": 8,
+                "rows": 4
+              },
+              "walk": {
+                "width": 64,
+                "height": 64,
+                "columns": 9,
+                "rows": 4
+              }
+            }
+          },
+          {
+            "index": 1,
+            "base": "hair/braid/adult/bg/",
+            "z_pos": 9,
+            "animations": {
+              "idle": {
+                "width": 64,
+                "height": 64,
+                "columns": 2,
+                "rows": 4
+              },
+              "run": {
+                "width": 64,
+                "height": 64,
+                "columns": 8,
+                "rows": 4
+              },
+              "walk": {
+                "width": 64,
+                "height": 64,
+                "columns": 9,
+                "rows": 4
+              }
+            }
+          }
+        ],
+        "supported_animations": [
+          "idle",
+          "run",
+          "walk"
+        ],
+        "recolors": {
+          "material": "hair",
+          "palettes": [
+            "ulpc",
+            "lpcr",
+            "all.lpcr"
+          ]
+        },
+        "credits": [
+          {
+            "source_file": "hair/braid",
+            "authors": [
+              "Nila122",
+              "ElizaWy"
+            ],
+            "selected_license": "OGA-BY 3.0",
+            "alternative_licenses": [
+              "CC-BY-SA 3.0",
+              "GPL 3.0",
+              "GPL 2.0"
+            ],
+            "source_urls": [
+              "https://opengameart.org/content/3-hairs-for-lpc",
+              "https://opengameart.org/content/lpc-hair"
+            ],
+            "attribution_required": true,
+            "share_alike_required": false,
+            "notes": ""
+          }
+        ]
+      }
+    ],
+    "head": [
+      {
+        "id": "heads_boarman",
+        "name": "Boarman",
+        "slot": "head",
+        "type_name": "head",
+        "definition": "sheet_definitions/head/heads/beast/heads_boarman.json",
+        "base": "head/heads/boarman/adult/",
+        "z_pos": 100,
+        "body_type": "male",
+        "animations": {
+          "idle": {
+            "width": 64,
+            "height": 64,
+            "columns": 2,
+            "rows": 4
+          },
+          "run": {
+            "width": 64,
+            "height": 64,
+            "columns": 8,
+            "rows": 4
+          },
+          "walk": {
+            "width": 64,
+            "height": 64,
+            "columns": 9,
+            "rows": 4
+          }
+        },
+        "recolors": {
+          "material": "body",
+          "base": "ulpc.fur_brown",
+          "palettes": [
+            "ulpc",
+            "lpcr",
+            "all.lpcr"
+          ]
+        },
+        "credits": [
+          {
+            "source_file": "head/heads/boarman",
+            "authors": [
+              "Benjamin K. Smith (BenCreating)",
+              "Daniel Eddeland (daneeklu)"
+            ],
+            "selected_license": "CC-BY 3.0",
+            "alternative_licenses": [
+              "GPL 2.0"
+            ],
+            "source_urls": [
+              "https://opengameart.org/content/lpc-style-farm-animals",
+              "https://opengameart.org/content/lpc-wild-boar",
+              "https://opengameart.org/content/lpc-boarman"
+            ],
+            "attribution_required": true,
+            "share_alike_required": false,
+            "notes": "pig by daneeklu adapted to boarman by BenCreating, placed to v3 bases by bluecarrot16"
+          }
+        ]
+      },
+      {
+        "id": "heads_wartotaur",
+        "name": "Wartotaur",
+        "slot": "head",
+        "type_name": "head",
+        "definition": "sheet_definitions/head/heads/beast/heads_wartotaur.json",
+        "base": "head/heads/wartotaur/adult/",
+        "z_pos": 100,
+        "body_type": "male",
+        "animations": {
+          "idle": {
+            "width": 64,
+            "height": 64,
+            "columns": 2,
+            "rows": 4
+          },
+          "run": {
+            "width": 64,
+            "height": 64,
+            "columns": 8,
+            "rows": 4
+          },
+          "walk": {
+            "width": 64,
+            "height": 64,
+            "columns": 9,
+            "rows": 4
+          }
+        },
+        "recolors": {
+          "material": "body",
+          "base": "ulpc.fur_brown",
+          "palettes": [
+            "ulpc",
+            "lpcr",
+            "all.lpcr"
+          ]
+        },
+        "credits": [
+          {
+            "source_file": "head/heads/wartotaur",
+            "authors": [
+              "bluecarrot16",
+              "Evert",
+              "Stephen Challener (Redshrike)"
+            ],
+            "selected_license": "OGA-BY 3.0",
+            "alternative_licenses": [
+              "CC-BY 3.0"
+            ],
+            "source_urls": [
+              "https://opengameart.org/content/tower-defense-prototyping-assets-4-monsters-some-tiles-a-background-image",
+              "https://opengameart.org/content/wartotaur-4-directions",
+              "https://opengameart.org/content/lpc-folk"
+            ],
+            "attribution_required": true,
+            "share_alike_required": false,
+            "notes": "original \"wart-o-taur\" concept and sprite by Redshrike, extended to 4 directions and head extracted by Evert, cleanup and hurt/cast animations by bluecarrot16"
+          }
+        ]
+      }
+    ],
+    "legs": [
+      {
+        "id": "legs_hose",
+        "name": "Hose",
+        "slot": "legs",
+        "type_name": "legs",
+        "definition": "sheet_definitions/legs/leggings/legs_hose.json",
+        "base": "legs/hose/male/",
+        "z_pos": 20,
+        "body_type": "male",
+        "animations": {
+          "idle": {
+            "width": 64,
+            "height": 64,
+            "columns": 2,
+            "rows": 4
+          },
+          "run": {
+            "width": 64,
+            "height": 64,
+            "columns": 8,
+            "rows": 4
+          },
+          "walk": {
+            "width": 64,
+            "height": 64,
+            "columns": 9,
+            "rows": 4
+          }
+        },
+        "recolors": {
+          "material": "cloth",
+          "palettes": [
+            "ulpc",
+            "all.lpcr"
+          ]
+        },
+        "credits": [
+          {
+            "source_file": "legs/hose/male",
+            "authors": [
+              "JaidynReiman",
+              "ElizaWy",
+              "bluecarrot16",
+              "JaidynReiman",
+              "ElizaWy",
+              "Johannes Sjölund (wulax)",
+              "Stephen Challener (Redshrike)"
+            ],
+            "selected_license": "OGA-BY 3.0",
+            "alternative_licenses": [
+              "GPL 3.0"
+            ],
+            "source_urls": [
+              "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+              "https://opengameart.org/content/lpc-expanded-pants"
+            ],
+            "attribution_required": true,
+            "share_alike_required": false,
+            "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original overalls and hose by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, male hose by JaidynReiman"
+          },
+          {
+            "source_file": "legs/hose",
+            "authors": [
+              "ElizaWy",
+              "JaidynReiman",
+              "Johannes Sjölund (wulax)",
+              "Stephen Challener (Redshrike)"
+            ],
+            "selected_license": "OGA-BY 3.0",
+            "alternative_licenses": [],
+            "source_urls": [
+              "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+              "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+              "https://opengameart.org/content/lpc-expanded-pants"
+            ],
+            "attribution_required": true,
+            "share_alike_required": false,
+            "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original by ElizaWy, remaining frames by JaidynReiman"
+          }
+        ]
+      },
+      {
+        "id": "legs_leggings",
+        "name": "Leggings",
+        "slot": "legs",
+        "type_name": "legs",
+        "definition": "sheet_definitions/legs/leggings/legs_leggings.json",
+        "base": "legs/leggings/male/",
+        "z_pos": 20,
+        "body_type": "male",
+        "animations": {
+          "idle": {
+            "width": 64,
+            "height": 64,
+            "columns": 2,
+            "rows": 4
+          },
+          "run": {
+            "width": 64,
+            "height": 64,
+            "columns": 8,
+            "rows": 4
+          },
+          "walk": {
+            "width": 64,
+            "height": 64,
+            "columns": 9,
+            "rows": 4
+          }
+        },
+        "recolors": {
+          "material": "cloth",
+          "palettes": [
+            "ulpc",
+            "all.lpcr"
+          ]
+        },
+        "credits": [
+          {
+            "source_file": "legs/leggings/male",
+            "authors": [
+              "bluecarrot16",
+              "ElizaWy",
+              "JaidynReiman",
+              "Mandi Paugh",
+              "William.Thompsonj",
+              "Johannes Sjölund (wulax)",
+              "Stephen Challener (Redshrike)"
+            ],
+            "selected_license": "OGA-BY 3.0",
+            "alternative_licenses": [
+              "GPL 3.0"
+            ],
+            "source_urls": [
+              "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+              "https://opengameart.org/content/lpc-expanded-pants"
+            ],
+            "attribution_required": true,
+            "share_alike_required": false,
+            "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original overalls by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, leggings by JaidynReiman"
+          },
+          {
+            "source_file": "legs/leggings",
+            "authors": [
+              "bluecarrot16",
+              "ElizaWy",
+              "JaidynReiman",
+              "Mandi Paugh",
+              "William.Thompsonj",
+              "Johannes Sjölund (wulax)",
+              "Stephen Challener (Redshrike)"
+            ],
+            "selected_license": "OGA-BY 3.0",
+            "alternative_licenses": [],
+            "source_urls": [
+              "http://opengameart.org/content/sara-wizard",
+              "https://opengameart.org/content/lpc-sara",
+              "https://opengameart.org/content/lpc-expanded-pants"
+            ],
+            "attribution_required": true,
+            "share_alike_required": false,
+            "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, adapted from sara's leggings to v3 bases by bluecarrot16, jump/run/sit by JaidynReiman based on ElizaWy's and modified to match"
+          }
+        ]
+      },
+      {
+        "id": "legs_leggings2",
+        "name": "Leggings 2",
+        "slot": "legs",
+        "type_name": "legs",
+        "definition": "sheet_definitions/legs/leggings/legs_leggings2.json",
+        "base": "legs/leggings2/male/",
+        "z_pos": 20,
+        "body_type": "male",
+        "animations": {
+          "idle": {
+            "width": 64,
+            "height": 64,
+            "columns": 2,
+            "rows": 4
+          },
+          "run": {
+            "width": 64,
+            "height": 64,
+            "columns": 8,
+            "rows": 4
+          },
+          "walk": {
+            "width": 64,
+            "height": 64,
+            "columns": 9,
+            "rows": 4
+          }
+        },
+        "recolors": {
+          "material": "cloth",
+          "palettes": [
+            "ulpc",
+            "all.lpcr"
+          ]
+        },
+        "credits": [
+          {
+            "source_file": "legs/leggings2/male",
+            "authors": [
+              "bluecarrot16",
+              "ElizaWy",
+              "JaidynReiman",
+              "Mandi Paugh",
+              "William.Thompsonj",
+              "Johannes Sjölund (wulax)",
+              "Stephen Challener (Redshrike)"
+            ],
+            "selected_license": "OGA-BY 3.0",
+            "alternative_licenses": [
+              "GPL 3.0"
+            ],
+            "source_urls": [
+              "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+              "https://opengameart.org/content/lpc-expanded-pants"
+            ],
+            "attribution_required": true,
+            "share_alike_required": false,
+            "notes": "original overalls by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, leggings by JaidynReiman"
+          },
+          {
+            "source_file": "legs/leggings2",
+            "authors": [
+              "ElizaWy",
+              "JaidynReiman",
+              "Johannes Sjölund (wulax)",
+              "Stephen Challener (Redshrike)"
+            ],
+            "selected_license": "OGA-BY 3.0",
+            "alternative_licenses": [],
+            "source_urls": [
+              "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+              "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+              "https://opengameart.org/content/lpc-expanded-pants"
+            ],
+            "attribution_required": true,
+            "share_alike_required": false,
+            "notes": "original by ElizaWy, remaining frames"
+          }
+        ]
+      },
+      {
+        "id": "legs_armour",
+        "name": "Armour",
+        "slot": "legs",
+        "type_name": "legs",
+        "definition": "sheet_definitions/legs/legs_armour.json",
+        "base": "legs/armour/plate/male/",
+        "z_pos": 20,
+        "body_type": "male",
+        "animations": {
+          "idle": {
+            "width": 64,
+            "height": 64,
+            "columns": 2,
+            "rows": 4
+          },
+          "walk": {
+            "width": 64,
+            "height": 64,
+            "columns": 9,
+            "rows": 4
+          }
+        },
+        "visual_layers": null,
+        "supported_animations": [
+          "idle",
+          "walk"
+        ],
+        "recolors": {
+          "material": "metal",
+          "palettes": [
+            "ulpc",
+            "lpcr",
+            "all.lpcr"
+          ]
+        },
+        "credits": [
+          {
+            "source_file": "legs/armour/plate",
+            "authors": [
+              "bluecarrot16",
+              "JaidynReiman",
+              "Michael Whitlock (bigbeargames)",
+              "Matthew Krohn (makrohn)",
+              "Johannes Sjölund (wulax)"
+            ],
+            "selected_license": "OGA-BY 3.0",
+            "alternative_licenses": [
+              "CC-BY-SA 3.0",
+              "GPL 3.0"
+            ],
+            "source_urls": [
+              "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+            ],
+            "attribution_required": true,
+            "share_alike_required": false,
+            "notes": "reduced to 7 colors an adapted to v3 bases by bluecarrot16, climb/jump/sit/emote/run by JaidynReiman"
+          }
+        ]
+      }
+    ],
+    "torso": [
+      {
+        "id": "torso_clothes_longsleeve",
+        "name": "Longsleeve",
+        "slot": "torso",
+        "type_name": "clothes",
+        "definition": "sheet_definitions/torso/shirts/longsleeve/torso_clothes_longsleeve.json",
+        "base": "torso/clothes/longsleeve/longsleeve/male/",
+        "z_pos": 35,
+        "body_type": "male",
+        "animations": {
+          "idle": {
+            "width": 64,
+            "height": 64,
+            "columns": 2,
+            "rows": 4
+          },
+          "run": {
+            "width": 64,
+            "height": 64,
+            "columns": 8,
+            "rows": 4
+          },
+          "walk": {
+            "width": 64,
+            "height": 64,
+            "columns": 9,
+            "rows": 4
+          }
+        },
+        "recolors": {
+          "material": "cloth",
+          "palettes": [
+            "ulpc",
+            "all.lpcr"
+          ]
+        },
+        "credits": [
+          {
+            "source_file": "torso/clothes/longsleeve/longsleeve/male",
+            "authors": [
+              "JaidynReiman",
+              "Johannes Sjölund (wulax)"
+            ],
+            "selected_license": "OGA-BY 3.0",
+            "alternative_licenses": [
+              "CC-BY-SA 3.0",
+              "GPL 3.0"
+            ],
+            "source_urls": [
+              "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+              "http://opengameart.org/content/lpc-clothing-updates",
+              "https://opengameart.org/content/lpc-revised-character-basics",
+              "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+              "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+              "https://opengameart.org/content/lpc-expanded-simple-shirts"
+            ],
+            "attribution_required": true,
+            "share_alike_required": false,
+            "notes": "original by wulax; tweaks and further recolors by bluecarrot16; cleanup and climb/jump/run/sit/emote/revised combat adapted from LPC Revised by JaidynReiman"
+          }
+        ]
+      },
+      {
+        "id": "torso_clothes_longsleeve2",
+        "name": "Longsleeve 2",
+        "slot": "torso",
+        "type_name": "clothes",
+        "definition": "sheet_definitions/torso/shirts/longsleeve/torso_clothes_longsleeve2.json",
+        "base": "torso/clothes/longsleeve/longsleeve2/male/",
+        "z_pos": 35,
+        "body_type": "male",
+        "animations": {
+          "idle": {
+            "width": 64,
+            "height": 64,
+            "columns": 2,
+            "rows": 4
+          },
+          "run": {
+            "width": 64,
+            "height": 64,
+            "columns": 8,
+            "rows": 4
+          },
+          "walk": {
+            "width": 64,
+            "height": 64,
+            "columns": 9,
+            "rows": 4
+          }
+        },
+        "recolors": {
+          "material": "cloth",
+          "palettes": [
+            "ulpc",
+            "all.lpcr"
+          ]
+        },
+        "credits": [
+          {
+            "source_file": "torso/clothes/longsleeve/longsleeve2",
+            "authors": [
+              "ElizaWy",
+              "JaidynReiman",
+              "Stephen Challener (Redshrike)",
+              "Johannes Sjölund (wulax)"
+            ],
+            "selected_license": "OGA-BY 3.0",
+            "alternative_licenses": [],
+            "source_urls": [
+              "https://opengameart.org/content/lpc-revised-character-basics",
+              "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+              "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+              "https://opengameart.org/content/lpc-expanded-simple-shirts"
+            ],
+            "attribution_required": true,
+            "share_alike_required": false,
+            "notes": "original by ElizaWy; spellcast/thrust/shoot/hurt/male adapted from original by JaidynReiman"
+          }
+        ]
+      },
+      {
+        "id": "torso_clothes_longsleeve2_buttoned",
+        "name": "Longsleeve 2 Buttoned",
+        "slot": "torso",
+        "type_name": "clothes",
+        "definition": "sheet_definitions/torso/shirts/longsleeve/torso_clothes_longsleeve2_buttoned.json",
+        "base": "torso/clothes/longsleeve/longsleeve2_buttoned/male/",
+        "z_pos": 35,
+        "body_type": "male",
+        "animations": {
+          "idle": {
+            "width": 64,
+            "height": 64,
+            "columns": 2,
+            "rows": 4
+          },
+          "run": {
+            "width": 64,
+            "height": 64,
+            "columns": 8,
+            "rows": 4
+          },
+          "walk": {
+            "width": 64,
+            "height": 64,
+            "columns": 9,
+            "rows": 4
+          }
+        },
+        "recolors": {
+          "material": "cloth",
+          "palettes": [
+            "ulpc",
+            "all.lpcr"
+          ]
+        },
+        "credits": [
+          {
+            "source_file": "torso/clothes/longsleeve/longsleeve2_buttoned",
+            "authors": [
+              "ElizaWy",
+              "JaidynReiman",
+              "Stephen Challener (Redshrike)",
+              "Johannes Sjölund (wulax)"
+            ],
+            "selected_license": "OGA-BY 3.0",
+            "alternative_licenses": [],
+            "source_urls": [
+              "http://opengameart.org/content/lpc-revised-character-basics",
+              "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+              "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+              "https://opengameart.org/content/lpc-expanded-simple-shirts"
+            ],
+            "attribution_required": true,
+            "share_alike_required": false,
+            "notes": "original by ElizaWy; spellcast/thrust/shoot/hurt/male adapted from original by JaidynReiman"
+          }
+        ]
+      },
+      {
+        "id": "torso_clothes_longsleeve2_cardigan",
+        "name": "Cardigan",
+        "slot": "torso",
+        "type_name": "clothes",
+        "definition": "sheet_definitions/torso/shirts/longsleeve/torso_clothes_longsleeve2_cardigan.json",
+        "base": "torso/clothes/longsleeve/longsleeve2_cardigan/male/",
+        "z_pos": 35,
+        "body_type": "male",
+        "animations": {
+          "idle": {
+            "width": 64,
+            "height": 64,
+            "columns": 2,
+            "rows": 4
+          },
+          "run": {
+            "width": 64,
+            "height": 64,
+            "columns": 8,
+            "rows": 4
+          },
+          "walk": {
+            "width": 64,
+            "height": 64,
+            "columns": 9,
+            "rows": 4
+          }
+        },
+        "recolors": {
+          "material": "cloth",
+          "palettes": [
+            "ulpc",
+            "all.lpcr"
+          ]
+        },
+        "credits": [
+          {
+            "source_file": "torso/clothes/longsleeve/longsleeve2_cardigan",
+            "authors": [
+              "ElizaWy",
+              "JaidynReiman",
+              "Stephen Challener (Redshrike)",
+              "Johannes Sjölund (wulax)"
+            ],
+            "selected_license": "OGA-BY 3.0",
+            "alternative_licenses": [],
+            "source_urls": [
+              "http://opengameart.org/content/lpc-revised-character-basics",
+              "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+              "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+              "https://opengameart.org/content/lpc-expanded-simple-shirts"
+            ],
+            "attribution_required": true,
+            "share_alike_required": false,
+            "notes": "original by ElizaWy; spellcast/thrust/shoot/hurt/male adapted from original by JaidynReiman"
+          }
+        ]
+      }
+    ]
+  }
+}

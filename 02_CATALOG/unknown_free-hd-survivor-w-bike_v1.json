@@ -1,0 +1,1322 @@
+{
+  "schema": "ap2d.catalog/1",
+  "tool_version": "0.1.0",
+  "pack": {
+    "name": "unknown_free-hd-survivor-w-bike_v1",
+    "root": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1",
+    "file_count": 24,
+    "image_count": 23,
+    "modular_part_count": 0,
+    "domain": "characters",
+    "capabilities": {
+      "parts_separable": "no",
+      "shared_canvas": "yes",
+      "pre_aligned": "unknown",
+      "shared_origin": "unknown",
+      "animation_compatible": "unknown",
+      "directional": "unknown",
+      "composable": "no",
+      "generation_mode": "composed_sheet",
+      "origin_policy": "unknown",
+      "reason": "composed_sheets_only"
+    },
+    "direction_axis": {
+      "present": "unknown",
+      "encoding": "unknown",
+      "values": []
+    },
+    "asset_kinds": {
+      "composed_character": 23
+    },
+    "packaging": {
+      "individual": 23
+    },
+    "declared_tile_sizes": {},
+    "scale_variant_groups": {},
+    "pre_aligned": false,
+    "canvas": null,
+    "content_bbox": null,
+    "animation_bbox": {},
+    "canvas_histogram": [
+      {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "count": 23
+      }
+    ]
+  },
+  "parts": {},
+  "entries": [
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/SOURCE.md",
+      "pack_path": "SOURCE.md",
+      "file_type": "text",
+      "bytes": 3078,
+      "sha256": "0b654a53d8ab27b8f0834e4084854da52af7cd91f4dcbdcb64a459edaf9b177c",
+      "inferred": {
+        "group": "",
+        "category": "unknown",
+        "subcategory": "",
+        "part": "SOURCE",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "unknown",
+        "kind_hint": null,
+        "asset_kind": "source_document",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 1.0
+      },
+      "tags": [
+        "source"
+      ]
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/Attack1.png",
+      "pack_path": "FREE Character HD Survivor W Bike/Attack1.png",
+      "file_type": "image",
+      "bytes": 641069,
+      "sha256": "d8c0aeea52b8388f6ad78fb7c8a622a6fc87b3ddaacb2810842ea17d125dddf7",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "Attack1",
+        "animation": "Attack1",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "attack"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          41,
+          48,
+          1779,
+          985
+        ]
+      }
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/Attack2.png",
+      "pack_path": "FREE Character HD Survivor W Bike/Attack2.png",
+      "file_type": "image",
+      "bytes": 799437,
+      "sha256": "839469ec16388774dc8d67285c191c24f39149fe200547f9168648e822b50dd2",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "Attack2",
+        "animation": "Attack2",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "attack"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          41,
+          41,
+          1753,
+          989
+        ]
+      }
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/Attack3.png",
+      "pack_path": "FREE Character HD Survivor W Bike/Attack3.png",
+      "file_type": "image",
+      "bytes": 827943,
+      "sha256": "e5391d42d6b23dd5373e63132af75a9da15e30125979daba7524f35257345b9f",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "Attack3",
+        "animation": "Attack3",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "attack"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          41,
+          41,
+          1758,
+          991
+        ]
+      }
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/Attack4.png",
+      "pack_path": "FREE Character HD Survivor W Bike/Attack4.png",
+      "file_type": "image",
+      "bytes": 830306,
+      "sha256": "7fbf7a3a21e2a07f24c179d9010ae4b869d9867980f44ca2f4535ead83373ff3",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "Attack4",
+        "animation": "Attack4",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "attack"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          42,
+          41,
+          1755,
+          992
+        ]
+      }
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/CrouchIdle.png",
+      "pack_path": "FREE Character HD Survivor W Bike/CrouchIdle.png",
+      "file_type": "image",
+      "bytes": 539458,
+      "sha256": "26e22774fbf1178d6b0044900420748487ac605577c58f531e231ed3c3a4b7e7",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "CrouchIdle",
+        "animation": "CrouchIdle",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "crouch",
+        "idle"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          45,
+          60,
+          1750,
+          989
+        ]
+      }
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/CrouchRun.png",
+      "pack_path": "FREE Character HD Survivor W Bike/CrouchRun.png",
+      "file_type": "image",
+      "bytes": 748546,
+      "sha256": "7d74029c9bea85a830d09f286a00a70ee04ee18c2d22ff2c88908a4ff36ea497",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "CrouchRun",
+        "animation": "CrouchRun",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "crouch",
+        "run"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          39,
+          58,
+          1756,
+          989
+        ]
+      }
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/Die.png",
+      "pack_path": "FREE Character HD Survivor W Bike/Die.png",
+      "file_type": "image",
+      "bytes": 836701,
+      "sha256": "fb79f78c2476b174dc705d1409f1e4149895447b6e82a53ea9fe1aabe81f27b3",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "Die",
+        "animation": "Die",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "die"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          45,
+          42,
+          1775,
+          987
+        ]
+      }
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/Idle.png",
+      "pack_path": "FREE Character HD Survivor W Bike/Idle.png",
+      "file_type": "image",
+      "bytes": 514384,
+      "sha256": "0677272fe25a9398c99c0a0aa15f7a037cb0029f844baa5ea9e8b392cc264a96",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "Idle",
+        "animation": "Idle",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "idle"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          46,
+          46,
+          1748,
+          987
+        ]
+      }
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/Idle2.png",
+      "pack_path": "FREE Character HD Survivor W Bike/Idle2.png",
+      "file_type": "image",
+      "bytes": 499766,
+      "sha256": "c3bb4349baf887e7214f93b9fc8737dde958bc00838786f9208507953098e49a",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "Idle2",
+        "animation": "Idle2",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "idle"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          41,
+          48,
+          1753,
+          985
+        ]
+      }
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/Idle3.png",
+      "pack_path": "FREE Character HD Survivor W Bike/Idle3.png",
+      "file_type": "image",
+      "bytes": 505609,
+      "sha256": "4f15f9ce5d11a5d3acda0e9ef68a7304fd18fa25d4b53563edf8f44c67077bf8",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "Idle3",
+        "animation": "Idle3",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "idle"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          50,
+          45,
+          1743,
+          983
+        ]
+      }
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/RideIdle.png",
+      "pack_path": "FREE Character HD Survivor W Bike/RideIdle.png",
+      "file_type": "image",
+      "bytes": 458535,
+      "sha256": "63aafe31f06cf7dca899305a7ee553a8221a4faa67522e386cb38e2eeb72565b",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "RideIdle",
+        "animation": "RideIdle",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "ride",
+        "idle"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          40,
+          49,
+          1755,
+          989
+        ]
+      }
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/RideRun.png",
+      "pack_path": "FREE Character HD Survivor W Bike/RideRun.png",
+      "file_type": "image",
+      "bytes": 513325,
+      "sha256": "f6342749c0cf49841f4c33c95e3378e9ca2baefa0d5bca8a105edd40a6490c89",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "RideRun",
+        "animation": "RideRun",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "ride",
+        "run"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          40,
+          49,
+          1755,
+          989
+        ]
+      }
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/Run.png",
+      "pack_path": "FREE Character HD Survivor W Bike/Run.png",
+      "file_type": "image",
+      "bytes": 727317,
+      "sha256": "07d0860638fd733f1de7af5f9b8cc86f1c337dfdd7c807eb2de5b4c1f84080ce",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "Run",
+        "animation": "Run",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "run"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          38,
+          49,
+          1756,
+          989
+        ]
+      }
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/RunAttack.png",
+      "pack_path": "FREE Character HD Survivor W Bike/RunAttack.png",
+      "file_type": "image",
+      "bytes": 802716,
+      "sha256": "883016bf88448ea5cc28bf807ba722f5c2e4b6521bc00152e1361fc15475514c",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "RunAttack",
+        "animation": "RunAttack",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "run",
+        "attack"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          37,
+          49,
+          1782,
+          989
+        ]
+      }
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/RunBackwards.png",
+      "pack_path": "FREE Character HD Survivor W Bike/RunBackwards.png",
+      "file_type": "image",
+      "bytes": 755599,
+      "sha256": "eb063d7eebaf4c1e98acc422a1546af4349d2920be82aeb3cb2d59ea70902d74",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "RunBackwards",
+        "animation": "RunBackwards",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "run",
+        "backwards"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          43,
+          51,
+          1751,
+          991
+        ]
+      }
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/RunBackwardsAttack.png",
+      "pack_path": "FREE Character HD Survivor W Bike/RunBackwardsAttack.png",
+      "file_type": "image",
+      "bytes": 832752,
+      "sha256": "759d366567acdcac4440060ccb0208998c8ed6fc7a472576fc1c8bac29c383e4",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "RunBackwardsAttack",
+        "animation": "RunBackwardsAttack",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "run",
+        "backwards",
+        "attack"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          43,
+          51,
+          1776,
+          991
+        ]
+      }
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/StrafeLeft.png",
+      "pack_path": "FREE Character HD Survivor W Bike/StrafeLeft.png",
+      "file_type": "image",
+      "bytes": 733534,
+      "sha256": "f78e6567a5b7be82f7544b2185926064122b6af62184e9e4258a92e9380f815f",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "StrafeLeft",
+        "animation": "StrafeLeft",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "strafe",
+        "left"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          41,
+          46,
+          1754,
+          989
+        ]
+      }
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/StrafeLeftAttack.png",
+      "pack_path": "FREE Character HD Survivor W Bike/StrafeLeftAttack.png",
+      "file_type": "image",
+      "bytes": 817267,
+      "sha256": "b87fcf0e0f9fe49a7ae8b3b7a185b8604205120339ba3596eb22bffd690a821c",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "StrafeLeftAttack",
+        "animation": "StrafeLeftAttack",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "strafe",
+        "left",
+        "attack"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          41,
+          46,
+          1780,
+          989
+        ]
+      }
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/StrafeRight.png",
+      "pack_path": "FREE Character HD Survivor W Bike/StrafeRight.png",
+      "file_type": "image",
+      "bytes": 752006,
+      "sha256": "28e9c60df08fdf4556cd5c23f31f28a365054b64f0afcbf3bd1a7341b8853b58",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "StrafeRight",
+        "animation": "StrafeRight",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "strafe",
+        "right"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          41,
+          47,
+          1753,
+          989
+        ]
+      }
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/StrafeRightAttack.png",
+      "pack_path": "FREE Character HD Survivor W Bike/StrafeRightAttack.png",
+      "file_type": "image",
+      "bytes": 822366,
+      "sha256": "11fa277174cd0fd8cbb1d92b848c116f3576404ec592d39a7841cfd67d9b0f2a",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "StrafeRightAttack",
+        "animation": "StrafeRightAttack",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "strafe",
+        "right",
+        "attack"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          41,
+          47,
+          1779,
+          989
+        ]
+      }
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/TakeDamage.png",
+      "pack_path": "FREE Character HD Survivor W Bike/TakeDamage.png",
+      "file_type": "image",
+      "bytes": 792321,
+      "sha256": "221b72c1e4358bacd2d2722a86bebf30b40cdc2c178a916291fe97c76d6fae52",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "TakeDamage",
+        "animation": "TakeDamage",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "take",
+        "damage"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          44,
+          48,
+          1751,
+          994
+        ]
+      }
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/Taunt.png",
+      "pack_path": "FREE Character HD Survivor W Bike/Taunt.png",
+      "file_type": "image",
+      "bytes": 701696,
+      "sha256": "69a917254594b36bbc6d59dfef7ee5a160388d756448634c4db79b16f55e7fb6",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "Taunt",
+        "animation": "Taunt",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "taunt"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          41,
+          45,
+          1753,
+          986
+        ]
+      }
+    },
+    {
+      "pack": "unknown_free-hd-survivor-w-bike_v1",
+      "path": "01_SOURCE/characters/unknown_free-hd-survivor-w-bike_v1/FREE Character HD Survivor W Bike/Walk.png",
+      "pack_path": "FREE Character HD Survivor W Bike/Walk.png",
+      "file_type": "image",
+      "bytes": 750881,
+      "sha256": "7a50cbfa85fbd75a375fca156a04dfb861460d0acca7c31f70096d14e6ad4ebb",
+      "inferred": {
+        "group": "FREE Character HD Survivor W Bike",
+        "category": "unknown",
+        "subcategory": "FREE Character HD Survivor W Bike",
+        "part": "Walk",
+        "animation": "Walk",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "sheet_name",
+        "kind_hint": null,
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.6,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "character",
+        "hd",
+        "survivor",
+        "bike",
+        "walk"
+      ],
+      "image": {
+        "dimensions": [
+          1792,
+          1024
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          53,
+          43,
+          1744,
+          988
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,4343 @@
+{
+  "schema": "ap2d.catalog/1",
+  "tool_version": "0.1.0",
+  "pack": {
+    "name": "limezu_modern-interiors-free_v2.2",
+    "root": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2",
+    "file_count": 67,
+    "image_count": 64,
+    "modular_part_count": 0,
+    "domain": "environments",
+    "capabilities": {
+      "parts_separable": "no",
+      "shared_canvas": "no",
+      "pre_aligned": "unknown",
+      "shared_origin": "unknown",
+      "animation_compatible": "unknown",
+      "directional": "unknown",
+      "composable": "no",
+      "generation_mode": "unsupported",
+      "origin_policy": "unknown",
+      "reason": "atlas_only_no_individual_props"
+    },
+    "direction_axis": {
+      "present": "unknown",
+      "encoding": "unknown",
+      "values": []
+    },
+    "asset_kinds": {
+      "composed_character": 36,
+      "environment_tile": 21,
+      "spritesheet": 6,
+      "unknown": 1
+    },
+    "packaging": {
+      "individual": 2,
+      "sheet": 62
+    },
+    "declared_tile_sizes": {
+      "16x16": 42,
+      "32x32": 10,
+      "48x48": 10
+    },
+    "scale_variant_groups": {
+      "Modern tiles_Free/Interiors_free/*/Interiors_free_*.png": [
+        "Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png",
+        "Modern tiles_Free/Interiors_free/32x32/Interiors_free_32x32.png",
+        "Modern tiles_Free/Interiors_free/48x48/Interiors_free_48x48.png"
+      ],
+      "Modern tiles_Free/Interiors_free/*/Room_Builder_free_*.png": [
+        "Modern tiles_Free/Interiors_free/16x16/Room_Builder_free_16x16.png",
+        "Modern tiles_Free/Interiors_free/32x32/Room_Builder_free_32x32.png",
+        "Modern tiles_Free/Interiors_free/48x48/Room_Builder_free_48x48.png"
+      ],
+      "Modern tiles_Free/Old/Tileset_*_1.png": [
+        "Modern tiles_Free/Old/Tileset_16x16_1.png",
+        "Modern tiles_Free/Old/Tileset_32x32_1.png",
+        "Modern tiles_Free/Old/Tileset_48x48_1.png"
+      ],
+      "Modern tiles_Free/Old/Tileset_*_16.png": [
+        "Modern tiles_Free/Old/Tileset_16x16_16.png",
+        "Modern tiles_Free/Old/Tileset_32x32_16.png",
+        "Modern tiles_Free/Old/Tileset_48x48_16.png"
+      ],
+      "Modern tiles_Free/Old/Tileset_*_2.png": [
+        "Modern tiles_Free/Old/Tileset_16x16_2.png",
+        "Modern tiles_Free/Old/Tileset_32x32_2.png",
+        "Modern tiles_Free/Old/Tileset_48x48_2.png"
+      ],
+      "Modern tiles_Free/Old/Tileset_*_3.png": [
+        "Modern tiles_Free/Old/Tileset_16x16_3.png",
+        "Modern tiles_Free/Old/Tileset_32x32_3.png",
+        "Modern tiles_Free/Old/Tileset_48x48_3.png"
+      ],
+      "Modern tiles_Free/Old/Tileset_*_9.png": [
+        "Modern tiles_Free/Old/Tileset_16x16_9.png",
+        "Modern tiles_Free/Old/Tileset_32x32_9.png",
+        "Modern tiles_Free/Old/Tileset_48x48_9.png"
+      ],
+      "Modern tiles_Free/Old/idle_*_2.png": [
+        "Modern tiles_Free/Old/idle_16x16_2.png",
+        "Modern tiles_Free/Old/idle_32x32_2.png",
+        "Modern tiles_Free/Old/idle_48x48_2.png"
+      ],
+      "Modern tiles_Free/Old/mv/Character_2_*_RPGMAKER.png": [
+        "Modern tiles_Free/Old/mv/Character_2_16x16_RPGMAKER.png",
+        "Modern tiles_Free/Old/mv/Character_2_32x32_RPGMAKER.png",
+        "Modern tiles_Free/Old/mv/Character_2_48x48_RPGMAKER.png"
+      ],
+      "Modern tiles_Free/Old/run_horizontal_*_2.png": [
+        "Modern tiles_Free/Old/run_horizontal_16x16_2.png",
+        "Modern tiles_Free/Old/run_horizontal_32x32_2.png",
+        "Modern tiles_Free/Old/run_horizontal_48x48_2.png"
+      ]
+    },
+    "pre_aligned": false,
+    "canvas": null,
+    "content_bbox": null,
+    "animation_bbox": {},
+    "canvas_histogram": [
+      {
+        "dimensions": [
+          384,
+          32
+        ],
+        "count": 17
+      },
+      {
+        "dimensions": [
+          64,
+          32
+        ],
+        "count": 5
+      },
+      {
+        "dimensions": [
+          144,
+          32
+        ],
+        "count": 4
+      },
+      {
+        "dimensions": [
+          160,
+          160
+        ],
+        "count": 4
+      },
+      {
+        "dimensions": [
+          192,
+          32
+        ],
+        "count": 4
+      },
+      {
+        "dimensions": [
+          320,
+          320
+        ],
+        "count": 4
+      },
+      {
+        "dimensions": [
+          384,
+          224
+        ],
+        "count": 4
+      },
+      {
+        "dimensions": [
+          480,
+          480
+        ],
+        "count": 4
+      },
+      {
+        "dimensions": [
+          48,
+          128
+        ],
+        "count": 1
+      },
+      {
+        "dimensions": [
+          96,
+          256
+        ],
+        "count": 1
+      },
+      {
+        "dimensions": [
+          128,
+          64
+        ],
+        "count": 1
+      },
+      {
+        "dimensions": [
+          144,
+          384
+        ],
+        "count": 1
+      },
+      {
+        "dimensions": [
+          192,
+          96
+        ],
+        "count": 1
+      },
+      {
+        "dimensions": [
+          192,
+          224
+        ],
+        "count": 1
+      },
+      {
+        "dimensions": [
+          256,
+          1424
+        ],
+        "count": 1
+      },
+      {
+        "dimensions": [
+          272,
+          368
+        ],
+        "count": 1
+      },
+      {
+        "dimensions": [
+          384,
+          448
+        ],
+        "count": 1
+      },
+      {
+        "dimensions": [
+          512,
+          2848
+        ],
+        "count": 1
+      },
+      {
+        "dimensions": [
+          544,
+          736
+        ],
+        "count": 1
+      },
+      {
+        "dimensions": [
+          576,
+          672
+        ],
+        "count": 1
+      },
+      {
+        "dimensions": [
+          576,
+          768
+        ],
+        "count": 1
+      },
+      {
+        "dimensions": [
+          768,
+          64
+        ],
+        "count": 1
+      },
+      {
+        "dimensions": [
+          768,
+          4272
+        ],
+        "count": 1
+      },
+      {
+        "dimensions": [
+          816,
+          1104
+        ],
+        "count": 1
+      },
+      {
+        "dimensions": [
+          1152,
+          96
+        ],
+        "count": 1
+      },
+      {
+        "dimensions": [
+          1886,
+          1792
+        ],
+        "count": 1
+      }
+    ]
+  },
+  "parts": {},
+  "entries": [
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/SOURCE.md",
+      "pack_path": "SOURCE.md",
+      "file_type": "text",
+      "bytes": 2118,
+      "sha256": "8f3f4a8ccf09083ce760f8b82019dc8373168fb0102bc370c817b98c26f82399",
+      "inferred": {
+        "group": "",
+        "category": "unknown",
+        "subcategory": "",
+        "part": "SOURCE",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "unknown",
+        "kind_hint": null,
+        "asset_kind": "source_document",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 1.0
+      },
+      "tags": [
+        "source"
+      ]
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/LICENSE.txt",
+      "pack_path": "Modern tiles_Free/LICENSE.txt",
+      "file_type": "text",
+      "bytes": 308,
+      "sha256": "a3a88dc952c3a4793bff4c29cdcfe512e5c959766f52a5cba712088fd44178d8",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free",
+        "part": "LICENSE",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "unknown",
+        "kind_hint": null,
+        "asset_kind": "source_document",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 1.0
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "license"
+      ]
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/READ ME.txt",
+      "pack_path": "Modern tiles_Free/READ ME.txt",
+      "file_type": "text",
+      "bytes": 182,
+      "sha256": "c550a95103ac4c6aac714389191ee61413878734c77274c607eb9c275f4d4b52",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free",
+        "part": "READ ME",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "unknown",
+        "kind_hint": null,
+        "asset_kind": "source_document",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 1.0
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "read",
+        "me"
+      ]
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/free_overview.png",
+      "pack_path": "Modern tiles_Free/free_overview.png",
+      "file_type": "image",
+      "bytes": 297078,
+      "sha256": "e3d592487c2883c0b54631a0466f2cbcc61b28b8dfcc8d223b003d8c4808802a",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free",
+        "part": "free_overview",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "unknown",
+        "kind_hint": null,
+        "asset_kind": "unknown",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.0
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "overview"
+      ],
+      "image": {
+        "dimensions": [
+          1886,
+          1792
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          0,
+          1886,
+          1792
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Adam_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Adam_16x16.png",
+      "file_type": "image",
+      "bytes": 16831,
+      "sha256": "8d1ccf23d03481bd31d5d861b110ecbcc249e5a8c5fe87c98acc485c63598bab",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Adam_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 24,
+          "rows": 14,
+          "cells": 336
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "adam"
+      ],
+      "image": {
+        "dimensions": [
+          384,
+          224
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          9,
+          384,
+          224
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Adam_idle_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Adam_idle_16x16.png",
+      "file_type": "image",
+      "bytes": 1993,
+      "sha256": "5c0056274a0adfc836b03299b448a019a9b2f6021d29b09030f3e454729cf74b",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Adam_idle_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 4,
+          "rows": 2,
+          "cells": 8
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "adam",
+        "idle"
+      ],
+      "image": {
+        "dimensions": [
+          64,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          9,
+          64,
+          32
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Adam_idle_anim_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Adam_idle_anim_16x16.png",
+      "file_type": "image",
+      "bytes": 4076,
+      "sha256": "486089994cfec9b927fac08e6e3f1af38c6b581d029c63509badfaa24e0a13fc",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Adam_idle_anim_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 24,
+          "rows": 2,
+          "cells": 48
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "adam",
+        "idle",
+        "anim"
+      ],
+      "image": {
+        "dimensions": [
+          384,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          8,
+          384,
+          32
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Adam_phone_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Adam_phone_16x16.png",
+      "file_type": "image",
+      "bytes": 1798,
+      "sha256": "4afc34e2a0edbaaa58349c7682e5390c06d6926323a8d38e0e04166f3049cfc5",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Adam_phone_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 9,
+          "rows": 2,
+          "cells": 18
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "adam",
+        "phone"
+      ],
+      "image": {
+        "dimensions": [
+          144,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          8,
+          144,
+          32
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Adam_run_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Adam_run_16x16.png",
+      "file_type": "image",
+      "bytes": 5765,
+      "sha256": "11b20f6be9df55e16956750817f9fd3ac19d159b93080cbf4d6a87b640ff16c0",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Adam_run_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 24,
+          "rows": 2,
+          "cells": 48
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "adam",
+        "run"
+      ],
+      "image": {
+        "dimensions": [
+          384,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          8,
+          384,
+          32
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Adam_sit2_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Adam_sit2_16x16.png",
+      "file_type": "image",
+      "bytes": 2456,
+      "sha256": "d8a3a90afa5627b6ec94a996c1fa56ee9ad0cdfe58e79584faca7669301cd310",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Adam_sit2_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 24,
+          "rows": 2,
+          "cells": 48
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "adam",
+        "sit"
+      ],
+      "image": {
+        "dimensions": [
+          384,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          5,
+          2,
+          379,
+          25
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Adam_sit3_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Adam_sit3_16x16.png",
+      "file_type": "image",
+      "bytes": 2224,
+      "sha256": "57040f8c1a17af8d2450b23e44d76ec9860408422e79f283ef3436993f8b3c15",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Adam_sit3_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 12,
+          "rows": 2,
+          "cells": 24
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "adam",
+        "sit"
+      ],
+      "image": {
+        "dimensions": [
+          192,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          8,
+          192,
+          31
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Adam_sit_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Adam_sit_16x16.png",
+      "file_type": "image",
+      "bytes": 2420,
+      "sha256": "eac1744a9203f73544c0096dc1db7f335ae4efc23ca5f11d3be31db51a5f3e0c",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Adam_sit_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 24,
+          "rows": 2,
+          "cells": 48
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "adam",
+        "sit"
+      ],
+      "image": {
+        "dimensions": [
+          384,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          6,
+          8,
+          378,
+          31
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Alex_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Alex_16x16.png",
+      "file_type": "image",
+      "bytes": 18938,
+      "sha256": "3db9c01ac6db47abfefe381d33f1c0a9bf22930b9b25187fc213a723333f0212",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Alex_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 24,
+          "rows": 14,
+          "cells": 336
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "alex"
+      ],
+      "image": {
+        "dimensions": [
+          384,
+          224
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          1,
+          10,
+          384,
+          224
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Alex_idle_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Alex_idle_16x16.png",
+      "file_type": "image",
+      "bytes": 1812,
+      "sha256": "e12c14572e498a0bb30db6416cffa421fb6b57a361c8fed0448b4f04bcee6523",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Alex_idle_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 4,
+          "rows": 2,
+          "cells": 8
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "alex",
+        "idle"
+      ],
+      "image": {
+        "dimensions": [
+          64,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          1,
+          10,
+          64,
+          32
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Alex_idle_anim_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Alex_idle_anim_16x16.png",
+      "file_type": "image",
+      "bytes": 3537,
+      "sha256": "78a0031a37b3d518eee542923ee3d89cf668381e7fceead71206565e6b93e7e7",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Alex_idle_anim_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 24,
+          "rows": 2,
+          "cells": 48
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "alex",
+        "idle",
+        "anim"
+      ],
+      "image": {
+        "dimensions": [
+          384,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          1,
+          9,
+          384,
+          32
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Alex_phone_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Alex_phone_16x16.png",
+      "file_type": "image",
+      "bytes": 1390,
+      "sha256": "feff00c8cf84b989ad1f64330586ef2a789ab7352f08d2a87713f474bcdea910",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Alex_phone_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 9,
+          "rows": 2,
+          "cells": 18
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "alex",
+        "phone"
+      ],
+      "image": {
+        "dimensions": [
+          144,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          1,
+          9,
+          144,
+          32
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Alex_run_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Alex_run_16x16.png",
+      "file_type": "image",
+      "bytes": 5392,
+      "sha256": "009f3c614856c8b7982022775824fac9234f3d49cf533b4b5d449b9edc69df21",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Alex_run_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 24,
+          "rows": 2,
+          "cells": 48
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "alex",
+        "run"
+      ],
+      "image": {
+        "dimensions": [
+          384,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          1,
+          9,
+          383,
+          32
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Alex_sit2_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Alex_sit2_16x16.png",
+      "file_type": "image",
+      "bytes": 2375,
+      "sha256": "f161f8895506daa9cdb54a17f716b1da68729b82f4d995c02fb35f7e7bcd87ac",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Alex_sit2_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 24,
+          "rows": 2,
+          "cells": 48
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "alex",
+        "sit"
+      ],
+      "image": {
+        "dimensions": [
+          384,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          6,
+          3,
+          378,
+          25
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Alex_sit3_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Alex_sit3_16x16.png",
+      "file_type": "image",
+      "bytes": 2080,
+      "sha256": "cf9fc90b4e66749f7b7fb4899a8c1c56aae2a46687f8b6f45c8511fe7ca39b6f",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Alex_sit3_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 12,
+          "rows": 2,
+          "cells": 24
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "alex",
+        "sit"
+      ],
+      "image": {
+        "dimensions": [
+          192,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          2,
+          9,
+          190,
+          31
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Alex_sit_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Alex_sit_16x16.png",
+      "file_type": "image",
+      "bytes": 1863,
+      "sha256": "b3fe12b70fbb3246ab677aee1b84593b4affb04d0d958518b42b15a6dc7a8ccd",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Alex_sit_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 24,
+          "rows": 2,
+          "cells": 48
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "alex",
+        "sit"
+      ],
+      "image": {
+        "dimensions": [
+          384,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          7,
+          9,
+          377,
+          31
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Amelia_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Amelia_16x16.png",
+      "file_type": "image",
+      "bytes": 15282,
+      "sha256": "f4249d27d3853d7dc5e1027b0316e554dc97e1d0d31940f5cf61fe1d0ab14b8f",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Amelia_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 24,
+          "rows": 14,
+          "cells": 336
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "amelia"
+      ],
+      "image": {
+        "dimensions": [
+          384,
+          224
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          10,
+          384,
+          224
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Amelia_idle_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Amelia_idle_16x16.png",
+      "file_type": "image",
+      "bytes": 1871,
+      "sha256": "8a61bd3f607ab7fb61e692458d2b7982d32bb417c844a5c18156260bddfe581b",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Amelia_idle_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 4,
+          "rows": 2,
+          "cells": 8
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "amelia",
+        "idle"
+      ],
+      "image": {
+        "dimensions": [
+          64,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          1,
+          10,
+          64,
+          32
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Amelia_idle_anim_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Amelia_idle_anim_16x16.png",
+      "file_type": "image",
+      "bytes": 3764,
+      "sha256": "fc72fda0247dba8d71a54e0018a79cc4ff831c164402d922c8e137d93c450bc5",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Amelia_idle_anim_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 24,
+          "rows": 2,
+          "cells": 48
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "amelia",
+        "idle",
+        "anim"
+      ],
+      "image": {
+        "dimensions": [
+          384,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          1,
+          9,
+          384,
+          32
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Amelia_phone_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Amelia_phone_16x16.png",
+      "file_type": "image",
+      "bytes": 1610,
+      "sha256": "83fb6ac1b033f54a669b820fcdb52bd9a2dfd3b6473fe7c2603c655fbd8c2b14",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Amelia_phone_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 9,
+          "rows": 2,
+          "cells": 18
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "amelia",
+        "phone"
+      ],
+      "image": {
+        "dimensions": [
+          144,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          9,
+          144,
+          32
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Amelia_run_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Amelia_run_16x16.png",
+      "file_type": "image",
+      "bytes": 5356,
+      "sha256": "95211e599b42c04367e42d026f345b8bc5e438a72d9964da54b4e4a9bf8ee902",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Amelia_run_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 24,
+          "rows": 2,
+          "cells": 48
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "amelia",
+        "run"
+      ],
+      "image": {
+        "dimensions": [
+          384,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          1,
+          9,
+          384,
+          32
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Amelia_sit2_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Amelia_sit2_16x16.png",
+      "file_type": "image",
+      "bytes": 2206,
+      "sha256": "301b9263e7f77c0062f8502f1b99688d0118cdd32f82331da7173f014a93ac40",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Amelia_sit2_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 24,
+          "rows": 2,
+          "cells": 48
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "amelia",
+        "sit"
+      ],
+      "image": {
+        "dimensions": [
+          384,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          6,
+          3,
+          378,
+          25
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Amelia_sit3_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Amelia_sit3_16x16.png",
+      "file_type": "image",
+      "bytes": 2130,
+      "sha256": "969adbe5a546f2d46f28973971e53bcc1272a18d2546cef4ef73d5b186ba4ada",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Amelia_sit3_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 12,
+          "rows": 2,
+          "cells": 24
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "amelia",
+        "sit"
+      ],
+      "image": {
+        "dimensions": [
+          192,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          2,
+          9,
+          190,
+          31
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Amelia_sit_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Amelia_sit_16x16.png",
+      "file_type": "image",
+      "bytes": 2103,
+      "sha256": "63c1f9f983a6d7855d52ebbed658fdf78b1feda9f55ed908aed21fe602d93f2f",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Amelia_sit_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 24,
+          "rows": 2,
+          "cells": 48
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "amelia",
+        "sit"
+      ],
+      "image": {
+        "dimensions": [
+          384,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          7,
+          9,
+          377,
+          31
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Bob_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Bob_16x16.png",
+      "file_type": "image",
+      "bytes": 17760,
+      "sha256": "772510a978b4800492d4dd7d34bc4c448243a428f0d4c8f55de07db33d8302b6",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Bob_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 24,
+          "rows": 14,
+          "cells": 336
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "bob"
+      ],
+      "image": {
+        "dimensions": [
+          384,
+          224
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          1,
+          10,
+          384,
+          224
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Bob_idle_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Bob_idle_16x16.png",
+      "file_type": "image",
+      "bytes": 1700,
+      "sha256": "a7b3d6f61042f47871557700fcb963979de6a602f5f778d78eb109316c1411b4",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Bob_idle_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 4,
+          "rows": 2,
+          "cells": 8
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "bob",
+        "idle"
+      ],
+      "image": {
+        "dimensions": [
+          64,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          1,
+          10,
+          64,
+          32
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Bob_idle_anim_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Bob_idle_anim_16x16.png",
+      "file_type": "image",
+      "bytes": 3327,
+      "sha256": "7a339499a5c5f3cdce8a65f926fa0c30d1e27d451ffc4f99693cbfc0a84e0c50",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Bob_idle_anim_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 24,
+          "rows": 2,
+          "cells": 48
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "bob",
+        "idle",
+        "anim"
+      ],
+      "image": {
+        "dimensions": [
+          384,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          1,
+          9,
+          384,
+          32
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Bob_phone_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Bob_phone_16x16.png",
+      "file_type": "image",
+      "bytes": 1504,
+      "sha256": "30388da16c042ea2bb4472fbcb344e548f977313ff7bddf2550b5111c724307a",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Bob_phone_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 9,
+          "rows": 2,
+          "cells": 18
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "bob",
+        "phone"
+      ],
+      "image": {
+        "dimensions": [
+          144,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          1,
+          9,
+          144,
+          32
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Bob_run_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Bob_run_16x16.png",
+      "file_type": "image",
+      "bytes": 5070,
+      "sha256": "43cadb17d009be9224e381cdea4923fb88e4df9d243ba2320eff23dfcfb88f97",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Bob_run_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 24,
+          "rows": 2,
+          "cells": 48
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "bob",
+        "run"
+      ],
+      "image": {
+        "dimensions": [
+          384,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          1,
+          9,
+          383,
+          32
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Bob_sit2_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Bob_sit2_16x16.png",
+      "file_type": "image",
+      "bytes": 2153,
+      "sha256": "8c852792ae76bf032d111ea37193ff37313bd35df96a9a7a6c27c2fae7d22b65",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Bob_sit2_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 24,
+          "rows": 2,
+          "cells": 48
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "bob",
+        "sit"
+      ],
+      "image": {
+        "dimensions": [
+          384,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          6,
+          3,
+          378,
+          25
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Bob_sit3_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Bob_sit3_16x16.png",
+      "file_type": "image",
+      "bytes": 1877,
+      "sha256": "2ee54a3c15ad85abcd72774611cc92dddef56bad9c55b0ffe7c638a0072b70ce",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Bob_sit3_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 12,
+          "rows": 2,
+          "cells": 24
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "bob",
+        "sit"
+      ],
+      "image": {
+        "dimensions": [
+          192,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          2,
+          9,
+          190,
+          31
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/Bob_sit_16x16.png",
+      "pack_path": "Modern tiles_Free/Characters_free/Bob_sit_16x16.png",
+      "file_type": "image",
+      "bytes": 2205,
+      "sha256": "d62d508e4f84792cdacf477305b261799e54bdb3473287bb0373d656891615cc",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free",
+        "part": "Bob_sit_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 24,
+          "rows": 2,
+          "cells": 48
+        }
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "bob",
+        "sit"
+      ],
+      "image": {
+        "dimensions": [
+          384,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          7,
+          9,
+          377,
+          31
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Characters_free/RPGMAKERMV/Characters_MV.png",
+      "pack_path": "Modern tiles_Free/Characters_free/RPGMAKERMV/Characters_MV.png",
+      "file_type": "image",
+      "bytes": 21818,
+      "sha256": "2883f284ac66f969f81dd18a33448780655016e810a78a63e0982412d681d851",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Characters_free/RPGMAKERMV",
+        "part": "Characters_MV",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": null,
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "individual"
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "characters",
+        "rpgmakermv",
+        "mv"
+      ],
+      "image": {
+        "dimensions": [
+          576,
+          768
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          27,
+          576,
+          384
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png",
+      "pack_path": "Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png",
+      "file_type": "image",
+      "bytes": 134462,
+      "sha256": "01a890f9e34d8dc8d7e275489143b837569127d5f928419e6b6edc54b9b5ff33",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Interiors_free/16x16",
+        "part": "Interiors_free_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "tileset",
+        "asset_kind": "environment_tile",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 16,
+          "rows": 89,
+          "cells": 1424
+        },
+        "scale_group": "Modern tiles_Free/Interiors_free/*/Interiors_free_*.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "interiors"
+      ],
+      "image": {
+        "dimensions": [
+          256,
+          1424
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          12,
+          256,
+          1416
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Interiors_free/16x16/Room_Builder_free_16x16.png",
+      "pack_path": "Modern tiles_Free/Interiors_free/16x16/Room_Builder_free_16x16.png",
+      "file_type": "image",
+      "bytes": 11307,
+      "sha256": "6a7cf46b2883503d1be61c603b81a6f3844c02da8c7c7782b29d46cc55c367d0",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Interiors_free/16x16",
+        "part": "Room_Builder_free_16x16",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "tileset",
+        "asset_kind": "environment_tile",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 17,
+          "rows": 23,
+          "cells": 391
+        },
+        "scale_group": "Modern tiles_Free/Interiors_free/*/Room_Builder_free_*.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "interiors",
+        "room",
+        "builder"
+      ],
+      "image": {
+        "dimensions": [
+          272,
+          368
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          0,
+          272,
+          336
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Interiors_free/32x32/Interiors_free_32x32.png",
+      "pack_path": "Modern tiles_Free/Interiors_free/32x32/Interiors_free_32x32.png",
+      "file_type": "image",
+      "bytes": 178783,
+      "sha256": "4799775495ef030683ec49266e36ffbe570471fd18aa5698a5a1fd19908cb976",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Interiors_free/32x32",
+        "part": "Interiors_free_32x32",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          32,
+          32
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "tileset",
+        "asset_kind": "environment_tile",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 16,
+          "rows": 89,
+          "cells": 1424
+        },
+        "scale_group": "Modern tiles_Free/Interiors_free/*/Interiors_free_*.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "interiors"
+      ],
+      "image": {
+        "dimensions": [
+          512,
+          2848
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          24,
+          512,
+          2832
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Interiors_free/32x32/Room_Builder_free_32x32.png",
+      "pack_path": "Modern tiles_Free/Interiors_free/32x32/Room_Builder_free_32x32.png",
+      "file_type": "image",
+      "bytes": 16544,
+      "sha256": "420f22202a4576a38324912dfeb4da6537ca6cad8f007c8489da5fc81122c72d",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Interiors_free/32x32",
+        "part": "Room_Builder_free_32x32",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          32,
+          32
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "tileset",
+        "asset_kind": "environment_tile",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 17,
+          "rows": 23,
+          "cells": 391
+        },
+        "scale_group": "Modern tiles_Free/Interiors_free/*/Room_Builder_free_*.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "interiors",
+        "room",
+        "builder"
+      ],
+      "image": {
+        "dimensions": [
+          544,
+          736
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          0,
+          544,
+          672
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Interiors_free/48x48/Interiors_free_48x48.png",
+      "pack_path": "Modern tiles_Free/Interiors_free/48x48/Interiors_free_48x48.png",
+      "file_type": "image",
+      "bytes": 207991,
+      "sha256": "294e248887a8439737edf44d1fd57e69b3c6234501484ed1809973c0a6c08e9b",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Interiors_free/48x48",
+        "part": "Interiors_free_48x48",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          48,
+          48
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "tileset",
+        "asset_kind": "environment_tile",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 16,
+          "rows": 89,
+          "cells": 1424
+        },
+        "scale_group": "Modern tiles_Free/Interiors_free/*/Interiors_free_*.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "interiors"
+      ],
+      "image": {
+        "dimensions": [
+          768,
+          4272
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          36,
+          768,
+          4248
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Interiors_free/48x48/Room_Builder_free_48x48.png",
+      "pack_path": "Modern tiles_Free/Interiors_free/48x48/Room_Builder_free_48x48.png",
+      "file_type": "image",
+      "bytes": 21487,
+      "sha256": "325bbcfc9ba5375c2a9200cc7e3c41374681da45b25988db48eff640f253586a",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Interiors_free/48x48",
+        "part": "Room_Builder_free_48x48",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          48,
+          48
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "tileset",
+        "asset_kind": "environment_tile",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 17,
+          "rows": 23,
+          "cells": 391
+        },
+        "scale_group": "Modern tiles_Free/Interiors_free/*/Room_Builder_free_*.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "interiors",
+        "room",
+        "builder"
+      ],
+      "image": {
+        "dimensions": [
+          816,
+          1104
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          0,
+          816,
+          1008
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/Tileset_16x16_1.png",
+      "pack_path": "Modern tiles_Free/Old/Tileset_16x16_1.png",
+      "file_type": "image",
+      "bytes": 2246,
+      "sha256": "d7742bfd06b99d42f7cd197ba48d812a28fb384cc3d1dc7150bdc730f88c9e5f",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old",
+        "part": "Old",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "tileset",
+        "asset_kind": "environment_tile",
+        "packaging": "sheet",
+        "variant_index": 1,
+        "grid": {
+          "columns": 10,
+          "rows": 10,
+          "cells": 100
+        },
+        "scale_group": "Modern tiles_Free/Old/Tileset_*_1.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.9,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "tileset"
+      ],
+      "image": {
+        "dimensions": [
+          160,
+          160
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          0,
+          160,
+          160
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/Tileset_16x16_16.png",
+      "pack_path": "Modern tiles_Free/Old/Tileset_16x16_16.png",
+      "file_type": "image",
+      "bytes": 6510,
+      "sha256": "adad3dfbf2bccd5e8da127baeba03ec00c1b68d91db275900c0fab357802a449",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old",
+        "part": "Old",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "tileset",
+        "asset_kind": "environment_tile",
+        "packaging": "sheet",
+        "variant_index": 16,
+        "grid": {
+          "columns": 12,
+          "rows": 14,
+          "cells": 168
+        },
+        "scale_group": "Modern tiles_Free/Old/Tileset_*_16.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.9,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "tileset"
+      ],
+      "image": {
+        "dimensions": [
+          192,
+          224
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          0,
+          192,
+          224
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/Tileset_16x16_2.png",
+      "pack_path": "Modern tiles_Free/Old/Tileset_16x16_2.png",
+      "file_type": "image",
+      "bytes": 2562,
+      "sha256": "9174495a6a30da9e520a2ed9eab4503c58fa6e8610c1e42aa0d98f89a2f8b638",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old",
+        "part": "Old",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "tileset",
+        "asset_kind": "environment_tile",
+        "packaging": "sheet",
+        "variant_index": 2,
+        "grid": {
+          "columns": 10,
+          "rows": 10,
+          "cells": 100
+        },
+        "scale_group": "Modern tiles_Free/Old/Tileset_*_2.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.9,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "tileset"
+      ],
+      "image": {
+        "dimensions": [
+          160,
+          160
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          0,
+          160,
+          160
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/Tileset_16x16_3.png",
+      "pack_path": "Modern tiles_Free/Old/Tileset_16x16_3.png",
+      "file_type": "image",
+      "bytes": 3174,
+      "sha256": "649ec8c75f0feae311e7740a4361306c1ca27ec1c55037ed2b87671db86e56b4",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old",
+        "part": "Old",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "tileset",
+        "asset_kind": "environment_tile",
+        "packaging": "sheet",
+        "variant_index": 3,
+        "grid": {
+          "columns": 10,
+          "rows": 10,
+          "cells": 100
+        },
+        "scale_group": "Modern tiles_Free/Old/Tileset_*_3.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.9,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "tileset"
+      ],
+      "image": {
+        "dimensions": [
+          160,
+          160
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          0,
+          160,
+          160
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/Tileset_16x16_9.png",
+      "pack_path": "Modern tiles_Free/Old/Tileset_16x16_9.png",
+      "file_type": "image",
+      "bytes": 5773,
+      "sha256": "bbb6c7ed6c1a6b6bbda61c65d34b282af80a3c9258ccc9f0d6ba6a1140726ec1",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old",
+        "part": "Old",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "tileset",
+        "asset_kind": "environment_tile",
+        "packaging": "sheet",
+        "variant_index": 9,
+        "grid": {
+          "columns": 10,
+          "rows": 10,
+          "cells": 100
+        },
+        "scale_group": "Modern tiles_Free/Old/Tileset_*_9.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.9,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "tileset"
+      ],
+      "image": {
+        "dimensions": [
+          160,
+          160
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          0,
+          160,
+          160
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/Tileset_32x32_1.png",
+      "pack_path": "Modern tiles_Free/Old/Tileset_32x32_1.png",
+      "file_type": "image",
+      "bytes": 4702,
+      "sha256": "5f766f5d7711a36b3ccbacad82f2e4c91c3687647c1be67d756c7ed2225703de",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old",
+        "part": "Old",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          32,
+          32
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "tileset",
+        "asset_kind": "environment_tile",
+        "packaging": "sheet",
+        "variant_index": 1,
+        "grid": {
+          "columns": 10,
+          "rows": 10,
+          "cells": 100
+        },
+        "scale_group": "Modern tiles_Free/Old/Tileset_*_1.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.9,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "tileset"
+      ],
+      "image": {
+        "dimensions": [
+          320,
+          320
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          0,
+          320,
+          320
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/Tileset_32x32_16.png",
+      "pack_path": "Modern tiles_Free/Old/Tileset_32x32_16.png",
+      "file_type": "image",
+      "bytes": 10176,
+      "sha256": "2fc29901f8db9beb7e1c7d753b4006580561dc97db12d861f8bef4b88a6e726b",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old",
+        "part": "Old",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          32,
+          32
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "tileset",
+        "asset_kind": "environment_tile",
+        "packaging": "sheet",
+        "variant_index": 16,
+        "grid": {
+          "columns": 12,
+          "rows": 14,
+          "cells": 168
+        },
+        "scale_group": "Modern tiles_Free/Old/Tileset_*_16.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.9,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "tileset"
+      ],
+      "image": {
+        "dimensions": [
+          384,
+          448
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          0,
+          384,
+          448
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/Tileset_32x32_2.png",
+      "pack_path": "Modern tiles_Free/Old/Tileset_32x32_2.png",
+      "file_type": "image",
+      "bytes": 4954,
+      "sha256": "256283058ce28f5a828b3b8724889c54e33ff475dca63a208f20ba129cd1993f",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old",
+        "part": "Old",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          32,
+          32
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "tileset",
+        "asset_kind": "environment_tile",
+        "packaging": "sheet",
+        "variant_index": 2,
+        "grid": {
+          "columns": 10,
+          "rows": 10,
+          "cells": 100
+        },
+        "scale_group": "Modern tiles_Free/Old/Tileset_*_2.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.9,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "tileset"
+      ],
+      "image": {
+        "dimensions": [
+          320,
+          320
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          0,
+          320,
+          320
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/Tileset_32x32_3.png",
+      "pack_path": "Modern tiles_Free/Old/Tileset_32x32_3.png",
+      "file_type": "image",
+      "bytes": 4556,
+      "sha256": "3a44df7e2e1cc2fbe61883a9f1507bf0e05e545e0533524b9e7bbf82b82ab369",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old",
+        "part": "Old",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          32,
+          32
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "tileset",
+        "asset_kind": "environment_tile",
+        "packaging": "sheet",
+        "variant_index": 3,
+        "grid": {
+          "columns": 10,
+          "rows": 10,
+          "cells": 100
+        },
+        "scale_group": "Modern tiles_Free/Old/Tileset_*_3.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.9,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "tileset"
+      ],
+      "image": {
+        "dimensions": [
+          320,
+          320
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          0,
+          320,
+          320
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/Tileset_32x32_9.png",
+      "pack_path": "Modern tiles_Free/Old/Tileset_32x32_9.png",
+      "file_type": "image",
+      "bytes": 9608,
+      "sha256": "b1842be6f06496137be4d9c1a5c9df6aa3c9a89842cdb50933a4af5d93e07913",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old",
+        "part": "Old",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          32,
+          32
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "tileset",
+        "asset_kind": "environment_tile",
+        "packaging": "sheet",
+        "variant_index": 9,
+        "grid": {
+          "columns": 10,
+          "rows": 10,
+          "cells": 100
+        },
+        "scale_group": "Modern tiles_Free/Old/Tileset_*_9.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.9,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "tileset"
+      ],
+      "image": {
+        "dimensions": [
+          320,
+          320
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          0,
+          320,
+          320
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/Tileset_48x48_1.png",
+      "pack_path": "Modern tiles_Free/Old/Tileset_48x48_1.png",
+      "file_type": "image",
+      "bytes": 5995,
+      "sha256": "55713278e92e126f45c982970fa2955300087f77dd63f611297670554ea8c7a0",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old",
+        "part": "Old",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          48,
+          48
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "tileset",
+        "asset_kind": "environment_tile",
+        "packaging": "sheet",
+        "variant_index": 1,
+        "grid": {
+          "columns": 10,
+          "rows": 10,
+          "cells": 100
+        },
+        "scale_group": "Modern tiles_Free/Old/Tileset_*_1.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.9,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "tileset"
+      ],
+      "image": {
+        "dimensions": [
+          480,
+          480
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          0,
+          480,
+          480
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/Tileset_48x48_16.png",
+      "pack_path": "Modern tiles_Free/Old/Tileset_48x48_16.png",
+      "file_type": "image",
+      "bytes": 13066,
+      "sha256": "8fb5f0415055976f3f3ba8c3ae91c0eb7aa8c2c7ab5f57c043ef58110c27643f",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old",
+        "part": "Old",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          48,
+          48
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "tileset",
+        "asset_kind": "environment_tile",
+        "packaging": "sheet",
+        "variant_index": 16,
+        "grid": {
+          "columns": 12,
+          "rows": 14,
+          "cells": 168
+        },
+        "scale_group": "Modern tiles_Free/Old/Tileset_*_16.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.9,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "tileset"
+      ],
+      "image": {
+        "dimensions": [
+          576,
+          672
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          0,
+          576,
+          672
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/Tileset_48x48_2.png",
+      "pack_path": "Modern tiles_Free/Old/Tileset_48x48_2.png",
+      "file_type": "image",
+      "bytes": 6248,
+      "sha256": "9ef95687568721ec9bacc156bfea49c65311b38d978bc1ba5b466a700b8c5466",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old",
+        "part": "Old",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          48,
+          48
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "tileset",
+        "asset_kind": "environment_tile",
+        "packaging": "sheet",
+        "variant_index": 2,
+        "grid": {
+          "columns": 10,
+          "rows": 10,
+          "cells": 100
+        },
+        "scale_group": "Modern tiles_Free/Old/Tileset_*_2.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.9,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "tileset"
+      ],
+      "image": {
+        "dimensions": [
+          480,
+          480
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          0,
+          480,
+          480
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/Tileset_48x48_3.png",
+      "pack_path": "Modern tiles_Free/Old/Tileset_48x48_3.png",
+      "file_type": "image",
+      "bytes": 5845,
+      "sha256": "c2ee062c7837939d9269988164ccc0ad4a461231d957bac6d4f62fcce5ad9d88",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old",
+        "part": "Old",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          48,
+          48
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "tileset",
+        "asset_kind": "environment_tile",
+        "packaging": "sheet",
+        "variant_index": 3,
+        "grid": {
+          "columns": 10,
+          "rows": 10,
+          "cells": 100
+        },
+        "scale_group": "Modern tiles_Free/Old/Tileset_*_3.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.9,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "tileset"
+      ],
+      "image": {
+        "dimensions": [
+          480,
+          480
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          0,
+          480,
+          480
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/Tileset_48x48_9.png",
+      "pack_path": "Modern tiles_Free/Old/Tileset_48x48_9.png",
+      "file_type": "image",
+      "bytes": 11599,
+      "sha256": "556fb42c6ee781d39bac01603a80b5fd1f1dbe28b739dee5a9dca1845e3f10ef",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old",
+        "part": "Old",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          48,
+          48
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "tileset",
+        "asset_kind": "environment_tile",
+        "packaging": "sheet",
+        "variant_index": 9,
+        "grid": {
+          "columns": 10,
+          "rows": 10,
+          "cells": 100
+        },
+        "scale_group": "Modern tiles_Free/Old/Tileset_*_9.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.9,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "tileset"
+      ],
+      "image": {
+        "dimensions": [
+          480,
+          480
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          0,
+          480,
+          480
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/idle_16x16_2.png",
+      "pack_path": "Modern tiles_Free/Old/idle_16x16_2.png",
+      "file_type": "image",
+      "bytes": 1315,
+      "sha256": "4014227842bb194fa2c59452ae4eb4597f510d61228f0f56eaf8e1e8c4d58982",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old",
+        "part": "Old",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": null,
+        "asset_kind": "spritesheet",
+        "packaging": "sheet",
+        "variant_index": 2,
+        "grid": {
+          "columns": 4,
+          "rows": 2,
+          "cells": 8
+        },
+        "scale_group": "Modern tiles_Free/Old/idle_*_2.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.9,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "idle"
+      ],
+      "image": {
+        "dimensions": [
+          64,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          2,
+          11,
+          64,
+          32
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/idle_32x32_2.png",
+      "pack_path": "Modern tiles_Free/Old/idle_32x32_2.png",
+      "file_type": "image",
+      "bytes": 2016,
+      "sha256": "d264f3303e94c72205fe8df2c5bfef493fe728391b421d246759107868c507b8",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old",
+        "part": "Old",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          32,
+          32
+        ],
+        "animation_source": "unknown",
+        "kind_hint": null,
+        "asset_kind": "spritesheet",
+        "packaging": "sheet",
+        "variant_index": 2,
+        "grid": {
+          "columns": 4,
+          "rows": 2,
+          "cells": 8
+        },
+        "scale_group": "Modern tiles_Free/Old/idle_*_2.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.9,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "idle"
+      ],
+      "image": {
+        "dimensions": [
+          128,
+          64
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          4,
+          22,
+          128,
+          64
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/idle_48x48_2.png",
+      "pack_path": "Modern tiles_Free/Old/idle_48x48_2.png",
+      "file_type": "image",
+      "bytes": 2223,
+      "sha256": "bb7e82e3e78b742ef05ec15fab2c5a6ca327f42dfe3ba9f41bf6ce6470ec40c0",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old",
+        "part": "Old",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          48,
+          48
+        ],
+        "animation_source": "unknown",
+        "kind_hint": null,
+        "asset_kind": "spritesheet",
+        "packaging": "sheet",
+        "variant_index": 2,
+        "grid": {
+          "columns": 4,
+          "rows": 2,
+          "cells": 8
+        },
+        "scale_group": "Modern tiles_Free/Old/idle_*_2.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.9,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "idle"
+      ],
+      "image": {
+        "dimensions": [
+          192,
+          96
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          6,
+          33,
+          192,
+          96
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/run_horizontal_16x16_2.png",
+      "pack_path": "Modern tiles_Free/Old/run_horizontal_16x16_2.png",
+      "file_type": "image",
+      "bytes": 5725,
+      "sha256": "db3a1e05c9d068ac74c7ebda99f62a08daa5f807d759caab3f27b784756a1af9",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old",
+        "part": "Old",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": null,
+        "asset_kind": "spritesheet",
+        "packaging": "sheet",
+        "variant_index": 2,
+        "grid": {
+          "columns": 24,
+          "rows": 2,
+          "cells": 48
+        },
+        "scale_group": "Modern tiles_Free/Old/run_horizontal_*_2.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.9,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "run",
+        "horizontal"
+      ],
+      "image": {
+        "dimensions": [
+          384,
+          32
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          2,
+          10,
+          383,
+          32
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/run_horizontal_32x32_2.png",
+      "pack_path": "Modern tiles_Free/Old/run_horizontal_32x32_2.png",
+      "file_type": "image",
+      "bytes": 6572,
+      "sha256": "c7451ab77ed014302631a0fc9e20c2be4e650982b8de5358babcadf7e648f694",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old",
+        "part": "Old",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          32,
+          32
+        ],
+        "animation_source": "unknown",
+        "kind_hint": null,
+        "asset_kind": "spritesheet",
+        "packaging": "sheet",
+        "variant_index": 2,
+        "grid": {
+          "columns": 24,
+          "rows": 2,
+          "cells": 48
+        },
+        "scale_group": "Modern tiles_Free/Old/run_horizontal_*_2.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.9,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "run",
+        "horizontal"
+      ],
+      "image": {
+        "dimensions": [
+          768,
+          64
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          4,
+          20,
+          766,
+          64
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/run_horizontal_48x48_2.png",
+      "pack_path": "Modern tiles_Free/Old/run_horizontal_48x48_2.png",
+      "file_type": "image",
+      "bytes": 7438,
+      "sha256": "a167f9821a98133a5dc0bf1f9355ca05b2379003af9e83ed956277dc2ba84a00",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old",
+        "part": "Old",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          48,
+          48
+        ],
+        "animation_source": "unknown",
+        "kind_hint": null,
+        "asset_kind": "spritesheet",
+        "packaging": "sheet",
+        "variant_index": 2,
+        "grid": {
+          "columns": 24,
+          "rows": 2,
+          "cells": 48
+        },
+        "scale_group": "Modern tiles_Free/Old/run_horizontal_*_2.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.9,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.6
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "run",
+        "horizontal"
+      ],
+      "image": {
+        "dimensions": [
+          1152,
+          96
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          6,
+          30,
+          1149,
+          96
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/mv/Character_2_16x16_RPGMAKER.png",
+      "pack_path": "Modern tiles_Free/Old/mv/Character_2_16x16_RPGMAKER.png",
+      "file_type": "image",
+      "bytes": 3495,
+      "sha256": "c0f102ff32fcdea48d1d6c25e3e44bacc8d4e6a9b2c10a530f231b63b1dcdcc0",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old/mv",
+        "part": "Character_2_16x16_RPGMAKER",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          16,
+          16
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 3,
+          "rows": 8,
+          "cells": 24
+        },
+        "scale_group": "Modern tiles_Free/Old/mv/Character_2_*_RPGMAKER.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "mv",
+        "character",
+        "rpgmaker"
+      ],
+      "image": {
+        "dimensions": [
+          48,
+          128
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          11,
+          48,
+          128
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/mv/Character_2_32x32_RPGMAKER.png",
+      "pack_path": "Modern tiles_Free/Old/mv/Character_2_32x32_RPGMAKER.png",
+      "file_type": "image",
+      "bytes": 4519,
+      "sha256": "f0afad0906c65ca03a6fbcf2999bd33051266a0a3bdb2a3265cdb822cdafb435",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old/mv",
+        "part": "Character_2_32x32_RPGMAKER",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          32,
+          32
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 3,
+          "rows": 8,
+          "cells": 24
+        },
+        "scale_group": "Modern tiles_Free/Old/mv/Character_2_*_RPGMAKER.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "mv",
+        "character",
+        "rpgmaker"
+      ],
+      "image": {
+        "dimensions": [
+          96,
+          256
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          22,
+          96,
+          256
+        ]
+      }
+    },
+    {
+      "pack": "limezu_modern-interiors-free_v2.2",
+      "path": "01_SOURCE/environments/limezu_modern-interiors-free_v2.2/Modern tiles_Free/Old/mv/Character_2_48x48_RPGMAKER.png",
+      "pack_path": "Modern tiles_Free/Old/mv/Character_2_48x48_RPGMAKER.png",
+      "file_type": "image",
+      "bytes": 5900,
+      "sha256": "6f2e41a92059c0901d6f0b6ec89f88d76659f8b0106091d702240784b4159304",
+      "inferred": {
+        "group": "Modern tiles_Free",
+        "category": "unknown",
+        "subcategory": "Modern tiles_Free/Old/mv",
+        "part": "Character_2_48x48_RPGMAKER",
+        "animation": "unknown",
+        "frame": null,
+        "direction": "unknown",
+        "side": "unknown",
+        "tile_size": [
+          48,
+          48
+        ],
+        "animation_source": "unknown",
+        "kind_hint": "character",
+        "asset_kind": "composed_character",
+        "packaging": "sheet",
+        "grid": {
+          "columns": 3,
+          "rows": 8,
+          "cells": 24
+        },
+        "scale_group": "Modern tiles_Free/Old/mv/Character_2_*_RPGMAKER.png",
+        "scale_variant_candidate": true
+      },
+      "confidence": {
+        "category": 0.0,
+        "part": 0.5,
+        "animation": 0.0,
+        "frame": 0.0,
+        "direction": 0.0,
+        "side": 0.0,
+        "asset_kind": 0.9
+      },
+      "tags": [
+        "modern",
+        "tiles",
+        "old",
+        "mv",
+        "character",
+        "rpgmaker"
+      ],
+      "image": {
+        "dimensions": [
+          144,
+          384
+        ],
+        "mode": "RGBA",
+        "has_alpha": true,
+        "content_bbox": [
+          0,
+          33,
+          144,
+          384
+        ]
+      }
+    }
+  ]
+}

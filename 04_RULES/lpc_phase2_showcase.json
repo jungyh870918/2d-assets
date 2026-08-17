@@ -1,0 +1,52 @@
+{
+  "$comment": "Phase 2 — Resolver architecture 의 마지막 두 실검증. (1) 한 logical item 이 앞/뒤 두 레이어를 만드는 자산(hair_braid, zPos 120/9), (2) 일부 애니메이션만 지원하는 자산(legs_armour, idle+walk 지원 / run 미지원). Phase 1 population 은 baseline 이라 건드리지 않고 여기서만 예외 자산을 쓴다.",
+  "schema": "ap2d.rule/1",
+  "id": "lpc_phase2_showcase",
+  "profile": "lpc_phase2_showcase",
+  "pack": "lpc_ulpc-generator_phase1",
+  "catalog": "02_CATALOG/lpc_ulpc-generator_phase1.json",
+
+  "animations": ["idle", "walk", "run"],
+  "directions": ["south", "west", "east", "north"],
+  "preview": { "animation": "walk", "frame": 0, "direction": "south" },
+  "sheets": ["idle", "walk", "run"],
+
+  "$animation_policy_comment": "legs_armour 는 run 을 지원하지 않는다. require_all 이면 규칙 검증에서 막힌다. allow_subset 은 '미지원 애니메이션에서는 그 레이어만 숨긴다' 는 runtime 정책과 같은 규칙을 생성 단계에도 적용한다. required 슬롯이라도 그 애니메이션을 지원하는 후보가 하나도 없으면 여전히 오류다.",
+  "animation_policy": "allow_subset",
+
+  "$slots_comment": "hair 는 multi-layer 자산만, legs 는 subset 자산과 정상 자산을 섞어 hide/restore 를 비교할 수 있게 한다. 나머지는 Phase 1 과 같은 슬롯이다.",
+  "slots": {
+    "body":  { "required": true,  "from": "body" },
+    "legs":  { "required": true,  "from": "legs",
+               "allow": ["legs_armour", "legs_hose"] },
+    "feet":  { "required": true,  "from": "feet",  "allow": ["feet_boots_basic"] },
+    "torso": { "required": true,  "from": "torso",
+               "allow": ["torso_clothes_longsleeve"] },
+    "head":  { "required": true,  "from": "head",  "allow": ["heads_boarman"] },
+    "hair":  { "required": true,  "from": "hair",  "allow": ["hair_braid"] }
+  },
+
+  "layer_order": "by_z_pos",
+
+  "$unity_comment": "Phase 1 과 동일 규격이라 두 profile 이 같은 import 설정을 쓴다.",
+  "unity": {
+    "pixels_per_unit": 64,
+    "filter_mode": "Point",
+    "compression": "None",
+    "mesh_type": "FullRect",
+    "pivot": "BottomCenter",
+    "frame_rate": 8
+  },
+
+  "archetypes": [
+    {
+      "name": "showcase",
+      "seeds": { "from": 4101, "to": 4102 }
+    }
+  ],
+
+  "global": {
+    "no_duplicate_combinations": true,
+    "deterministic": true
+  }
+}

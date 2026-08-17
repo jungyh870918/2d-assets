@@ -1,0 +1,12 @@
+{
+  "$comment": "예시 팔레트. key 5단계는 Ultimate Modular Character Creator식 5-color keyed palette 구조.",
+  "name": "korean_90s",
+  "description": "1990년대 한국 도시 톤 — 채도 낮은 갈색/카키/남색 계열",
+  "keys": ["#FFFFFF", "#CCCCCC", "#999999", "#666666", "#333333"],
+  "ramps": [
+    { "id": "brown_01",  "colors": ["#D9C2A3", "#B99A72", "#8F7047", "#5E482D", "#3A2C1B"] },
+    { "id": "khaki_01",  "colors": ["#CFCBA6", "#ABA47A", "#807A52", "#565134", "#33301F"] },
+    { "id": "navy_01",   "colors": ["#A9B6CE", "#7A8AA8", "#4F5C7A", "#333C52", "#1E2431"] },
+    { "id": "maroon_01", "colors": ["#CBA0A0", "#A07373", "#75484C", "#4D2E32", "#2E1B1E"] }
+  ]
+}

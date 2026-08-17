@@ -1,0 +1,14 @@
+{
+    "name": "ArtFactory.PlayModeTests",
+    "rootNamespace": "ArtFactory.PlayModeTests",
+    "references": [
+        "ArtFactory.Runtime",
+        "Unity.2D.Animation.Runtime",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
+    ],
+    "precompiledReferences": ["nunit.framework.dll"],
+    "defineConstraints": ["UNITY_INCLUDE_TESTS"],
+    "autoReferenced": false,
+    "overrideReferences": true
+}

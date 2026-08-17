@@ -1,0 +1,6 @@
+{
+    "name": "ArtFactory.Runtime",
+    "rootNamespace": "ArtFactory",
+    "references": ["Unity.2D.Animation.Runtime"],
+    "autoReferenced": true
+}
