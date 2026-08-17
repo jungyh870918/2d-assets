@@ -48,6 +48,10 @@
                                    Rendered Character
 ```
 
+`06_UNITY_EXPORT/runtime/<profile>/` 은 아직 Factory 안이다. 실제 게임으로는
+`export_consumer_package.py` 가 복사해 넘기고, 그 경계의 소유권 규칙이
+`export-contract-v1.md` 다.
+
 ### composed_sheet 경로는 어디서 갈리는가
 
 ```
@@ -242,17 +246,23 @@ python3 tools/export_unity_runtime.py 04_RULES/cc0_test_population.json --cell-s
 python3 tools/export_unity_runtime.py 04_RULES/lpc_phase1_population.json --cell-size 64
 python3 tools/export_unity_runtime.py 04_RULES/lpc_phase2_showcase.json --cell-size 64
 
-# 2) Unity 프로젝트를 만든다 (저장소에 커밋하지 않는다)
-#    Packages/manifest.json 에 com.unity.2d.animation 필요
-#    Assets/Scripts/   <- CharacterAppearance.cs, CharacterView.cs, CharacterAnimationState.cs
-#    Assets/Editor/    <- SpriteLibraryBuilder.cs, AnimationClipBuilder.cs, SpriteRuntimeTests.cs
-#    Assets/Runtime/   <- 06_UNITY_EXPORT/runtime/<profile>/ 복사
-
-# 3) 에디터에서: 메뉴 > 2D Art Factory > Build Sprite Libraries
-#    또는 batchmode 로 테스트까지:
-"$UNITY" -batchmode -nographics -quit -projectPath <proj> \
-    -executeMethod ArtFactory.EditorTools.SpriteRuntimeTests.RunAll
+# 2) 스크래치 Unity 프로젝트 조립 + EditMode/PlayMode 테스트까지 한 번에
+python3 tools/run_unity_tests.py            # --only editmode / --only playmode
 ```
+
+`run_unity_tests.py` 가 임시 프로젝트를 만들고 `tools/unity/` 의 C#(런타임 4 +
+에디터 2 + 테스트)과 `06_UNITY_EXPORT/runtime/` 을 복사한 뒤 테스트를 돌린다.
+손으로 프로젝트를 만들 필요가 없다. PlayMode 는 EditMode 가 만든 프리팹·라이브러리를
+쓰므로 **EditMode 가 먼저** 돌아야 한다 — 결함이 아니라 의도된 순서 의존성이다.
+
+실제 게임 프로젝트에 넣을 때는 스크래치 프로젝트가 아니라 소비자 패키지를 쓴다:
+
+```bash
+python3 tools/export_consumer_package.py <소비자>/Assets --profiles <profile>
+# 그 다음 에디터 메뉴: 2D Art Factory > Build Sprite Libraries
+```
+
+경계와 소유권은 `export-contract-v1.md`, 게임 쪽 정책은 `game-art-profile.md`.
 
 Unity 프로젝트 자체는 저장소에 두지 않는다 (`Library/` 등 대용량 산출물 때문).
 소스는 `tools/unity/` 에만 두고, export 결과와 조합해 언제든 재구성한다.

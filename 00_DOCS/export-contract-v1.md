@@ -33,9 +33,11 @@ Factory 와 소비자 게임 프로젝트 사이의 경계를 고정한다.
   "contract_version": "1.0",
   "profiles": ["lpc_phase2_showcase"],
   "content_fingerprint": "<sha256>",
-  "file_count": 89
+  "file_count": 101
 }
 ```
+
+(`file_count` 는 내보낸 프로파일과 외형 수에 따라 달라진다. 위 값은 예시다.)
 
 `content_fingerprint` 는 **Factory 소유 파일만**의 해시다.
 `Generated/` · `.meta` · `README.md` · 자기 자신은 제외한다.
@@ -48,6 +50,15 @@ Factory 와 소비자 게임 프로젝트 사이의 경계를 고정한다.
 > 이 규칙을 처음 구현할 때 `sorted(os.walk(...))` 로 감쌌더니 walk 가 통째로
 > 소비된 뒤 정렬되어 `dirs[:]` 가지치기가 무효가 됐고, `Generated/` 가 지문에
 > 섞여 들어갔다. 실측(A→B)에서 같은 입력의 지문이 달라져 잡았다.
+
+### 산출물 성격 라벨
+
+`runtime_manifest.json` 은 규칙의 `order` 블록을 그대로 나른다 — 이 산출물이 자체
+기술 검증인지 발주 대응인지, 소비자 식별자가 무엇인지. 파일만 봐서는 성격을 알 수
+없던 것을 없애기 위한 **표시용 라벨이고, 무엇도 막지 않는다.**
+
+manifest 는 Factory 소유라서, 라벨이 바뀌면 `content_fingerprint` 도 바뀐다.
+그건 내용이 실제로 바뀐 것이므로 정상이다 — GUID 는 그대로다 (§6 D 참조).
 
 ## 3. GUID 안정성 — in-place update
 
