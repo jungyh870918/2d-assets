@@ -1,9 +1,9 @@
 # 2D ART FACTORY
 
-구매·CC0 modular 2D 에셋을 **원본 그대로 두고**, 조합 / 팔레트 / 레이어 규칙만으로
-게임별 아트를 대량 생성하는 저장소.
+Mass-produce game art from purchased and CC0 modular 2D assets **without touching the
+originals** — by combination, palette, and layer rules only.
 
-핵심 원칙 한 줄: **여기서 그림을 그리지 않는다. 조합하고, 검증하고, 엔진에 배선한다.**
+One line: **nothing is drawn here. Things are combined, verified, and wired into the engine.**
 
 ```
 git clone https://github.com/jungyh870918/2d-assets.git
@@ -11,188 +11,201 @@ git clone https://github.com/jungyh870918/2d-assets.git
 
 ---
 
-## 0. 이 문서의 1차 독자는 사람이 아니다
+## 0. The primary reader of this document is not a human
 
-이 README 는 **다른 PC 의 다른 프로젝트에서 일하는 LLM 에이전트**가 읽는다고 전제하고 쓰였다.
-당신이 그 에이전트라면, 사람에게 되묻기 전에 이 문서만으로 다음 셋을 스스로 판정할 수 있어야 한다.
+This README is written assuming an **LLM agent working in a different project on a different
+machine** reads it. If that is you, you should be able to decide all three of these on your own,
+before asking a human anything:
 
-1. **내 문제가 이 저장소의 문제인가** (§1)
-2. **지금 이 클론으로 무엇을 실제로 실행할 수 있는가** (§2)
-3. **내가 무엇을 발주하면 되고, 무엇은 발주해도 거절당하는가** (§6, §9)
+1. **Is my problem this repository's problem?** (§1)
+2. **What can I actually run with this clone right now?** (§2)
+3. **What may I order, and what will be refused?** (§6, §9)
 
-판정이 끝나면 **사람에게 해석을 설명한다.** 그 순서다 — 이해가 먼저고 설명이 다음이다.
-설명할 때 쓸 템플릿은 §10 에 있다. 임의로 요약하지 말고 그 템플릿을 채워라.
+Once you have decided, **explain your reading to the human.** That is the order — understand
+first, then explain. §10 gives the template to fill in. Fill it rather than improvising a summary.
 
-### 에이전트를 위한 읽기 순서
+> **Language note.** This README is English. `CLAUDE.md`, `00_DOCS/`, `tools/README.md`, and all
+> generated reports are **Korean** — they are working documents for the maintainer. Everything an
+> outside agent needs to make the three decisions above is in this file. The machine-readable
+> artifacts (`*.json`) are language-neutral; prefer them over the prose reports (§7).
 
-| 순서 | 읽을 것 | 목적 | 소스 에셋 필요 |
+### Reading order for an agent
+
+| Step | Read | Purpose | Needs source assets |
 |---|---|---|---|
-| 1 | 이 README §1–§2 | 적용 가능성 · 클론 상태 판정 | 없음 |
-| 2 | `02_CATALOG/CAPABILITIES.md` | **지금 무엇을 시킬 수 있는가** (자동 생성 사실) | 없음 |
-| 3 | 이 README §3–§4 | 개념 모델 · 입력 계약 | 없음 |
-| 4 | 이 README §6 에서 내 시나리오 하나 | 실행 레시피 | 시나리오별 |
-| 5 | `CLAUDE.md` | 이 저장소에서 코드를 고칠 때의 절대 규칙 | 없음 |
-| 6 | `00_DOCS/DIRECTOR_CONTEXT.md` | 누가 결정하는가 · 왜 이 경계인가 | 없음 |
+| 1 | This README §1–§2 | Applicability · what a clone contains | No |
+| 2 | `02_CATALOG/CAPABILITIES.md` | **What can be ordered right now** (auto-generated facts) | No |
+| 3 | This README §3–§4 | Concept model · input contract | No |
+| 4 | One scenario from §6 | Execution recipe | Depends |
+| 5 | `CLAUDE.md` (Korean) | Absolute rules when modifying this repo | No |
+| 6 | `00_DOCS/DIRECTOR_CONTEXT.md` (Korean) | Who decides · why the boundaries are where they are | No |
 
-**먼저 실행할 명령 하나** (소스 에셋 없이 바로 된다):
+**Run this one command first** — it works with no source assets present:
 
 ```bash
 python3 tools/capability_sheet.py && cat 02_CATALOG/CAPABILITIES.md
 ```
 
-이게 이 저장소의 「능력 명세서」다. 아래 문서 전부보다 이 한 장이 최신이다 —
-사람이 손으로 쓰지 않고 카탈로그·라이선스 기록에서 매번 다시 계산된다.
+That is the capability sheet. It is more current than every document below it, because no human
+writes it — it is recomputed from the catalogs and license records on every run.
 
 ---
 
-## 1. 30초 판정 — 이 저장소가 당신의 문제인가
+## 1. Thirty-second triage — is this your problem?
 
-### 이 저장소가 하는 일
+### What this repository does
 
-- 이미 존재하는 **modular 파츠**(body / hair / torso / legs / feet / weapon …)를 규칙에 따라
-  조합해서 **캐릭터 모집단**을 만든다. seed 를 주면 같은 결과가 바이트까지 재현된다.
-- 만든 것을 **사실 기준으로 검증**한다 (치수 · 알파 · 중복 · 소스 불변 · 재현성 · 라이선스).
-- **Unity 로 배선**한다 (Sprite Library / Sprite Resolver / AnimatorController / prefab 빌더 포함).
-- 라이선스·출처를 산출물 끝까지 **전파**한다 (상업 출시 가능 여부가 manifest 에 실려 나간다).
+- Takes existing **modular parts** (body / hair / torso / legs / feet / weapon …) and combines
+  them by rule into a **character population**. Give it a seed and the result reproduces
+  byte-for-byte.
+- **Verifies** the result against facts only (dimensions · alpha · duplicates · source immutability
+  · reproducibility · licensing).
+- **Wires it into Unity** (Sprite Library / Sprite Resolver / AnimatorController / prefab builders).
+- **Propagates license and attribution** all the way to the output — commercial eligibility and
+  author credits ride along into the Unity manifest and the consumer package.
 
-### 이 저장소가 하지 않는 일
+### What it does not do
 
-| 안 하는 것 | 이유 · 대신 |
+| Not done | Why · instead |
 |---|---|
-| 그림을 새로 그리기 | 생성형 이미지 모델을 쓰지 않는다. 구매 에셋을 AI 입력으로 넣는 것은 §9 의 불변식 위반이다 |
-| **어느 결과가 더 좋은지 판정** | 미적 판단은 사람이 한다. 그래서 `picks/` · `approved/` 폴더가 **일부러 없다** |
-| 완성된 캐릭터 시트를 파츠로 분해 | `composed_sheet` 팩은 조합 불가. 스캔·기록만 된다 (§3.3) |
-| 타일맵 / 레벨 / 배경 생성 | environment 팩은 스캔까지만. `generation_mode: unsupported` |
-| 라이선스 판단을 대신해 주기 | 라이선스 기록이 없으면 생성 자체를 **거부**한다 (§9) |
-| 게임의 아트 정책을 정하기 | Factory 는 능력을 주고, 게임이 그중 무엇을 쓸지 정한다 (§8) |
+| Draw new art | No generative image models. Feeding purchased assets to an AI is an invariant violation (§9) |
+| **Decide which result is better** | Aesthetic judgement belongs to a human. That is why there is deliberately no `picks/` or `approved/` folder |
+| Split a finished character sheet into parts | `composed_sheet` packs cannot be combined. They are scanned and recorded only (§3.3) |
+| Generate tilemaps / levels / backgrounds | Environment packs are scanned only — `generation_mode: unsupported` |
+| Make your licensing decision for you | With no license record, generation is **refused** (§9) |
+| Set the game's art policy | The Factory supplies capability; the game decides what to use (§8) |
 
-### 판정표 — 당신의 상황에 맞는 줄을 찾아라
+### Triage table — find your row
 
-| 당신의 상황 | 판정 | 가야 할 곳 |
+| Your situation | Verdict | Go to |
 |---|---|---|
-| 파츠가 슬롯별 개별 PNG 로 분리돼 있고 같은 원점·같은 캔버스다 | **✅ 정확히 여기다** | §6-B → §6-A |
-| 이미 이 저장소가 카탈로그를 가진 팩(LPC / CC0)을 쓰고 싶다 | **✅ 바로 가능** | §6-A |
-| Unity 게임에 NPC 20명을 결정적으로 세우고 싶다 | **✅ 가능** | §6-C, §8 |
-| 완성 캐릭터 시트(walk.png 한 장에 전부)만 갖고 있다 | **⚠️ 조합 불가** | §6-D |
-| 배경 타일셋 / 인테리어 팩이다 | **⚠️ 스캔만** | §6-D |
-| 캐릭터 컨셉·주인공·보스·UI 언어를 만들고 싶다 | **❌ 여기가 아니다** | §11 art-studio |
-| "AI 로 스프라이트를 생성해 줘" | **❌ 거절된다** | §9 |
-| 어느 조합이 제일 예쁜지 골라 줘 | **❌ 이 저장소는 고르지 않는다** | §10 사람에게 |
+| Parts are separate per-slot PNGs sharing one origin and canvas | **✅ Exactly this** | §6-B → §6-A |
+| You want a pack this repo already catalogs (LPC / CC0) | **✅ Ready now** | §6-A |
+| You want 20 deterministic NPCs in a Unity game | **✅ Supported** | §6-C, §8 |
+| You only have finished character sheets (all frames in one `walk.png`) | **⚠️ Not combinable** | §6-D |
+| It is a background tileset / interior pack | **⚠️ Scan only** | §6-D |
+| You want concepts, a protagonist, a boss, or a UI language | **❌ Wrong repo** | §11 art-studio |
+| "Generate sprites with AI" | **❌ Refused** | §9 |
+| "Pick the prettiest combination" | **❌ This repo does not pick** | §10, ask the human |
 
-> **핵심 구분선**: 이 저장소는 **모집단**(주민 · 잡몹 · 병사 · 색 변형)을 담당하고,
-> **정체성**(주인공 · 보스 · 랜드마크 · UI)은 담당하지 않는다.
-> 구매 팩 파츠를 그대로 게임에 실으면 그 게임의 아트 방향을 **팩 제작자가 정한 것**이 된다.
-> 프로토타입 · 플레이스홀더 · 기계 검증까지가 안전한 사용 범위다.
+> **The dividing line**: this repository handles **populations** (villagers · mobs · soldiers ·
+> color variants). It does not handle **identity** (protagonist · boss · landmarks · UI).
+> Shipping purchased-pack parts as-is means the pack author, not you, set your game's art
+> direction. Prototype · placeholder · machine verification is the safe range of use.
 
 ---
 
-## 2. 클론하면 무엇을 받는가 — 그리고 무엇을 받지 **못**하는가
+## 2. What a clone gives you — and what it does **not**
 
-**이것을 먼저 이해하지 못하면 다음 판단이 전부 틀린다.**
+**Every later judgement is wrong if you miss this.**
 
-이 저장소는 **기계**를 배포하고 **재료**를 배포하지 않는다.
+This repository ships the **machine**, not the **material**.
 
 ```
-받는다 ✅                          받지 못한다 ❌ (.gitignore)
+You get ✅                          You do not get ❌ (.gitignore)
 ────────────────────────────       ────────────────────────────
-tools/          파이프라인 전체     01_SOURCE/**    원본 아트 (라이선스·용량)
-00_DOCS/        계약 · 라이선스 기록  05_GENERATED/** 생성물 (재생성 가능)
-02_CATALOG/     팩 카탈로그 + 요약   06_UNITY_EXPORT/** 내보낸 패키지 (재생성 가능)
-03_PALETTES/    팔레트 정의
-04_RULES/       생성 규칙
-CLAUDE.md       작업 지침
+tools/          full pipeline       01_SOURCE/**    original art (licensing · size)
+00_DOCS/        contracts, licenses 05_GENERATED/** outputs (regenerable)
+02_CATALOG/     pack catalogs       06_UNITY_EXPORT/** exported packages (regenerable)
+03_PALETTES/    palette definitions
+04_RULES/       generation rules
+CLAUDE.md       working instructions
 ```
 
-### 왜 이 설계가 당신에게 유리한가
+### Why this layout is in your favour
 
-`02_CATALOG/*.json` 은 **커밋되어 있다.** 카탈로그는 아트가 아니라 **파일명 · 치수 · sha256 ·
-추론 결과의 목록**이라 재배포 제한에 걸리지 않는다. 그래서 에이전트는
+`02_CATALOG/*.json` **is committed.** A catalog is not art — it is a list of filenames,
+dimensions, sha256 hashes, and inference results — so it carries no redistribution problem.
+Therefore an agent can:
 
-- **에셋을 하나도 갖지 않은 상태에서** 이 팩으로 무엇이 가능한지 전부 읽을 수 있고,
-- 나중에 같은 팩을 직접 받았을 때 **바이트 단위로 같은 팩인지 증명**할 수 있다.
+- read everything a pack makes possible **while owning none of the assets**, and
+- later prove **byte-for-byte** that a copy it obtained is the same pack that was cataloged.
 
 ```bash
-# 소스 없이 즉시 실행됨 — 능력 명세서 재생성
+# Works immediately with no assets — regenerates the capability sheet
 python3 tools/capability_sheet.py
 
-# 카탈로그가 요구하는 소스 파일 목록과 해시 (내 사본과 대조용)
+# List the source files the catalog expects, with hashes, to check against your own copy
 python3 -c "
 import json
 c = json.load(open('02_CATALOG/lpc_ulpc-generator_phase1.json'))
 print('pack root:', c['pack']['root'])
 for e in c['entries'][:5]:
     print(e['sha256'][:12], e['bytes'], e['path'])
-print('... 총', len(c['entries']), '개')
+print('...', len(c['entries']), 'entries total')
 "
 ```
 
-### 소스 없이 실행하면 어떻게 되는가
+### What happens if you run it without assets
 
-조용히 잘못된 결과를 내지 않는다. 정확한 파일을 지목하고 멈춘다.
+It does not silently produce something wrong. It names the exact file and stops.
 
 ```
 ap2d.compose.ComposeError: 소스 에셋이 없다:
   01_SOURCE/characters/lpc_ulpc-generator_phase1/spritesheets/body/bodies/male/walk.png
 ```
 
-| 명령 | 소스 없는 클론에서 |
+(`소스 에셋이 없다` = "source asset missing".)
+
+| Command | On an asset-less clone |
 |---|---|
-| `tools/capability_sheet.py` | ✅ 된다 |
-| `tools/tests/test_pipeline.py` | ⚠️ 부분 — 대부분 자체 픽스처로 돌지만 실소스가 필요한 8개는 fail/error 하고 38개는 skip 된다 (§13) |
-| `tools/scan_pack.py` | ❌ 스캔 대상이 없다 |
-| `tools/run_pipeline.py` | ❌ `ComposeError: 소스 에셋이 없다` |
-| `tools/source_fingerprint.py` | ❌ `01_SOURCE` 가 없다 |
+| `tools/capability_sheet.py` | ✅ Works |
+| `tools/tests/test_pipeline.py` | ⚠️ Partial — most tests build their own fixtures; 7 that need real sources fail and 44 skip (§13) |
+| `tools/scan_pack.py` | ❌ Nothing to scan |
+| `tools/run_pipeline.py` | ❌ `ComposeError: source asset missing` |
+| `tools/source_fingerprint.py` | ❌ `01_SOURCE` does not exist |
 
-### 그래서 당신이 재료를 얻는 방법은 셋뿐이다
+### So there are exactly three ways to get material
 
-1. **카탈로그에 있는 팩을 직접 받는다** — 출처 URL 은 `00_DOCS/licenses/<pack>.md` 의
-   `source_url` 에 있다. 받아서 `01_SOURCE/<domain>/<pack>/` 에 그대로 푼다.
-2. **당신 팩을 새로 넣는다** — §6-B.
-3. **직접 만든 파츠를 넣는다** — 입력 계약(§4)만 지키면 출처가 어디든 같은 코드가 돈다.
+1. **Obtain a pack this repo already catalogs.** The download URL is the `source_url` field in
+   `00_DOCS/licenses/<pack>.md`. Unpack it as-is into `01_SOURCE/<domain>/<pack>/`.
+2. **Add your own pack** — §6-B.
+3. **Add parts you made yourself** — any origin works, as long as the input contract (§4) holds.
 
 ---
 
-## 3. 개념 모델 — 이 기계가 세상을 보는 방식
+## 3. The concept model — how this machine sees the world
 
-에이전트가 이 넷을 알면 리포트의 거의 모든 필드를 해석할 수 있다.
+Know these four and you can interpret almost every field in every report.
 
-### 3.1 모든 능력은 3상태다 — `yes` / `no` / `unknown`
+### 3.1 Every capability is three-valued — `yes` / `no` / `unknown`
 
-**`unknown` 을 `yes` 로 반올림하지 않는다.** "못 찾았다"와 "없다"는 다르다.
+**`unknown` is never rounded up to `yes`.** "Not found" and "not present" are different claims.
 
-예: HD Survivor 팩은 방향 8개를 **시트의 행**에 담고 있어서 파일명만으로는 방향 축이
-있는지조차 알 수 없다. 그래서 `direction_axis.present: unknown` 이고 `no` 가 아니다.
+Example: the HD Survivor pack encodes 8 directions as **rows inside a sheet**, so filenames alone
+cannot reveal whether a direction axis exists. Its `direction_axis.present` is `unknown`, not `no`.
 
-> 에이전트 규칙: 리포트에서 `unknown` 을 봤을 때 "없는 것"으로 요약하지 마라.
-> **"증명되지 않았다"** 로 사람에게 전달해야 한다.
+> Agent rule: when a report says `unknown`, do not summarize it as "none".
+> Report it to the human as **"not proven"**.
 
-### 3.2 `composable` — 조합 가능성의 정의
+### 3.2 `composable` — the definition of combinability
 
 ```
 composable = parts_separable ∧ pre_aligned ∧ animation_compatible
 ```
 
-| capability | 뜻 |
+| Capability | Meaning |
 |---|---|
-| `parts_separable` | 파츠가 슬롯별로 분리된 파일/셀로 존재하는가 |
-| `shared_canvas` / `shared_cell` | 겹칠 레이어들이 같은 캔버스 또는 같은 논리 셀인가 |
-| `pre_aligned` | 좌표 보정 없이 그대로 겹쳐도 맞는가 |
-| `shared_origin` | 원점이 같은가 |
-| `animation_compatible` | 슬롯 간 애니메이션·프레임 수가 맞는가 |
-| `directional` | 방향 축이 읽혔는가 |
-| `origin_policy` | pivot 의 근거 (`shared_canvas` / `logical_cell` / `unknown`) |
+| `parts_separable` | Do parts exist as separate per-slot files or cells? |
+| `shared_canvas` / `shared_cell` | Do the layers that will overlap share a canvas, or a logical cell? |
+| `pre_aligned` | Can they be stacked without coordinate correction? |
+| `shared_origin` | Do they share an origin? |
+| `animation_compatible` | Do animations and frame counts match across slots? |
+| `directional` | Was a direction axis actually read? |
+| `origin_policy` | The basis for the pivot (`shared_canvas` / `logical_cell` / `unknown`) |
 
-이 값들은 스캐너가 **계산한 사실**이고 사람이 선언하는 값이 아니다.
+These are **computed** by the scanner, not declared by a human.
 
-### 3.3 `generation_mode` — 팩이 갈라지는 지점
+### 3.3 `generation_mode` — where packs diverge
 
-| mode | 뜻 | 조합 | Unity 소비 경로 |
+| Mode | Meaning | Combinable | Unity consumption path |
 |---|---|---|---|
-| `modular_composition` | 파츠를 골라 합성 | **가능** | Sprite Library (runtime) 또는 구운 시트 |
-| `composed_sheet` | 이미 완성된 캐릭터 시트 | **불가** | Animator + 시트 슬라이싱 (게임 쪽에서) |
-| `unsupported` | 캐릭터 생성 대상 아님 (타일셋 등) | 불가 | — |
+| `modular_composition` | Pick parts and compose | **Yes** | Sprite Library (runtime) or baked sheets |
+| `composed_sheet` | Already-finished character sheet | **No** | Animator + sheet slicing, on the game side |
+| `unsupported` | Not a character-generation target (tilesets etc.) | No | — |
 
-조합 불가 팩을 생성기에 넣으면 곁가지 오류가 아니라 **명시적 SKIP** 으로 즉시 멈춘다:
+Feeding a non-combinable pack to the generator produces an **explicit SKIP**, not an incidental
+error:
 
 ```python
 from ap2d import catalog, generate
@@ -201,78 +214,86 @@ generate.generation_status(catalog.load_catalog("02_CATALOG/<pack>.json"))
 #     "reason": "composed_sheets_only", "capabilities": {...}}
 ```
 
-**이건 실패가 아니다.** 사람에게 "실패했다"고 보고하지 마라 — "이 팩은 애초에 조합 대상이
-아니고, 근거는 `reason` 이다"로 보고해야 한다.
+**This is not a failure.** Do not report it to a human as one — report that the pack was never a
+combination target, and give the `reason`.
 
-### 3.4 물리 배치 ≠ 논리 좌표
+### 3.4 Physical layout ≠ logical topology
 
-서로 완전히 다르게 저장된 두 팩이 같은 파이프라인을 탄다:
+Two packs stored completely differently run through the same pipeline:
 
-| | CC0 (벡터 만화풍) | LPC (64px 도트) |
+| | CC0 (vector cartoon) | LPC (64px pixel art) |
 |---|---|---|
-| 물리 단위 | PNG 1장 = 프레임 1개 | PNG 1장 = (방향 × 프레임) 시트 |
-| 좌표 | `(slot, asset, animation, frame)` | `(slot, asset, animation, direction, frame)` |
-| resolve | 파일 열어 애니메이션 bbox 로 crop | 시트 열어 논리 셀로 crop |
+| Physical unit | 1 PNG = 1 frame | 1 PNG = a (direction × frame) sheet |
+| Coordinates | `(slot, asset, animation, frame)` | `(slot, asset, animation, direction, frame)` |
+| Resolve | Open file, crop by animation bbox | Open sheet, crop by logical cell |
 
-`compose.resolve_layer()` 가 이 차이를 흡수하는 **유일한 지점**이고, 그 뒤 합성 루프는
-두 팩이 같은 코드를 탄다. 이게 "출처가 어디든 계약만 지키면 된다"의 근거다.
+`compose.resolve_layer()` is the **single place** that absorbs this difference; after it, the
+compositing loop is identical code for both packs. That is why "any origin works as long as the
+contract holds" is true rather than aspirational.
 
 ---
 
-## 4. 입력 계약 — 당신의 에셋이 여기 들어올 수 있는가
+## 4. Input contract — can your assets enter?
 
-에이전트가 **새 팩 / 외주 파츠 / 직접 만든 파츠**를 평가할 때 쓰는 체크리스트다.
-아래를 만족하면 팩의 화풍·출처와 무관하게 같은 파이프라인이 돈다.
+The checklist an agent uses to evaluate a **new pack, commissioned parts, or self-made parts.**
+Satisfy it and the pipeline runs regardless of the pack's style or origin.
 
-| # | 요구 | 어기면 |
+| # | Requirement | If violated |
 |---|---|---|
-| 1 | 슬롯마다 **별도 PNG** (또는 규칙적인 시트 셀) | `composed_sheet` 로 떨어져 조합 불가 |
-| 2 | 겹칠 파츠가 **같은 논리 셀 · 같은 원점** | `pre_aligned: unknown` → `composable: no` |
-| 3 | 애니메이션 이름과 프레임 수가 슬롯 간 **일치** | `animation_compatible` 하락 (부분 허용 시 `allow_subset` 선언) |
-| 4 | **z 순서를 소스가 선언** (또는 규칙에 명시) | 사람이 베껴 적다 어긋난다 |
-| 5 | 색이 **램프 구조**를 따름 | 팔레트 교체 품질이 보장되지 않음 |
-| 6 | `00_DOCS/licenses/<pack>.md` 의 **frontmatter 존재** | 생성기 진입 자체가 차단됨 |
+| 1 | **Separate PNG per slot** (or regular sheet cells) | Falls to `composed_sheet`; not combinable |
+| 2 | Overlapping parts share a **logical cell and origin** | `pre_aligned: unknown` → `composable: no` |
+| 3 | Animation names and frame counts **match across slots** | `animation_compatible` drops (declare `allow_subset` for partial) |
+| 4 | **Z-order declared by the source** (or stated in the rule) | Humans transcribing it get it wrong |
+| 5 | Colors follow a **ramp structure** | Palette-swap quality is not guaranteed |
+| 6 | `00_DOCS/licenses/<pack>.md` **frontmatter exists** | The generator refuses to start |
 
-라이선스 frontmatter 필수 필드 (`tools/ap2d/licensing.py` 의 `REQUIRED_FIELDS`):
+Required frontmatter fields (`REQUIRED_FIELDS` in `tools/ap2d/licensing.py`):
 
 ```markdown
 ---
-pack: <01_SOURCE 아래 팩 폴더명과 동일>
+pack: <must equal the folder name under 01_SOURCE>
 license: CC0-1.0
 commercial_use: yes        # yes / no / unknown
-modification: yes          # no 면 조합 자체가 라이선스 위반
+modification: yes          # "no" makes combination itself a license violation
 redistribution: yes
 ai_training: yes
-pipeline_approved: yes     # yes 가 아니면 생성기가 진입을 거부한다
+credit_required: yes       # attribution obligation — a separate axis from commercial_use
+pipeline_approved: yes     # anything but "yes" blocks the generator
 acquired: 2026-08-16
 source_url: https://...
 ---
 ```
 
-라이선스 상태가 파이프라인에 미치는 영향:
+How license state affects the pipeline:
 
-| 상태 | scan | generate | export | 상업 출시 |
+| State | scan | generate | export | Commercial release |
 |---|---|---|---|---|
 | `pipeline_approved: yes` + `commercial_use: yes` | ○ | ○ | ○ | ○ |
-| `pipeline_approved: yes` + `commercial_use: no` | ○ | ○ | ○ | **×** |
-| `pipeline_approved: no` / `modification: no` / 기록 없음 | ○ | **차단** | — | × |
+| `pipeline_approved: yes` + `commercial_use: no` | ○ | ○ | ○ | **✗** |
+| `pipeline_approved: no` / `modification: no` / no record | ○ | **blocked** | — | ✗ |
 
-`commercial_use: no` 는 생성을 막는 hard gate 가 **아니다.** 대신
-`commercial_release_eligible: false` 가 계산되어 catalog summary → generation.json →
-Unity manifest → validation report 까지 **전부 따라 나가고** 리포트에 경고 배너가 붙는다.
+`commercial_use: no` is **not** a hard gate on generation. Instead
+`commercial_release_eligible: false` is computed and travels **all the way through** —
+catalog summary → generation.json → Unity manifest → validation report — with a warning banner
+on the reports.
+
+> **Attribution is a separate axis from commercial use.** `commercial_use: yes` does not waive
+> credit. LPC is `commercial_use: yes` **and** `credit_required: yes`; shipping it without author
+> credits violates CC-BY / OGA-BY. The credit lines travel into the Unity manifest and are copied
+> into the consumer package as `ATTRIBUTION.md` (§8).
 
 ---
 
-## 5. 파이프라인 6단계와 산출물
+## 5. The six pipeline stages and their outputs
 
 ```
-01_SOURCE  ──(scan)──>  02_CATALOG  ──>  CAPABILITIES.md   "무엇을 시킬 수 있나"
+01_SOURCE  ──(scan)──>  02_CATALOG  ──>  CAPABILITIES.md   "what can be ordered"
                             │
         03_PALETTES + 04_RULES
                             │
-                        (generate)          seed 결정적
+                        (generate)          seed-deterministic
                             ↓
-                       05_GENERATED  ──>  <profile>_brief.md   "무엇을 했나"
+                       05_GENERATED  ──>  <profile>_brief.md   "what was done"
                             │
                         (validate)
                             ↓
@@ -280,74 +301,74 @@ Unity manifest → validation report 까지 **전부 따라 나가고** 리포�
                             │
                     (export_consumer_package)
                             ↓
-                    별도 Unity 게임 프로젝트
+                    a separate Unity game project
 ```
 
-한 번에:
+All at once:
 
 ```bash
-python3 tools/run_pipeline.py 04_RULES/<규칙>.json
+python3 tools/run_pipeline.py 04_RULES/<rule>.json
 ```
 
-단계별:
+Stage by stage:
 
-| 명령 | 하는 일 | 출력 |
+| Command | Does | Writes |
 |---|---|---|
-| `tools/scan_pack.py <팩 폴더>` | 소스 스캔 + 추론 | `02_CATALOG/<pack>.json`, `.summary.md` |
-| `tools/capability_sheet.py` | 팩·팔레트·규칙 능력을 한 장으로 | `02_CATALOG/CAPABILITIES.md` |
-| `tools/generate_characters.py <규칙>` | seed 조합 + 합성 | `05_GENERATED/characters/<profile>/<seed>/` |
-| `tools/make_contact_sheet.py <profile>` | 한 장에 모아 보기 | `05_GENERATED/reports/<profile>.png` |
-| `tools/validate_generated.py <규칙>` | 검사 10종 + 분포 관측 | `..._validation.{json,md}` · `..._attribution.md` |
-| `tools/order_brief.py <규칙>` | 회신 한 장 | `..._brief.{json,md}` |
-| `tools/export_unity.py <규칙>` | Unity 패키지 (baked) | `06_UNITY_EXPORT/characters/<profile>/` |
-| `tools/export_unity_runtime.py <규칙>` | Unity 패키지 (Sprite Library) | `06_UNITY_EXPORT/runtime/<profile>/` |
-| `tools/export_consumer_package.py <Assets 경로> --profiles <p>` | 외부 Unity 프로젝트로 복사 | 소비자 `Assets/ArtFactory/` |
-| `tools/tests/test_pipeline.py` | 자동 테스트 전량 | 200 tests |
-| `tools/source_fingerprint.py` | 소스 변조 확인 | 트리 sha256 |
+| `tools/scan_pack.py <pack dir>` | Scan sources, infer structure | `02_CATALOG/<pack>.json`, `.summary.md` |
+| `tools/capability_sheet.py` | Roll up packs, palettes, rules | `02_CATALOG/CAPABILITIES.md` |
+| `tools/generate_characters.py <rule>` | Seeded combination + compositing | `05_GENERATED/characters/<profile>/<seed>/` |
+| `tools/make_contact_sheet.py <profile>` | One sheet to eyeball | `05_GENERATED/reports/<profile>.png` |
+| `tools/validate_generated.py <rule>` | 10 checks + distribution observation | `..._validation.{json,md}` · `..._attribution.md` |
+| `tools/order_brief.py <rule>` | One-page reply | `..._brief.{json,md}` |
+| `tools/export_unity.py <rule>` | Unity package (baked) | `06_UNITY_EXPORT/characters/<profile>/` |
+| `tools/export_unity_runtime.py <rule>` | Unity package (Sprite Library) | `06_UNITY_EXPORT/runtime/<profile>/` + `ATTRIBUTION.md` |
+| `tools/export_consumer_package.py <Assets path> --profiles <p>` | Copy into an external Unity project | consumer `Assets/ArtFactory/` |
+| `tools/tests/test_pipeline.py` | Full test suite | 206 tests |
+| `tools/source_fingerprint.py` | Detect source tampering | tree sha256 |
 
-`run_pipeline.py` 는 scan → generate → contact sheet → export → validate → brief
-순서로 돌고, 마지막에 `CAPABILITIES.md` 를 다시 만든다.
-**검증이 실패해도 회신(brief)은 쓴다** — 무엇이 왜 안 됐는지가 회신의 ⑥ 이다.
+`run_pipeline.py` runs scan → generate → contact sheet → export → validate → brief, then
+regenerates `CAPABILITIES.md`. **The brief is written even when validation fails** — what failed
+and why is section ⑥ of the brief.
 
 ---
 
-## 6. 시나리오별 실행 레시피
+## 6. Execution recipes by scenario
 
-### A. 나는 게임 프로젝트의 에이전트다 — NPC 모집단이 필요하다
+### A. I am a game project's agent and I need an NPC population
 
 ```bash
-# 1. 무엇이 가능한지 읽는다 (소스 없어도 됨)
+# 1. Read what is possible (no assets required)
 python3 tools/capability_sheet.py && cat 02_CATALOG/CAPABILITIES.md
 
-# 2. composable: yes 인 팩을 고르고, 그 팩의 소스를 받아 01_SOURCE 에 푼다
-#    출처 URL 은 00_DOCS/licenses/<pack>.md 의 source_url
+# 2. Pick a pack with composable: yes, obtain it, unpack into 01_SOURCE
+#    Download URL: the source_url field in 00_DOCS/licenses/<pack>.md
 
-# 3. 기존 규칙을 복사해 내 규칙을 만든다
+# 3. Copy an existing rule and make it yours
 cp 04_RULES/lpc_phase1_population.json 04_RULES/mygame_villagers.json
-#    최소한 이 다섯을 바꾼다: id · profile · seeds · slots 의 allow/deny · order 블록
+#    Change at least: id · profile · seeds · slot allow/deny · the order block
 
-# 4. 돌린다
+# 4. Run it
 python3 tools/run_pipeline.py 04_RULES/mygame_villagers.json
 
-# 5. 회신 한 장을 읽고 사람에게 §10 템플릿으로 보고한다
+# 5. Read the one-page reply and report to the human with the §10 template
 cat 05_GENERATED/reports/mygame_villagers_brief.md
 ```
 
-규칙 파일에서 에이전트가 실제로 만지는 필드:
+The rule fields an agent actually touches:
 
 ```jsonc
 {
   "schema": "ap2d.rule/1",
   "id": "mygame_villagers",
-  "profile": "mygame_villagers",          // 산출물 폴더 이름이 된다
+  "profile": "mygame_villagers",          // becomes the output folder name
   "pack": "lpc_ulpc-generator_phase1",
   "catalog": "02_CATALOG/lpc_ulpc-generator_phase1.json",
 
-  "order": {                               // 표시용 라벨. 아무것도 막지 않는다
+  "order": {                               // a label. It blocks nothing
     "purpose": "order_response",           // self_verification | order_response
-    "consumer": "unknown",                 // ← 지어내지 마라. 발급받지 못했으면 unknown
-    "request": "요구 원문 또는 요약",
-    "not_done": [{"요구": "...", "근거": "..."}]
+    "consumer": "unknown",                 // ← do NOT invent this. unknown is valid
+    "request": "the request, verbatim or summarized",
+    "not_done": [{"requested": "...", "reason": "..."}]
   },
 
   "animations": ["idle", "walk", "run"],
@@ -355,9 +376,9 @@ cat 05_GENERATED/reports/mygame_villagers_brief.md
   "slots": {
     "body":  { "required": true,  "from": "body" },
     "hair":  { "required": false, "from": "hair", "none_weight": 0.2,
-               "deny": ["hair_braid"] }    // allow / deny 로 후보를 좁힌다
+               "deny": ["hair_braid"] }    // narrow candidates with allow / deny
   },
-  "layer_order": "by_z_pos",               // 소스가 z 를 선언하면 베껴 적지 않는다
+  "layer_order": "by_z_pos",               // never transcribe z-order the source declares
   "unity": { "pixels_per_unit": 64, "filter_mode": "Point", "pivot": "BottomCenter",
              "frame_rate": 8 },
   "archetypes": [
@@ -367,354 +388,379 @@ cat 05_GENERATED/reports/mygame_villagers_brief.md
 }
 ```
 
-> **`order.consumer` 를 지어내지 마라.** 게임 저장소 디렉터리 이름이나 축약형을
-> 소비자 식별자로 승격시키면 한 게임에 이름이 셋이 된다. 발급받지 못했으면
-> `unknown` 이 **정당한 값**이다.
+> **Do not invent `order.consumer`.** Promoting a game repo's directory name or an abbreviation
+> into a consumer identifier gives one game three names. If none was issued to you, `unknown` is
+> the **correct** value.
 
-### B. 새 팩을 넣고 싶다
+### B. I want to add a new pack
 
 ```bash
-# 1. 원본 그대로 푼다 (수정 금지)
+# 1. Unpack as-is (never modify)
 #    01_SOURCE/<domain>/<vendor>_<pack>_<version>/    + SOURCE.md
-# 2. 라이선스 기록 작성 — frontmatter 필수 (§4)
+# 2. Write the license record — frontmatter required (§4)
 #    00_DOCS/licenses/<pack>.md
-# 3. 스캔
+# 3. Scan
 python3 tools/scan_pack.py 01_SOURCE/characters/<pack>
-# 4. summary 의 "generation capability" 표를 **먼저** 본다
+# 4. Read the "generation capability" table in the summary FIRST
 cat 02_CATALOG/<pack>.summary.md
-#    composable: no 면 여기서 멈춘다 — 규칙을 쓸 필요가 없고 reason 이 이유를 말한다
-# 5. summary 의 "발견된 파츠" 표를 보고 규칙을 쓴다 → §6-A 3번으로
+#    composable: no means stop here — no rule is worth writing, and reason says why
+# 5. Write a rule from the "parts found" table → continue at §6-A step 3
 ```
 
-스캐너가 파츠를 못 알아보면 `tools/ap2d/catalog.py` 의 `BODY_PART_VOCAB` 에 **단어만**
-추가한다. 어휘에 없는 것은 `unknown` 으로 남고 summary 의 anomaly 절에 보고되므로,
-**조용히 잘못 조합되는 일은 없다.**
+If the scanner does not recognize a part, add **only the word** to `BODY_PART_VOCAB` in
+`tools/ap2d/catalog.py`. Anything not in the vocabulary stays `unknown` and is reported in the
+summary's anomaly section — so **nothing is ever silently miscombined.**
 
-팩이 권위 metadata 를 직접 제공하는 경우(LPC 의 `sheet_definitions` 등)에만 adapter 를 쓴다:
+Use an adapter only when the pack **supplies authoritative metadata itself** (LPC's
+`sheet_definitions`, for example):
 
 ```bash
 python3 tools/scan_pack.py 01_SOURCE/characters/<pack> --adapter lpc
 ```
 
-**pack-specific 지식은 `tools/ap2d/packs/` 안에만 둔다.** generic 모듈에
-`if "lpc" in pack_name` 같은 분기를 넣으면 **AST 테스트가 실패한다.**
+**Pack-specific knowledge lives only in `tools/ap2d/packs/`.** Putting a branch like
+`if "lpc" in pack_name` into a generic module **fails an AST test.**
 
-### C. Unity 게임에 붙이고 싶다
+### C. I want to wire it into a Unity game
 
 ```bash
-# Factory 쪽
-python3 tools/export_unity_runtime.py 04_RULES/<규칙>.json --seeds 4101 4102 --cell-size 64
+# Factory side
+python3 tools/export_unity_runtime.py 04_RULES/<rule>.json --seeds 4101 4102 --cell-size 64
 python3 tools/export_consumer_package.py /path/to/MyGame/Assets --profiles <profile>
 ```
 
-그 다음은 **소비자 Unity 프로젝트 안에서** 에디터 빌더가 한다
-(`SpriteLibraryBuilder` → 라이브러리 · prefab · `CharacterProfile`,
-`AnimationClipBuilder` → clip · controller). 게임 코드가 아는 타입은 셋뿐이다 — §8.
+The rest happens **inside the consumer Unity project**, via the editor builders
+(`SpriteLibraryBuilder` → library · prefab · `CharacterProfile`; `AnimationClipBuilder` → clips ·
+controller). Game code knows exactly three types — §8.
 
 ```csharp
-profile.SetMotion(animator, "walk");   // 게임 코드의 유일한 진입점
+profile.SetMotion(animator, "walk");   // the only entry point for game code
 profile.HasAnimation("run");
 ```
 
-### D. 내 팩이 `composable: no` 다
+If the profile requires attribution, the package ships `Profiles/<profile>/ATTRIBUTION.md` and the
+package README carries the credit lines. Putting them in your game's credits is your obligation,
+not an optional extra (§4).
 
-정상이다. 실패가 아니다. 선택지는 셋이다.
+### D. My pack is `composable: no`
 
-| 상황 (`reason`) | 뜻 | 할 수 있는 것 |
+That is normal. It is not a failure. There are three options.
+
+| `reason` | Meaning | What you can do |
 |---|---|---|
-| `composed_sheets_only` | 완성 시트만 있다 | 조합은 포기. Unity 에서 시트를 직접 슬라이싱해 Animator 로 쓴다. 카탈로그는 그래도 유용하다 (애니메이션·프레임·치수 목록) |
-| `atlas_only_no_individual_props` | 아틀라스만 있고 파츠가 분리 안 됨 | 타일맵/환경 용도로만. 캐릭터 생성 대상 아님 |
-| `pre_aligned: unknown` | 정렬이 증명 안 됨 | 소스 제작자에게 §4 계약대로 재요청하거나, 직접 파츠를 분리해 별도 계층에 둔다 |
+| `composed_sheets_only` | Only finished sheets exist | Give up combination. Slice the sheet in Unity and drive it with an Animator. The catalog is still useful — animation, frame, and dimension lists |
+| `atlas_only_no_individual_props` | Atlas only; parts not separable | Tilemap/environment use only. Not a character-generation target |
+| `pre_aligned: unknown` | Alignment unproven | Re-request from the source author per the §4 contract, or separate the parts yourself into a distinct layer |
 
-**하지 말 것**: 조합을 억지로 통과시키려고 `compose.py` 에 예외를 넣는 것.
-`compose.require_modular()` 가 `UnsupportedModeError` 로 막는 것은 버그가 아니라 설계다.
+**Do not** add an exception to `compose.py` to force it through. `compose.require_modular()`
+raising `UnsupportedModeError` is the design, not a bug.
 
-### E. 결과가 마음에 들지 않는다
+### E. I do not like the result
 
-이 저장소에는 "더 좋게" 하는 손잡이가 없다. 검증은 **사실만** 본다.
-당신이 조정할 수 있는 것은 **입력**뿐이다:
+There is no "make it better" knob here. Validation looks at **facts only**. The only thing you can
+adjust is the **input**:
 
-| 증상 (리포트 「관측된 분포」에서 읽는다) | 손댈 곳 |
+| Symptom (read it in the report's "observed distribution") | Where to act |
 |---|---|
-| 10명이 사실상 한 명처럼 보인다 | 슬롯의 `사용됨` 수를 본다 → `deny` 를 줄이거나 팩 subset 을 넓힌다 |
-| 특정 파츠만 계속 나온다 (`최빈 비율` 높음) | `none_weight` · `allow` 조정, seed 범위 확대 |
-| 색이 다 비슷하다 | 팔레트 규칙 추가 (`03_PALETTES/`). 단 현재 엔진은 multiply tint 다 |
-| 화풍이 게임과 안 맞는다 | **파이프라인 문제가 아니다.** 팩 교체 또는 §11 art-studio 의 문제다 |
+| Ten characters look like one | Check each slot's "used" count → loosen `deny` or widen the pack subset |
+| One part keeps recurring (high most-common share) | Adjust `none_weight` / `allow`, widen the seed range |
+| Everything is the same color | Add palette rules (`03_PALETTES/`) — note the current engine is multiply tint |
+| The style does not fit the game | **Not a pipeline problem.** Change packs, or see §11 art-studio |
 
-**검증에 미적 기준을 추가하지 마라.** 톤 거리·색 분포로 합격선을 만들면
-좋은 결과가 숫자 때문에 버려진다.
+**Never add aesthetic criteria to validation.** A pass line built on tone distance or color
+distribution throws away good results because of a number.
 
-### F. 무엇이 바뀌었는지 확인하고 싶다 (회귀 점검)
+### F. I want to check what changed (regression)
 
 ```bash
-python3 tools/source_fingerprint.py     # 소스가 변조됐는가
-python3 tools/tests/test_pipeline.py    # 200 tests
-python3 tools/run_unity_tests.py        # Unity EditMode + PlayMode (Unity 필요)
+python3 tools/source_fingerprint.py     # were the sources tampered with?
+python3 tools/tests/test_pipeline.py    # 206 tests
+python3 tools/run_unity_tests.py        # Unity EditMode + PlayMode (needs Unity)
 ```
 
-같은 seed · 같은 규칙 · 같은 카탈로그면 결과는 **바이트까지 같아야 한다.**
-다르면 그 자체가 버그 신호다.
+Same seed + same rule + same catalog must give **byte-identical** results. A difference is itself
+a bug signal.
 
 ---
 
-## 7. 산출물 읽는 법 — 어떤 질문에 어떤 파일
+## 7. How to read the outputs — which question, which file
 
-에이전트는 PNG 를 보지 말고 **JSON 을 파싱하라.** 모든 `.md` 는 같은 사실의 사람용 표현이다.
+Agents should parse **JSON**, not look at PNGs. Every `.md` is a human-facing rendering of the
+same facts, and the `.md` files are in Korean.
 
-| 알고 싶은 것 | 읽을 파일 | 기계 판독 |
+| What you want to know | Human-readable | Machine-readable |
 |---|---|---|
-| 지금 무엇을 시킬 수 있나 | `02_CATALOG/CAPABILITIES.md` | 팩별 `.json` 의 `pack.capabilities` |
-| 이 팩에 뭐가 들어 있나 | `02_CATALOG/<pack>.summary.md` | `02_CATALOG/<pack>.json` (`entries[]`, `parts{}`) |
-| 이번 발주에 무엇을 했나 | `05_GENERATED/reports/<profile>_brief.md` | `..._brief.json` |
-| 통과했나 | `..._validation.md` | `..._validation.json` (`checks[]`, `status`) |
-| 출처를 어떻게 표기하나 | `..._attribution.md` | `character.json` 옆의 `sources.json` |
-| 이 캐릭터는 무엇으로 만들어졌나 | — | `05_GENERATED/characters/<profile>/<seed>/character.json` |
-| 재현 좌표 (승인 대상) | brief 의 ② | `generation.json` (`rule_sha256` · `catalog_sha256` · `seed`) |
-| Unity 가 소비할 것 | — | `06_UNITY_EXPORT/runtime/<profile>/runtime_manifest.json` |
+| What can be ordered now | `02_CATALOG/CAPABILITIES.md` | `pack.capabilities` in each `<pack>.json` |
+| What is in this pack | `02_CATALOG/<pack>.summary.md` | `02_CATALOG/<pack>.json` (`entries[]`, `parts{}`) |
+| What was done for this order | `05_GENERATED/reports/<profile>_brief.md` | `..._brief.json` |
+| Did it pass | `..._validation.md` | `..._validation.json` (`checks[]`, `status`) |
+| How to credit the authors | `..._attribution.md` | `attribution` block in the runtime manifest; `sources.json` per seed |
+| What this character is made of | — | `05_GENERATED/characters/<profile>/<seed>/character.json` |
+| Reproduction coordinates (what gets approved) | brief §② | `generation.json` (`rule_sha256` · `catalog_sha256` · `seed`) |
+| What Unity will consume | — | `06_UNITY_EXPORT/runtime/<profile>/runtime_manifest.json` |
 
-스키마 식별자: `ap2d.rule/1` · `ap2d.character/1` · `ap2d.unity_runtime/1`
+Schema identifiers: `ap2d.rule/1` · `ap2d.character/1` · `ap2d.unity_runtime/1` ·
+`ap2d.attribution/1`
 
-### 회신(brief) 여섯 절의 뜻
+### The six sections of the brief
 
-| 절 | 내용 | 에이전트가 주의할 것 |
+| § | Content | What an agent must be careful about |
 |---|---|---|
-| ① 무엇을 요청받았나 | 성격 · 소비자 · 프로파일 · 팩 | `self_verification` 이면 발주 대응이 아니다 |
-| ② 재현 좌표 | 규칙/카탈로그 sha256 · seed · 팔레트 | **승인은 PNG 가 아니라 여기에 건다** |
-| ③ 기술 검증 | 10종 검사 결과 | **PASS = 파이프라인 정합성. 채택도 출시 허가도 아니다** |
-| ④ 출시 신호 | `commercial_release_eligible` · 표기 필요 여부 | `false` 면 상업 출시 불가를 **명시적으로** 보고하라 |
-| ⑤ 관측된 분포 | 후보 중 몇 개가 실제로 나왔나 | **검사가 아니다.** 임계값도 등급도 없다 |
-| ⑥ 못 한 것 · 거절한 것 | 근거와 함께 | 비어 있으면 정말로 없는 것이다 |
+| ① What was requested | Purpose · consumer · profile · pack | `self_verification` means it was not an external order |
+| ② Reproduction coordinates | Rule/catalog sha256 · seed · palette | **Approval attaches here, not to the PNG** |
+| ③ Technical verification | The 10 checks | **PASS = pipeline consistency. Not adoption, not release clearance** |
+| ④ Release signals | `commercial_release_eligible` · credit obligation | If `false`, report the commercial restriction **explicitly** |
+| ⑤ Observed distribution | How many candidates actually appeared | **Not a check.** No thresholds, no grades |
+| ⑥ Not done / refused | With reasons | If empty, it is genuinely empty |
 
-### 검증 10종 (전부 사실 검사, 미적 판단 없음)
+### The 10 checks (all factual; no aesthetic judgement)
 
-생성 개수 일치 · `01_SOURCE` 원본 불변(hash 대조) · 카탈로그에 없는 asset 참조 금지 ·
-소스 asset 존재 · 생성물 파일 존재 · 이미지 치수 일치 · 알파 채널 유효 ·
-중복 조합 없음 · 라이선스 제한 전파 · 동일 seed 재생성 결과 일치.
+Generated count matches · `01_SOURCE` unchanged (hash comparison) · no reference to assets absent
+from the catalog · source assets exist · output files exist · image dimensions match · alpha
+channel valid · no duplicate combinations · license restrictions propagated · same seed
+regenerates identically.
 
 ---
 
-## 8. Unity 소비자 경계 (Export Contract v1)
+## 8. The Unity consumer boundary (Export Contract v1)
 
-### 게임이 아는 타입은 셋뿐
+### Game code knows exactly three types
 
-`CharacterProfile` · `CharacterAppearance` · `CharacterView`.
-라벨 규약 · `SpriteResolver` category · 슬롯 z-order · 시트 셀 좌표 · 소스 경로는
-**게임이 알 필요가 없고, 알면 안 된다.**
+`CharacterProfile` · `CharacterAppearance` · `CharacterView`. Label conventions, `SpriteResolver`
+categories, slot z-order, sheet cell coordinates, and source paths are things the game **does not
+need to know, and must not know.**
 
-### 소유권 경계 — exporter 는 자기 것만 건드린다
+### Ownership — the exporter touches only its own
 
-| 소유자 | 경로 | exporter |
+| Owner | Path | Exporter |
 |---|---|---|
-| Factory | `<pkg>/Runtime/`, `<pkg>/Editor/`, `<pkg>/Profiles/<p>/runtime_manifest.json`, `parts/` | 덮어쓴다 |
-| 소비자 | `<pkg>/Profiles/<p>/Generated/`, **모든 `.meta`** | **절대 지우지 않는다** |
-| 게임 | `Assets/Game/**` | 존재조차 모른다 |
+| Factory | `<pkg>/Runtime/`, `<pkg>/Editor/`, `<pkg>/Profiles/<p>/runtime_manifest.json`, `<pkg>/Profiles/<p>/ATTRIBUTION.md`, `parts/` | Overwrites |
+| Consumer | `<pkg>/Profiles/<p>/Generated/`, **every `.meta`** | **Never deletes** |
+| Game | `Assets/Game/**` | Does not know it exists |
 
-> **`.meta` 를 Factory 가 만들지 않는 이유**: `.meta` 안에 GUID 가 있다.
-> 지우면 Unity 가 새 GUID 를 발급하고, 그 에셋을 참조하던 scene · prefab ·
-> ScriptableObject 참조가 **전부 `Missing`** 이 된다.
-> 재-export 는 in-place 로 내용만 갈아끼워 GUID 를 유지한다.
+> **Why the Factory never creates `.meta`**: GUIDs live in `.meta`. Delete one and Unity issues a
+> new GUID, turning every serialized reference to that asset — scenes, prefabs, ScriptableObjects
+> — into `Missing`. Re-export updates content in place so GUIDs survive.
 
-### 사라진 외형은 자동으로 대체하지 않는다
+### Two license axes, both of which reach the consumer
 
-재-export 로 어떤 외형이 빠지면 `parts/` 텍스처(Factory 소유)는 지워지지만
-`Generated/` 의 에셋(소비자 소유)은 남는다. 빌더는 그것을
-`profile.staleAppearances[]` 에 **기록하고 경고만 한다.**
-지우지도, 다른 외형으로 바꾸지도 않는다. 애니메이션 fallback 도 없다 —
-없는 이름은 `false` 다.
+| Axis | Question | Where |
+|---|---|---|
+| `commercial_release_eligible` | May this ship in a commercial game? | Top of the manifest |
+| `attribution` | Must authors be credited, and as what text? | Manifest `attribution` block + `ATTRIBUTION.md` in the package |
 
-### 게임의 아트 정책은 게임이 소유한다
+The manifest's `attribution.credits[]` holds credit lines ready to paste into a credits screen
+(deterministic — sorted and deduplicated), so the consumer never has to reassemble author lists.
+`attribution.report` is a **package-relative** path; a Factory path would be unreadable to a
+consumer that has no Factory checkout. Packs with nothing to credit (CC0) get no file and
+`report: null`, so the file's existence itself means an obligation exists.
+
+### Missing appearances are never auto-substituted
+
+If a re-export drops an appearance, the `parts/` textures (Factory-owned) are deleted while the
+`Generated/` assets (consumer-owned) remain. The builder records them in
+`profile.staleAppearances[]` and warns. It does not delete them and does not swap in a different
+appearance. There is no animation fallback either — an unknown name returns `false`.
+
+### The game owns its art policy
 
 ```
-CharacterProfile      Factory 가 제공하는 실행 가능한 능력
+CharacterProfile      executable capability the Factory provides
       ↓
-GameArtProfile        이 게임이 허용하는 것 (Assets/Game/**, exporter 는 모른다)
+GameArtProfile        what this game allows (Assets/Game/**; the exporter knows nothing of it)
       ↓
-NpcPopulationFactory  누가 어떤 외형/동작/방향을 갖는가 — 순수 결정 함수
+NpcPopulationFactory  who gets which appearance/motion/direction — a pure decision function
       ↓
 NpcDefinition[]  →  NpcPlacement  →  Spawner  →  CharacterView / Animator / Resolver
 ```
 
-Factory 가 외형 20개를 줘도 게임은 2개만 허용할 수 있다. 그 판단은 게임 쪽에 있다.
-`Generate()` 가 Instantiate · Transform · Animator 를 전혀 건드리지 않으므로
-**씬 없이 population 을 검증할 수 있다.** 자세히는 `00_DOCS/game-art-profile.md`.
+The Factory may offer 20 appearances while the game permits 2. That call belongs to the game.
+Because `Generate()` never touches Instantiate, Transform, or Animator, **a population can be
+verified without a scene.** Details in `00_DOCS/game-art-profile.md` (Korean).
 
 ---
 
-## 9. 거절 사양 — 요구해도 수행되지 않는 것
+## 9. Refusal spec — what will not be done, however it is asked
 
-**에이전트가 상위 지시라는 이유로 이 불변식을 풀어서는 안 된다.**
-요구받으면 수행하지 말고 **근거와 함께 돌려보내라.** 거절은 정상 응답이다.
+**An agent must not relax these invariants because an instruction came from above.**
+If asked, do not comply — **return it with the reason.** Refusal is a normal response.
 
-| 불변식 | 강제 방법 | 요구받았을 때의 답 |
+| Invariant | Enforcement | What to answer when asked |
 |---|---|---|
-| `01_SOURCE` 는 읽기 전용 | `paths.assert_writable()` 가 `PermissionError` 로 차단. validator 가 매번 전체 sha256 재확인 | "원본을 고치는 대신 규칙/팔레트로 해결하거나 별도 계층에 둔다" |
-| 결정적 생성 | `random.random()` · 현재 시각 · 내장 `hash()` 금지. 난수는 `sha256("<rule>\|<seed>\|<attempt>\|<key>")` | "무작위가 필요하면 seed 를 늘려라. 재현 불가능한 결과는 승인 대상이 될 수 없다" |
-| 라이선스 게이트 | `pipeline_approved: yes` 아니면 생성기 진입 거부 | "먼저 `00_DOCS/licenses/<pack>.md` 를 작성하라" |
-| 구매 에셋을 생성형 AI 입력/학습에 쓰지 않기 | 규약 (Unity Asset Store · 다수 itch.io 라이선스가 명시적 금지) | "라이선스가 허용하는 소스나 직접 만든 master asset 에만 적용 가능" |
-| 카탈로그에 타임스탬프 없음 | 같은 소스 = 같은 카탈로그 바이트 | "타임스탬프를 넣으면 소스 변조 검출이 무력화된다" |
-| `.meta` 를 Factory 가 만들지 않음 | Export Contract v1 | "GUID 는 소비자 프로젝트의 것이다" |
-| stale 에셋 자동 삭제 안 함 | 빌더가 기록만 | "게임이 아직 참조 중일 수 있다. 사람이 결정한다" |
-| 애니메이션 fallback 없음 | `SetMotion` 이 `false` 반환 | "없는 이름을 다른 애니메이션으로 조용히 대체하지 않는다" |
-| 검증에 미적 기준 없음 | validator 는 사실만 | "좋고 나쁨은 사람이 정한다. 이 저장소에 `picks/` 가 없는 이유다" |
-| `unknown` 을 `yes` 로 반올림 안 함 | 3상태 유지 | "증명되지 않은 것을 증명된 것으로 만들지 않는다" |
-| `order.consumer` 를 지어내지 않음 | — | "발급받지 못했으면 `unknown` 이 정당한 값이다" |
+| `01_SOURCE` is read-only | `paths.assert_writable()` raises `PermissionError`; the validator re-hashes the whole tree every run | "Solve it with rules or palettes, or put it in a separate layer, instead of editing originals" |
+| Deterministic generation | No `random.random()`, no wall clock, no built-in `hash()`. Randomness is `sha256("<rule>\|<seed>\|<attempt>\|<key>")` | "If you need variety, add seeds. A non-reproducible result cannot be approved" |
+| License gate | Anything but `pipeline_approved: yes` blocks the generator | "Write `00_DOCS/licenses/<pack>.md` first" |
+| Never feed purchased assets to generative AI | Policy (Unity Asset Store terms and many itch.io licenses forbid it explicitly) | "Only license-permitting sources or self-made master assets qualify" |
+| No timestamps in catalogs | Same source must give the same catalog bytes | "A timestamp defeats source-tampering detection" |
+| The Factory never writes `.meta` | Export Contract v1 | "GUIDs belong to the consumer project" |
+| Stale assets are never auto-deleted | The builder only records them | "The game may still reference them. A human decides" |
+| No animation fallback | `SetMotion` returns `false` | "An unknown name is never silently swapped for another animation" |
+| No aesthetic criteria in validation | The validator sees facts only | "Good and bad are for humans. That is why there is no `picks/`" |
+| `unknown` is never rounded to `yes` | Three-state preserved | "We do not convert unproven into proven" |
+| `order.consumer` is never invented | — | "If none was issued, `unknown` is the correct value" |
 
-또한 **문서와 구현이 어긋나면 같은 변경 안에서 함께 고친다.**
-이 문서들은 다음 세션이 처음 읽는 것이라, 틀린 설명은 그 위에 쌓이는 작업을 전부 틀리게 만든다.
+Also: **when implementation and documentation diverge, they are fixed in the same change.**
+These documents are the first thing the next session reads; a wrong description makes everything
+built on top of it wrong.
 
 ---
 
-## 10. 사람에게 보고할 때 — 에이전트용 템플릿
+## 10. Reporting to a human — the agent's template
 
-판정이 끝났으면 **사람에게 당신의 해석을 설명한다.** 아래를 채워라.
-빈칸을 추측으로 메우지 말고 `unknown` 으로 남겨라.
+Once you have decided, **explain your reading.** Fill this in. Leave blanks as `unknown` rather
+than filling them with guesses.
 
 ```markdown
-### 2D Art Factory 적용 판정
+### 2D Art Factory applicability
 
-**결론**: 이 저장소는 우리 문제의 [전부 / 일부 / 해당 없음] 을 담당한다.
+**Verdict**: this repository covers [all / part of / none of] our problem.
 
-**우리가 시킬 수 있는 것**
-- (CAPABILITIES.md 에서 composable: yes 인 팩과 슬롯 수 · 조합 상한 인용)
+**What we can order**
+- (cite packs with composable: yes from CAPABILITIES.md, with slot counts and combination ceilings)
 
-**우리가 시킬 수 없는 것**
-- (composable: no 인 팩과 그 reason, 또는 §1 의 "하지 않는 일" 중 해당 항목)
+**What we cannot order**
+- (packs with composable: no and their reason, or the relevant row from §1 "What it does not do")
 
-**지금 막혀 있는 것**
-- 소스 에셋: [보유 / 미보유 — 출처 URL 은 00_DOCS/licenses/<pack>.md]
-- 라이선스 기록: [있음 / 없음 — 없으면 생성 자체가 차단됨]
-- 상업 출시: [가능 / 불가 — commercial_release_eligible 값 인용]
+**What is currently blocking us**
+- Source assets: [have / do not have — download URL is in 00_DOCS/licenses/<pack>.md]
+- License record: [present / absent — absent means generation itself is blocked]
+- Commercial release: [eligible / not — quote commercial_release_eligible]
+- Attribution: [required / not — if required, credits must go into our credits screen]
 
-**내가 제안하는 다음 한 걸음**
-- (§6 의 시나리오 하나를 지목하고, 실행할 명령을 그대로 적는다)
+**The single next step I propose**
+- (name one scenario from §6 and give the exact command)
 
-**사람이 결정해야 하는 것** (이 저장소는 판정하지 않는다)
-- 어느 조합을 채택할지 — contact sheet: 05_GENERATED/reports/<profile>.png
-- 이 화풍이 게임 아트 방향과 맞는지
-- (분포 관측 결과가 있으면 인용하되, 좋다/나쁘다고 말하지 말 것)
+**What a human must decide** (this repository does not judge)
+- Which combination to adopt — contact sheet: 05_GENERATED/reports/<profile>.png
+- Whether this style matches our art direction
+- (quote the observed distribution if relevant, but do not call it good or bad)
 ```
 
-> **보고할 때 하지 말 것**
-> - 검증 PASS 를 "채택 승인"으로 옮겨 적기 (③ 은 파이프라인 정합성일 뿐이다)
-> - `unknown` 을 "없음"으로 요약하기
-> - `composable: no` 를 "실패"로 보고하기 (명시적 SKIP 이다)
-> - 관측된 분포에 임의의 합격선을 붙이기
+> **When reporting, do not**
+> - transcribe a validation PASS as "approved for adoption" (§③ is pipeline consistency only)
+> - summarize `unknown` as "none"
+> - report `composable: no` as "failed" (it is an explicit SKIP)
+> - attach an invented pass line to the observed distribution
 
 ---
 
-## 11. 함께 쓰는 저장소
+## 11. Repositories used alongside this one
 
-| 저장소 | 역할 | 공개 |
+| Repository | Role | Public |
 |---|---|---|
-| **[2d-assets](https://github.com/jungyh870918/2d-assets)** (여기) | **증폭** — 조합 · 팔레트 · 검증 · 엔진 배선 | 공개 |
-| [art-studio](https://github.com/jungyh870918/art-studio) | **결정과 기억** — 아트 방향 · 승인 · 기록. 이 저장소를 에셋 팩토리로 쓰는 상위 계층 | 공개 |
-| [game-sandbox](https://github.com/jungyh870918/game-sandbox) | 소비자 쪽 경계를 실측하는 별도 Unity 프로젝트 (Factory 저장소 없이도 열리고 돈다) | 비공개 |
+| **[2d-assets](https://github.com/jungyh870918/2d-assets)** (here) | **Amplification** — combination · palette · validation · engine wiring | Public |
+| [art-studio](https://github.com/jungyh870918/art-studio) | **Decision and memory** — art direction, approvals, records. The layer above that uses this repo as its asset factory | Public |
+| [game-sandbox](https://github.com/jungyh870918/game-sandbox) | Integration fixture that proves Factory output runs in an external Unity project **without the Factory repo present** | Private |
 
 ```
-art-studio/     결정 — 무엇을 만들 것인가 · 무엇을 채택하는가
-     │  발주 (CAPABILITIES.md 를 읽고)
+art-studio/     decides — what to make, what to adopt
+     │  order (having read CAPABILITIES.md)
      ▼
-2d-assets/      증폭 — 조합 · 검증 · export        ← 여기
-     │  회신 (<profile>_brief.md)
+2d-assets/      amplifies — combine · verify · export        ← here
+     │  reply (<profile>_brief.md)
      ▼
-게임 프로젝트     소비 — GameArtProfile 로 무엇을 쓸지 정한다
+game project     consumes — GameArtProfile decides what to use
 ```
 
-에셋 팩은 계속 추가되며, 추가될 때마다 `02_CATALOG/CAPABILITIES.md` 가 자동으로 갱신된다.
-**팩 목록의 최신 사실은 이 README 가 아니라 그 파일에 있다.**
+Asset packs keep being added, and `02_CATALOG/CAPABILITIES.md` regenerates itself each time.
+**The current pack list lives in that file, not in this README.**
 
 ---
 
-## 12. 자주 하는 오해
+## 12. Common misreadings
 
-| 오해 | 사실 |
+| Misreading | Fact |
 |---|---|
-| "클론하면 에셋도 같이 온다" | 아니다. `01_SOURCE` 는 gitignore 다. 기계만 온다 (§2) |
-| "검증 PASS 면 써도 된다" | 파이프라인 정합성만 통과한 것이다. 채택도 출시 허가도 아니다 |
-| "`05_GENERATED` 를 손으로 고치면 된다" | 언제든 삭제·재생성 가능해야 한다. 손으로 고치는 순간 재현성이 죽는다 |
-| "PNG 를 승인하면 된다" | 승인은 **팩 해시 + 규칙 파일 + seed** 에 건다. PNG 는 언제든 재생성된다 |
-| "분포 리포트에 합격선이 있다" | 없다. 세기만 하고 판정하지 않는다 |
-| "`unknown` 은 사실상 `no` 다" | 아니다. "증명되지 않았다"이며 나중에 `yes` 가 될 수 있다 |
-| "새 팩마다 코드를 고쳐야 한다" | 대부분 어휘(`BODY_PART_VOCAB`)에 단어만 추가한다. adapter 는 팩이 권위 metadata 를 줄 때만 |
-| "Factory 가 Unity prefab 을 만든다" | 아니다. manifest·시트·C# 을 주고, prefab·SpriteLibrary·clip 은 소비자 에디터 빌더가 만든다 |
-| "이걸로 주인공을 만들 수 있다" | 모집단용이다. 정체성은 디렉팅 루프의 몫이다 (§1) |
+| "Cloning brings the assets too" | No. `01_SOURCE` is gitignored. Only the machine arrives (§2) |
+| "Validation PASS means it is safe to ship" | It passed pipeline consistency. Not adoption, not release clearance |
+| "I can hand-edit `05_GENERATED`" | It must stay deletable and regenerable. Hand-editing kills reproducibility |
+| "Approve the PNG" | Approval attaches to **pack hash + rule file + seed**. PNGs regenerate |
+| "The distribution report has a pass line" | It does not. It counts; it does not judge |
+| "`unknown` effectively means `no`" | No. It means "not proven", and may become `yes` later |
+| "`commercial_use: yes` means I can ship it as-is" | Not if `credit_required: yes`. Credit is a separate axis (§4, §8) |
+| "Every new pack needs code changes" | Usually just a word in `BODY_PART_VOCAB`. Adapters are only for packs supplying authoritative metadata |
+| "The Factory builds Unity prefabs" | No. It ships manifests, sheets, and C#; prefabs, SpriteLibraries, and clips are built by the consumer's editor builders |
+| "I can make my protagonist with this" | It is for populations. Identity belongs to the directing loop (§1) |
 
 ---
 
-## 13. 환경 · 검증
+## 13. Environment and verification
 
 ```
-Python 3.9+ · Pillow    (그 외 의존성 없음)
-Unity 쪽은 선택 — 소비자 프로젝트에서만 필요
+Python 3.9+ · Pillow    (no other dependencies)
+Unity is optional — needed only in the consumer project
 ```
 
 ```bash
-python3 tools/tests/test_pipeline.py     # 소스 팩 보유 시: 200 tests 통과, 약 60초
-python3 tools/source_fingerprint.py      # 01_SOURCE 트리 sha256
-python3 tools/run_unity_tests.py         # EditMode + PlayMode (Unity 설치 필요)
+python3 tools/tests/test_pipeline.py     # with source packs: 206 tests pass, about 60s
+python3 tools/source_fingerprint.py      # sha256 of the 01_SOURCE tree
+python3 tools/run_unity_tests.py         # EditMode + PlayMode (requires Unity)
 ```
 
-**소스 팩이 없는 클론에서 테스트를 돌리면 전부 통과하지 않는다.** 실측값:
+**On a clone without source packs the suite does not fully pass.** Measured:
 
-| 상태 | 결과 |
+| State | Result |
 |---|---|
-| 소스 팩 보유 | `Ran 200 tests ... OK` (약 57초) |
-| 소스 없는 클론 | `Ran 193 tests ... FAILED (failures=2, errors=6, skipped=38)` (1초 미만) |
+| Source packs present | `Ran 206 tests ... OK` (about 57s) |
+| Clone without sources | `Ran 199 tests ... FAILED (failures=1, errors=6, skipped=44)` (under 1s) |
 
-실패하는 8개는 전부 **실제 소스 파일 또는 이전 산출물을 요구하는 검사**다 —
-`test_every_source_file_exists` · `test_rendered_images_are_byte_identical` ·
-`test_catalog_build_is_deterministic` · `test_generated_outputs_preserve_direction` 등.
-**코드가 깨진 것이 아니다.** 재료가 없는 것이고, §2 와 같은 이유다.
-소스를 받아 `01_SOURCE` 에 놓으면 전량 통과해야 한다 — 그러지 않으면 그때가 진짜 회귀다.
+The 7 failures all require **real source files or prior outputs** — `test_every_source_file_exists`
+· `test_rendered_images_are_byte_identical` · `test_catalog_build_is_deterministic` ·
+`test_compose_uses_generic_path_for_both_packs`, and so on. **The code is not broken.** The
+material is missing, for the same reason as §2. Once sources are in `01_SOURCE` the whole suite
+must pass — if it does not, that is a real regression.
 
-Unity 기본 규격 (규칙이 지정하지 않을 때):
+Unity defaults (when a rule does not specify):
 
 ```
-Pixels Per Unit   : 팩의 타일/셀 크기와 일치 (LPC = 64, LimeZu = 16)
+Pixels Per Unit   : matches the pack's tile/cell size (LPC = 64, LimeZu = 16)
 Filter Mode       : Point (no filter)
 Compression       : None
-Pivot             : Bottom Center (캐릭터) / Center (프롭)
-Sprite Mode       : Multiple (시트) / Single (개별 PNG)
+Pivot             : Bottom Center (characters) / Center (props)
+Sprite Mode       : Multiple (sheets) / Single (individual PNGs)
 Mesh Type         : Full Rect
 ```
 
 ---
 
-## 14. 폴더 구조 · 문서 색인
+## 14. Folder structure and document index
 
 ```
-00_DOCS/          라이선스 기록 · 계약 문서 · 결정 기록
-01_SOURCE/        구매/다운로드 원본. 절대 수정 금지 (read-only, gitignored)
-  _INBOX/         다운로드한 zip 임시 보관
-02_CATALOG/       스캔 결과 (JSON) · 사람이 읽는 요약 · CAPABILITIES.md
-03_PALETTES/      팔레트 정의 (램프 구조)
-04_RULES/         생성 규칙 (조합 제약 · 확률 · 금지 조합 · order 블록)
-05_GENERATED/     정의 · PNG · 검증 리포트 · 발주 회신 (gitignored, 재생성 가능)
-06_UNITY_EXPORT/  Unity 로 넘길 패키지 (baked / runtime 두 갈래, gitignored)
-tools/            스캐너 · 생성기 · 검증 · 익스포터
-  ap2d/           파이프라인 라이브러리 (팩 이름을 모른다)
-    packs/        팩별 adapter — pack-specific 지식은 여기에만
-  unity/          소비자 프로젝트로 복사되는 C#
+00_DOCS/          license records · contracts · decision records
+01_SOURCE/        purchased/downloaded originals. Never modified (read-only, gitignored)
+  _INBOX/         staging for downloaded zips
+02_CATALOG/       scan results (JSON) · human summaries · CAPABILITIES.md
+03_PALETTES/      palette definitions (ramp structure)
+04_RULES/         generation rules (constraints · probabilities · exclusions · order block)
+05_GENERATED/     definitions · PNGs · validation reports · briefs (gitignored, regenerable)
+06_UNITY_EXPORT/  packages for Unity (baked / runtime, gitignored)
+tools/            scanner · generator · validator · exporters
+  ap2d/           pipeline library (knows no pack names)
+    packs/        per-pack adapters — the only home for pack-specific knowledge
+  unity/          C# copied into the consumer project
 ```
 
-| 문서 | 무엇 |
+Documents marked (KR) are Korean.
+
+| Document | Contents |
 |---|---|
-| [CLAUDE.md](CLAUDE.md) | 이 저장소에서 작업할 때의 지침 · 절대 규칙 |
-| [tools/README.md](tools/README.md) | 명령 전체 · 모듈 구조 · 분류 어휘 · capability 계산 상세 |
-| [02_CATALOG/CAPABILITIES.md](02_CATALOG/CAPABILITIES.md) | **자동 생성 — 지금 무엇을 시킬 수 있는가** |
-| [00_DOCS/DIRECTOR_CONTEXT.md](00_DOCS/DIRECTOR_CONTEXT.md) | 누가 결정하는가 · 고정된 경계 · 발주 입출력 |
-| [00_DOCS/export-contract-v1.md](00_DOCS/export-contract-v1.md) | Factory ↔ 소비자 소유권 경계 · GUID 안정성 · 실측 |
-| [00_DOCS/game-art-profile.md](00_DOCS/game-art-profile.md) | 게임이 허용하는 것 · population 결정 경계 |
-| [00_DOCS/unity-sprite-runtime.md](00_DOCS/unity-sprite-runtime.md) | Sprite Library / Resolver 런타임 |
-| [00_DOCS/naming-convention.md](00_DOCS/naming-convention.md) | 팩 · 파일 네이밍 |
-| [00_DOCS/licenses/](00_DOCS/licenses/) | 팩별 라이선스 기록 (생성 게이트의 입력) |
+| [CLAUDE.md](CLAUDE.md) (KR) | Working instructions and absolute rules for this repo |
+| [tools/README.md](tools/README.md) (KR) | Every command · module structure · classification vocabulary · capability computation |
+| [02_CATALOG/CAPABILITIES.md](02_CATALOG/CAPABILITIES.md) (KR) | **Auto-generated — what can be ordered right now** |
+| [00_DOCS/DIRECTOR_CONTEXT.md](00_DOCS/DIRECTOR_CONTEXT.md) (KR) | Who decides · fixed boundaries · order in/out |
+| [00_DOCS/export-contract-v1.md](00_DOCS/export-contract-v1.md) (KR) | Factory ↔ consumer ownership · GUID stability · measurements |
+| [00_DOCS/game-art-profile.md](00_DOCS/game-art-profile.md) (KR) | What a game permits · population decision boundary |
+| [00_DOCS/unity-sprite-runtime.md](00_DOCS/unity-sprite-runtime.md) (KR) | Sprite Library / Resolver runtime |
+| [00_DOCS/naming-convention.md](00_DOCS/naming-convention.md) (KR) | Pack and file naming |
+| [00_DOCS/licenses/](00_DOCS/licenses/) (KR) | Per-pack license records (input to the generation gate) |
 
 ---
 
-## 라이선스
+## License
 
-이 저장소의 **코드와 문서**(`tools/` · `00_DOCS/` · `02_CATALOG/` · `03_PALETTES/` · `04_RULES/`)에
-대한 것이다. **에셋 원본은 여기 포함되지 않으며**, 각 팩의 라이선스는 그 팩의 것이다 —
-`00_DOCS/licenses/<pack>.md` 를 반드시 직접 확인하라.
-생성물의 상업적 사용 가능 여부는 소스 팩 라이선스를 따르고,
-`commercial_release_eligible` 로 계산되어 산출물까지 전파된다.
+This covers the **code and documents** in this repository (`tools/` · `00_DOCS/` · `02_CATALOG/` ·
+`03_PALETTES/` · `04_RULES/`). **Asset originals are not included here**, and each pack's license
+is its own — always read `00_DOCS/licenses/<pack>.md` directly. Whether generated output may be
+used commercially follows the source pack's license, is computed as
+`commercial_release_eligible`, and propagates to the outputs. Attribution obligations propagate
+the same way and are your responsibility to honour in the consuming project.
