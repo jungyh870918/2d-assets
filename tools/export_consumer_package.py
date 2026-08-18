@@ -21,7 +21,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from ap2d import paths  # noqa: E402
+from ap2d import paths, runtime_export  # noqa: E402
 
 UNITY_SRC = os.path.join(paths.REPO_ROOT, "tools", "unity")
 
@@ -82,6 +82,7 @@ def _replace_tree(src, dest):
 
 def export(dest_assets, profiles, package="ArtFactory"):
     manifest_records = []
+    attributions = {}
     pkg_root = os.path.join(dest_assets, package)
     scripts_dir = os.path.join(pkg_root, "Runtime")
     editor_dir = os.path.join(pkg_root, "Editor")
@@ -130,8 +131,22 @@ def export(dest_assets, profiles, package="ArtFactory"):
                                  "runtime required",
                                  "슬라이스된 스프라이트의 실제 텍스처"))
 
+        # 표기 의무는 소비자 저장소에서 지켜져야 한다. Factory 저장소의 리포트를
+        # 가리키기만 하면 소비자는 그걸 못 읽는다 — 그래서 패키지 안으로 복사된다.
+        report = os.path.join(dest, runtime_export.ATTRIBUTION_REPORT)
+        if os.path.isfile(report):
+            manifest_records.append((runtime_export.ATTRIBUTION_REPORT,
+                                     "06_UNITY_EXPORT/runtime/%s/" % profile,
+                                     "%s/Profiles/%s/" % (package, profile),
+                                     "license obligation",
+                                     "저자 표기 원문. 배포 전 credits 에 반영해야 한다"))
+        manifest_path = os.path.join(dest, "runtime_manifest.json")
+        if os.path.isfile(manifest_path):
+            with open(manifest_path, "r", encoding="utf-8") as fh:
+                attributions[profile] = json.load(fh).get("attribution") or {}
+
     fingerprint = _write_export_manifest(pkg_root, profiles)
-    _write_readme(pkg_root, profiles, manifest_records)
+    _write_readme(pkg_root, profiles, manifest_records, attributions)
     return pkg_root, manifest_records, fingerprint
 
 
@@ -184,11 +199,32 @@ def _write_export_manifest(pkg_root, profiles):
     return fingerprint
 
 
-def _write_readme(pkg_root, profiles, records):
+def _write_readme(pkg_root, profiles, records, attributions=None):
+    attributions = attributions or {}
     lines = ["# ArtFactory — consumer package", ""]
     lines.append("`tools/export_consumer_package.py` 가 복사한 자족 패키지다.")
     lines.append("Factory 저장소가 없어도 이 폴더만으로 동작해야 한다. 손으로 고치지 않는다.")
     lines.append("")
+    required = sorted(p for p, a in attributions.items()
+                      if a.get("attribution_required"))
+    if required:
+        lines.append("## ⚠️ 저자 표기 의무")
+        lines.append("")
+        lines.append("이 패키지의 아트는 **표기 없이 배포하면 라이선스 위반**이다. "
+                     "`commercial_use: yes` 와는 별개의 축이다.")
+        lines.append("")
+        for profile in required:
+            attrib = attributions[profile]
+            lines.append("**`%s`** — 저자 %d명 · %s · 원문 `Profiles/%s/%s`"
+                         % (profile, len(attrib.get("authors") or []),
+                            ", ".join("`%s`" % l for l in attrib.get("licenses") or []),
+                            profile, attrib.get("report") or "—"))
+            lines.append("")
+            lines.append("```")
+            for text in attrib.get("credits") or []:
+                lines.append(text)
+            lines.append("```")
+            lines.append("")
     lines.append("## 쓰는 법")
     lines.append("")
     lines.append("1. 메뉴 **2D Art Factory > Build Sprite Libraries** 에서 "

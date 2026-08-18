@@ -112,6 +112,15 @@ def attribution_text(authors, license_name):
     return "%s — %s" % (", ".join(authors), license_name or "license unknown")
 
 
+def credit_lines(summary):
+    """게임 credits 화면에 그대로 넣을 줄들. 정렬 중복 제거라 결정적이다.
+
+    리포트 · runtime manifest · 소비자 패키지 README 가 **같은 함수**를 쓴다.
+    세 곳이 각자 만들면 하나만 고쳐지고 나머지가 조용히 낡는다.
+    """
+    return sorted(set(e["text"] for e in summary.get("attribution_entries") or []))
+
+
 def merge(summaries):
     """캐릭터별 attribution 여러 개를 population 하나로 합친다."""
     credits = []
@@ -137,9 +146,10 @@ def merge(summaries):
     return merged
 
 
-def render_report(profile, pack, summary, character_count):
+def render_report(profile, pack, summary, character_count,
+                  generated_by="tools/validate_generated.py"):
     L = ["# %s — attribution report" % profile, ""]
-    L.append("자동 생성됨: `tools/validate_generated.py`. 손으로 고치지 않는다.")
+    L.append("자동 생성됨: `%s`. 손으로 고치지 않는다." % generated_by)
     L.append("")
     L.append("| 항목 | 값 |")
     L.append("|---|---|")
@@ -163,7 +173,7 @@ def render_report(profile, pack, summary, character_count):
              "그대로 쓸 수 있다. (완성된 credits 시스템은 아직 만들지 않는다.)")
     L.append("")
     L.append("```")
-    for text in sorted(set(e["text"] for e in summary["attribution_entries"])):
+    for text in credit_lines(summary):
         L.append(text)
     L.append("```")
     L.append("")
@@ -186,10 +196,12 @@ def render_report(profile, pack, summary, character_count):
     return "\n".join(L)
 
 
-def write_report(profile, pack, summary, character_count, out_path=None):
+def write_report(profile, pack, summary, character_count, out_path=None,
+                 generated_by="tools/validate_generated.py"):
     out_path = out_path or os.path.join(paths.GEN_REPORTS,
                                         "%s_attribution.md" % profile)
     paths.ensure_dir(os.path.dirname(out_path))
     with open(paths.assert_writable(out_path), "w", encoding="utf-8") as fh:
-        fh.write(render_report(profile, pack, summary, character_count))
+        fh.write(render_report(profile, pack, summary, character_count,
+                               generated_by=generated_by))
     return out_path

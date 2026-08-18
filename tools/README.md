@@ -26,7 +26,8 @@ python3 tools/run_pipeline.py 04_RULES/cc0_test_population.json --rescan
 | `python3 tools/make_contact_sheet.py <profile>` | 결과 한 장에 모으기 | `05_GENERATED/reports/<profile>.png` |
 | `python3 tools/validate_generated.py <규칙>` | 10종 검사 + 분포 관측 | `05_GENERATED/reports/<profile>_validation.{json,md}` + `_attribution.md` |
 | `python3 tools/order_brief.py <규칙>` | 회신 한 장 (재현 좌표·출시 신호·못 한 것) | `05_GENERATED/reports/<profile>_brief.{json,md}` |
-| `python3 tools/export_unity.py <규칙>` | Unity 용 패키지 | `06_UNITY_EXPORT/characters/<profile>/` |
+| `python3 tools/export_unity.py <규칙>` | Unity 용 패키지 (baked) | `06_UNITY_EXPORT/characters/<profile>/` |
+| `python3 tools/export_unity_runtime.py <규칙>` | Unity 용 패키지 (Sprite Library) | `06_UNITY_EXPORT/runtime/<profile>/` + `ATTRIBUTION.md` |
 | `python3 tools/ingest_lpc_subset.py <LPC repo>` | LPC subset 결정적 선택 + ingest | `01_SOURCE/characters/lpc_...`, `00_DOCS/lpc-phase1-subset.md` |
 | `python3 tools/tests/test_pipeline.py` | 자동 테스트 전량 (개수는 실행이 출력) | — |
 
@@ -59,7 +60,8 @@ ap2d/
   generate.py      결정적 생성기 (sha256 기반 슬롯별 난수 스트림)
   contactsheet.py  contact sheet + 방향 정렬 확인 시트
   validate.py      검증 10종 + 관측된 분포 (분포는 검사가 아니다 — status 에 관여하지 않는다)
-  attribution.py   파일 단위 provenance 집계 + attribution 리포트
+  attribution.py   파일 단위 provenance 집계 + attribution 리포트.
+                   credit_lines() 는 리포트·manifest·소비자 README 가 공유한다
   order.py         발주 회신 한 장 + 규칙의 order 블록 (purpose/consumer/request/not_done)
   unity_export.py  06_UNITY_EXPORT/characters — baked 경로
   runtime_export.py 06_UNITY_EXPORT/runtime — Sprite Library 경로 (기본값)

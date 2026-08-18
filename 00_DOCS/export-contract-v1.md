@@ -13,7 +13,7 @@ Factory 와 소비자 게임 프로젝트 사이의 경계를 고정한다.
 
 | 소유자 | 경로 | exporter 의 행동 |
 |---|---|---|
-| Factory | `<pkg>/Runtime/`, `<pkg>/Editor/`, `<pkg>/Profiles/<p>/runtime_manifest.json`, `<pkg>/Profiles/<p>/parts/` | 덮어쓴다. 더 이상 내보내지 않는 파일은 짝 `.meta` 와 함께 지운다 |
+| Factory | `<pkg>/Runtime/`, `<pkg>/Editor/`, `<pkg>/Profiles/<p>/runtime_manifest.json`, `<pkg>/Profiles/<p>/ATTRIBUTION.md`, `<pkg>/Profiles/<p>/parts/` | 덮어쓴다. 더 이상 내보내지 않는 파일은 짝 `.meta` 와 함께 지운다 |
 | 소비자 | `<pkg>/Profiles/<p>/Generated/`, 모든 `.meta` | **절대 지우지 않는다** |
 | 게임 | `Assets/Game/**` | 존재조차 모른다 |
 
@@ -50,6 +50,29 @@ Factory 와 소비자 게임 프로젝트 사이의 경계를 고정한다.
 > 이 규칙을 처음 구현할 때 `sorted(os.walk(...))` 로 감쌌더니 walk 가 통째로
 > 소비된 뒤 정렬되어 `dirs[:]` 가지치기가 무효가 됐고, `Generated/` 가 지문에
 > 섞여 들어갔다. 실측(A→B)에서 같은 입력의 지문이 달라져 잡았다.
+
+### 표기 의무 (attribution)
+
+라이선스 신호는 **두 축**이다. 이전 구현은 한 축만 소비자까지 날랐다.
+
+| 축 | 질문 | 어디에 |
+|---|---|---|
+| `commercial_release_eligible` | 상업 게임에 실어도 되는가 | manifest 최상단 |
+| `attribution` | 저자를 표기해야 하는가 · 무엇이라고 | manifest `attribution` + `ATTRIBUTION.md` |
+
+`commercial_use: yes` 는 표기 의무를 면제하지 않는다. LPC 는 `commercial_use: yes`
+이면서 `credit_required: yes` 이고, 표기 없이 배포하면 CC-BY / OGA-BY 위반이다.
+
+- `licensing.summarize()` 에 `credit_required` 가 실린다 (3상태 — 없으면 `unknown`).
+- `runtime_manifest.json` 에 **프로파일 단위** `attribution` 블록이 실린다.
+  이전에는 appearance 마다 요약만 있어서 소비자가 저자를 직접 합쳐야 했다.
+  `credits[]` 는 credits 화면에 그대로 넣는 줄이고 정렬 중복 제거라 결정적이다.
+- `ATTRIBUTION.md` 가 **패키지 안으로 복사된다.** `report` 는 패키지 상대 경로다 —
+  `05_GENERATED/reports/...` 를 가리키면 Factory 저장소가 없는 소비자는 못 읽는다.
+- 표기 대상이 없는 팩(CC0)에서는 파일을 만들지 않고 `report: null` 이다.
+  파일이 있다는 것 자체가 의무가 있다는 뜻이 되게 한다.
+
+`ATTRIBUTION.md` 는 Factory 소유라서 `content_fingerprint` 에 포함된다.
 
 ### 산출물 성격 라벨
 

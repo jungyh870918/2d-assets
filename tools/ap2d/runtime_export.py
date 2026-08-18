@@ -34,6 +34,8 @@ import os
 from . import TOOL_VERSION, attribution, compose, licensing, order, paths
 
 SCHEMA = "ap2d.unity_runtime/1"
+# 소비자 패키지 안에서의 리포트 이름. 패키지 상대 경로로 manifest 에 실린다.
+ATTRIBUTION_REPORT = "ATTRIBUTION.md"
 
 LABEL_SEP = "__"
 
@@ -149,6 +151,7 @@ def export(rule, cat, characters, out_root=None, cell_size=256,
 
     # ── appearance (character.json 을 그대로 입력으로 쓴다) ─────────────────
     appearances = []
+    appearance_attribs = []
     for cdir, definition in characters:
         layers = []
         for slot in definition["layer_order"]:
@@ -177,6 +180,9 @@ def export(rule, cat, characters, out_root=None, cell_size=256,
         if os.path.isfile(gen_path):
             with open(gen_path, "r", encoding="utf-8") as fh:
                 attrib = json.load(fh).get("attribution") or {}
+        # appearance 블록에는 요약만 싣지만, 프로파일 단위 rollup 을 만들려면
+        # entries 가 있는 원본이 필요하다.
+        appearance_attribs.append(attrib)
         appearances.append({
             "seed": definition["seed"],
             "archetype": definition.get("archetype", ""),
@@ -208,6 +214,30 @@ def export(rule, cat, characters, out_root=None, cell_size=256,
     topology = _topology(cat, parts, animations, wanted_directions)
     caps = cat["pack"].get("capabilities", {})
     settings = dict(rule.get("unity", {}))
+
+    # 표기 의무는 소비자까지 따라가야 한다. 이전에는 appearance 마다 요약만 실려서,
+    # 게임 credits 를 만들려면 소비자가 appearance 를 전부 훑어 합쳐야 했다.
+    # 그건 소비자가 할 일이 아니다 — Factory 가 이미 아는 사실이다.
+    merged = attribution.merge(appearance_attribs)
+    report_name = None
+    if merged["attribution_entries"]:
+        report_name = ATTRIBUTION_REPORT
+        attribution.write_report(
+            rule["profile"], rule["pack"], merged, len(appearances),
+            out_path=os.path.join(out_root, report_name),
+            generated_by="tools/export_unity_runtime.py")
+    profile_attribution = {
+        "source_assets": merged["source_assets"],
+        "authors": merged["authors"],
+        "licenses": merged["licenses"],
+        "source_urls": merged["source_urls"],
+        # credits 화면에 그대로 넣을 줄. 소비자가 저자 목록을 다시 조합하지 않는다.
+        "credits": attribution.credit_lines(merged),
+        "attribution_required": merged["attribution_required"],
+        "share_alike_present": merged["share_alike_present"],
+        # **패키지 상대 경로다.** 소비자에게 Factory 저장소 경로를 주면 못 읽는다.
+        "report": report_name,
+    }
 
     manifest = {
         "schema": SCHEMA,
@@ -246,6 +276,9 @@ def export(rule, cat, characters, out_root=None, cell_size=256,
         "missing_animation_policy": "hide_layer",
         "license": license_summary,
         "commercial_release_eligible": license_summary["commercial_release_eligible"],
+        # 상업 사용 가능(commercial_release_eligible) 과 **다른 축**이다.
+        # 표기 의무를 지키지 않으면 commercial_use: yes 여도 라이선스 위반이다.
+        "attribution": profile_attribution,
         "part_sheets": sheet_records,
         "appearances": appearances,
         "counts": {

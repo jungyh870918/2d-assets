@@ -2262,6 +2262,102 @@ class TestExportContractV1(unittest.TestCase):
                              "짝 없는 .meta 가 남았다")
 
 
+class TestAttributionReachesConsumer(unittest.TestCase):
+    """표기 의무가 소비자 패키지까지 따라가는가.
+
+    이전에는 여기서 끊겼다. attribution 리포트는 `05_GENERATED/reports/` 에서
+    멈췄고, runtime manifest 는 appearance 마다 요약만 실었으며, license 요약에는
+    `credit_required` 가 아예 없었다. 그 상태로 소비자 저장소를 공개하면
+    CC-BY / OGA-BY 아트를 저자 표기 없이 재배포하게 된다.
+
+    `commercial_use: yes` 는 표기 의무를 면제하지 않는다 — **다른 축이다.**
+    """
+
+    PROFILE = "lpc_phase2_showcase"
+
+    def _runtime_manifest(self):
+        path = os.path.join(paths.UNITY_EXPORT, "runtime", self.PROFILE,
+                            "runtime_manifest.json")
+        if not os.path.isfile(path):
+            self.skipTest("runtime export 없음")
+        with open(path, "r", encoding="utf-8") as fh:
+            return json.load(fh), os.path.dirname(path)
+
+    def test_license_summary_carries_credit_required(self):
+        """표기 의무도 3상태다. 없으면 unknown 이고, yes 로 반올림하지 않는다."""
+        self.assertEqual(licensing.YES,
+                         licensing.summarize(licensing.load(LPC_PACK))["credit_required"])
+        self.assertEqual(licensing.NO,
+                         licensing.summarize(licensing.load(PACK))["credit_required"])
+        self.assertEqual(licensing.UNKNOWN,
+                         licensing.summarize({"pack": PACK, "license": "x"})["credit_required"])
+
+    def test_runtime_manifest_has_profile_level_attribution(self):
+        """소비자가 appearance 를 훑어 저자를 합치게 하지 않는다."""
+        manifest, _root = self._runtime_manifest()
+        attrib = manifest["attribution"]
+        self.assertTrue(attrib["attribution_required"])
+        self.assertTrue(attrib["authors"], "프로파일 단위 저자 목록이 비었다")
+        self.assertTrue(attrib["credits"], "credits 화면에 넣을 줄이 비었다")
+        for line in attrib["credits"]:
+            self.assertIn("—", line, "credit 줄에 라이선스가 없다: %s" % line)
+        # appearance 를 전부 합친 것과 같아야 한다 (빠진 저자가 없어야 한다)
+        from_appearances = set()
+        for appearance in manifest["appearances"]:
+            from_appearances.update(appearance["attribution"]["authors"])
+        self.assertEqual(from_appearances, set(attrib["authors"]),
+                         "프로파일 rollup 이 appearance 저자와 어긋난다")
+
+    def test_attribution_report_ships_with_runtime_export(self):
+        """리포트가 Factory 저장소에만 있으면 소비자는 못 읽는다."""
+        manifest, root = self._runtime_manifest()
+        name = manifest["attribution"]["report"]
+        self.assertEqual(runtime_export_module().ATTRIBUTION_REPORT, name)
+        path = os.path.join(root, name)
+        self.assertTrue(os.path.isfile(path), "리포트가 runtime export 에 없다")
+        text = open(path, encoding="utf-8").read()
+        for author in ("bluecarrot16", "JaidynReiman"):
+            self.assertIn(author, text)
+
+    def test_report_path_is_package_relative_not_factory_path(self):
+        """소비자에게 Factory 저장소 경로를 주면 못 읽는다."""
+        manifest, _root = self._runtime_manifest()
+        name = manifest["attribution"]["report"]
+        for factory_path in ("05_GENERATED", "06_UNITY_EXPORT", "/"):
+            self.assertNotIn(factory_path, name,
+                             "report 가 패키지 상대 경로가 아니다: %s" % name)
+
+    def test_consumer_package_contains_attribution(self):
+        """실제로 내보낸 패키지 안에 표기 원문과 경고가 있는가."""
+        import export_consumer_package as ecp
+        src = os.path.join(paths.UNITY_EXPORT, "runtime", self.PROFILE)
+        if not os.path.isdir(src):
+            self.skipTest("runtime export 없음")
+        with tempfile.TemporaryDirectory() as tmp:
+            assets = os.path.join(tmp, "Assets")
+            os.makedirs(assets)
+            pkg, _records, _fp = ecp.export(assets, [self.PROFILE])
+
+            report = os.path.join(pkg, "Profiles", self.PROFILE,
+                                  runtime_export_module().ATTRIBUTION_REPORT)
+            self.assertTrue(os.path.isfile(report),
+                            "패키지에 attribution 리포트가 없다")
+
+            readme = open(os.path.join(pkg, "README.md"), encoding="utf-8").read()
+            self.assertIn("저자 표기 의무", readme)
+            self.assertIn("bluecarrot16", readme,
+                          "README 가 표기 원문을 싣지 않는다")
+
+    def test_credit_lines_are_deterministic_and_deduplicated(self):
+        entry = {"source_file": "a.png", "selected_license": "OGA-BY 3.0",
+                 "authors": ["b", "a"], "alternative_licenses": [],
+                 "source_urls": [], "used_by": ["torso/x"],
+                 "text": "a, b — OGA-BY 3.0"}
+        summary = {"attribution_entries": [entry, dict(entry), entry]}
+        self.assertEqual(["a, b — OGA-BY 3.0"], attribution.credit_lines(summary))
+        self.assertEqual([], attribution.credit_lines({}))
+
+
 class TestCanonicalSourceFingerprint(unittest.TestCase):
     """소스 지문 산출법을 하나로 고정한다.
 

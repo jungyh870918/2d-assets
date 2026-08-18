@@ -124,6 +124,10 @@ def summarize(fields):
         "redistribution": capability(fields, "redistribution"),
         "ai_training": capability(fields, "ai_training"),
         "pipeline_approved": capability(fields, "pipeline_approved"),
+        # 표기 의무는 상업 사용 가능 여부와 **독립된 축**이다. commercial_use: yes 여도
+        # CC-BY / OGA-BY 는 저자 표기 없이 배포하면 라이선스 위반이다. 이 값이 요약에
+        # 없으면 소비자 패키지까지 따라가는 신호가 끊긴다 (실제로 끊겨 있었다).
+        "credit_required": capability(fields, "credit_required"),
         "commercial_release_eligible": eligible,
         "record": paths.rel(license_path(fields["pack"])),
     }
